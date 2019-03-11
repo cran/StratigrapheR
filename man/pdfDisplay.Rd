@@ -4,15 +4,12 @@
 \alias{pdfDisplay}
 \title{Generates PDF and SVG figures}
 \usage{
-pdfDisplay(g, width, height, name, ext = ".pdf", dir = getwd(),
-  openfile = FALSE, pargs = list(), output = F, warn = T)
+pdfDisplay(g, name, ext = ".pdf", dir = getwd(), width = 10,
+  height = 10, parg = list(), track = T, openfile = T, output = F,
+  warn = F)
 }
 \arguments{
 \item{g}{the plot function to be exported and looked at}
-
-\item{width}{the width of the drawing area (in inches)}
-
-\item{height}{the height of the drawing area (in inches)}
 
 \item{name}{the name of the document}
 
@@ -22,16 +19,26 @@ pdfDisplay(g, width, height, name, ext = ".pdf", dir = getwd(),
 \item{dir}{the file where the document will be saved (by default the
 working directory, getwd())}
 
+\item{width}{the width of the drawing area (in inches)}
+
+\item{height}{the height of the drawing area (in inches)}
+
+\item{parg}{list of arguments transmitted to the par() function}
+
+\item{track}{whether to generate different files for each rerun of pdfDisplay
+with identical 'name'. The name will be followed by '_(i)' where i is the
+version number. With this you avoid closing your pdf file at each rerun if
+your pdf reader is not able to deal with (to my knowledge only SumatraPDF is
+able)}
+
 \item{openfile}{should the pdf file be opened (for the moment works
 only in Windows). Use SumatraPDF as default pdf reader to be able to write
 over current file}
 
-\item{pargs}{list of arguments transmitted to the par() function}
-
 \item{output}{whether to output the output of g() or not}
 
-\item{warn}{whether you want to be annoyed by the \code{openfile}
-warning}
+\item{warn}{useless vestigial parameter, kept for compatibility with
+StratigrapheR 0.0.1}
 }
 \value{
 the output of the g() function if output = TRUE
@@ -39,26 +46,28 @@ the output of the g() function if output = TRUE
 \description{
 Takes an ensemble of figures, represented by a function g(), and
 generates a PDF (or SVG if specified). The PDF can be visualised immediatly
-on the default PDF reader, preferentially one that can be refreshed without
-closing it (e.g. SumatraPDF, but it only works in Windows).
+on the default PDF reader.
 }
 \details{
-This a fragile function, I believe it is especially sensible to OS
-changes. The openfile argument will only work in Windows (I'm not even sure
-it will work in all Windows versions).
-
-Also the width and height you provide will not exactly be respected. I could
-not find a pdf printing function that respects dimensions scrupulously for
-R base graphics.
+The width and height you provide will not exactly be respected.
+I could not find a pdf printing function that respects dimensions
+scrupulously for R base graphics.
 }
 \examples{
-g1   <- function() plot(1,1)
-
-temp <- tempfile()
-dir.create(temp)
-
-pdfDisplay(g1(),8.27,11.69,
-           "TestGraph", dir = temp, openfile = TRUE,
-           pargs = list(mar = c(6,6,6,6), ps = 24,lwd = 4))
+# # To run example uncomment all: put in a script, select all and use
+# #  ctrl+shift+c
+#
+# temp <- tempfile()
+# dir.create(temp)
+#
+# g1   <- function() plot(1,1)
+#
+# pdfDisplay(g1(),"TestGraph", dir = temp,
+#            parg = list(mar = c(6,6,6,6), ps = 24,lwd = 4))
+#
+# g1   <- function() plot(1,1, col = "red")
+#
+# pdfDisplay(g1(), "TestGraph", dir = temp,
+#            parg = list(mar = c(6,6,6,6), ps = 24,lwd = 4))
 
 }

@@ -15,8 +15,8 @@
 #' ?merge_list for further information.
 #' @param srt,family,xpd further graphical parameters, see ?par for information
 #'
-#' @seealso Similar functions: \code{\link{multigons}}, \code{\link{bedtext}}
-#' and \code{\link{ylink}}
+#' @seealso Similar functions: \code{\link{multigons}}, \code{\link{bedtext}},
+#' \code{\link{nlegend}} and \code{\link{ylink}}
 #'
 #' To deal with intervals: \code{\link{as.lim}} and related functions
 #'
@@ -35,7 +35,7 @@
 #' @export
 
 infobar <- function(xmin, xmax, ymax, ymin, labels = NA,
-                    m = list(col = "white"), t = list(),
+                    m = list(), t = list(),
                     srt = 90, family = par("family"), xpd = par("xpd"))
 {
   cond <- !(is.na(labels[[1]]) & length(labels) == 1)

@@ -14,6 +14,7 @@
 #' @param arg a list of arguments f length 1 or n.
 #' @param xlim,ylim the limits in x and y; if any object has all his
 #' points past one of these limits, it will be removed.
+#' @param xlog,ylog whether the axes have logarithmic scale
 #'
 #' @return
 #' a list of i, x, y, d, j and arguments.
@@ -44,8 +45,14 @@
 #' @export
 
 ignore <- function(i, x, y = NA, d = list(), j = unique(i), arg = list(),
-                   xlim = par("usr")[c(1,2)], ylim = par("usr")[c(3,4)])
+                   xlim = par("usr")[c(1,2)], ylim = par("usr")[c(3,4)],
+                   xlog = par("xlog"), ylog = par("ylog"))
 {
+
+  if(xlog) xlim <- 10^xlim
+
+  if(ylog) ylim <- 10^ylim
+
   # Arguments ----
 
   error <- duplicated(c("i", "x", "y", names(d), names(arg)))

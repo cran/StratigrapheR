@@ -84,6 +84,15 @@ centresvg <- function(object, x, y, xfac = 1, yfac = 1, xadj = 0, yadj = 0,
     stop("The arguments beside 'object' should be of length 1 or n")
   }
 
+  if(all(larg[1:4] == 1) & lj != 1){
+    stop(paste("Multiple graphical parameters should apply for multiple",
+               " drawings\n (they do not apply for each element of ",
+               "the drawing, see multilines\n and multigons for that). ",
+               "For multiple drawings provide at least one\n of the ",
+               "following arguments with multiple information: x, y",
+               sep = ""))
+  }
+
   or1 <- which(larg == lj)
   or2 <- which(larg == 1)
 
@@ -187,110 +196,11 @@ centersvg <- function(object, x, y, xfac = 1, yfac = 1, xadj = 0, yadj = 0,
                       scol = border, slty = lty, slwd = lwd,
                       plot = TRUE,output = FALSE)
 {
-
-  object <- changesvg(object, front = front, back = back, forget = forget,
-                      standard = standard, keep.ratio = keep.ratio)
-
-  argi <- list(x = x, y = y, xfac = xfac, yfac = yfac,
-               xadj = xadj, yadj = yadj, border = border, col = col,
-               density = density, angle = angle, lty = lty, lwd = lwd,
-               scol = scol, slty = slty , slwd = slwd)
-
-  larg <- unlist(lapply(argi,length))
-  lj   <- max(larg)
-
-  if(any(!(larg == 1 | larg == lj))){
-    stop("The arguments beside 'object' should be of length 1 or n")
-  }
-
-  or1 <- which(larg == lj)
-  or2 <- which(larg == 1)
-
-  am <- data.frame(argi[or1], stringsAsFactors = F)
-
-  au <- data.frame(argi[or2], stringsAsFactors = F)
-  au <- au[rep(1,lj),]
-  row.names(au) <- NULL
-
-  if(lj == 1) {
-    a1 <- am
-  } else if(ncol(am) != 0 & ncol(au) != 0){
-
-    a1 <- cbind(am,au)
-    a1[,c(or1,or2)] <- a1
-    colnames(a1)  <- names(argi)
-
-  } else if (ncol(am) == 0 & ncol(au) != 0){
-    a1 <- au
-  } else if (ncol(am) != 0 & ncol(au) == 0){
-    a1 <- am
-  }
-
-  n <- nrow(a1)
-  l <- nrow(object)
-  r <- length(unique(object$i))
-
-  nid <- rep(seq_len(n), rep(l,n))
-
-  a2 <- a1[nid,1:6]
-  row.names(a2) <- NULL
-
-  refine <- rep(seq_len(n), rep(r,n))
-  a3 <- a1[refine,7:15]
-
-  object <- object[rep(seq_len(l),n),]
-
-  object$id <- paste(object$id, nid, sep = "_")
-
-  ox <- ((object$x  + a2$xadj) * a2$xfac) + a2$x
-  oy <- ((object$y  + a2$yadj) * a2$yfac) + a2$y
-
-  o   <- object
-  o$x <- ox
-  o$y <- oy
-
-  if(isTRUE(plot)){
-
-    on <- ignore(o$i, o$x, o$y, list(type = o$type), arg = as.list(a3))
-
-    if(length(on$x) != 0){
-
-      id <- unique(data.frame(i = on$i, type = on$type, stringsAsFactors = F))
-
-      for(j in seq_len(nrow(id)))
-      {
-        itype <- id$type[j]
-
-        oix <- on$x[on$i == id$i[j] & on$type == itype]
-        oiy <- on$y[on$i == id$i[j] & on$type == itype]
-
-        if(itype == "P"){
-
-          if(!(is.na(on$density[j])) | isFALSE(on$density[j] < 0)){
-
-            polygon(oix, oiy, col = on$col[j], border = NA)
-            polygon(oix, oiy, col = on$scol[j], border = NA,
-                    density = on$density[j], angle = on$angle[j],
-                    lwd = on$slwd[j], lty = on$slty[j])
-            polygon(oix, oiy, col = NA, border = on$border[j],
-                    lwd = on$lwd[j], lty = on$lty[j])
-
-          } else {
-
-            polygon(oix, oiy, col = on$col[j], border = on$border[j],
-                    lwd = on$lwd[j], lty = on$lty[j])
-
-          }
-
-        } else if (itype == "L") {
-          lines(oix, oiy,col = on$border[j], lwd = on$lwd[j], lty = on$lty[j])
-        }
-
-      }
-
-    }
-  }
-
-  if(isTRUE(output)) return(o)
-
+  centresvg(object, x, y, xfac = 1, yfac = 1, xadj = 0, yadj = 0,
+           forget = NULL, front = NULL, back = NULL,
+           standard = FALSE, keep.ratio = FALSE,
+           col = NA, border = "black", density = NA, angle = 45,
+           lty = par("lty"), lwd = par("lwd"),
+           scol = border, slty = lty, slwd = lwd,
+           plot = TRUE,output = FALSE)
 }

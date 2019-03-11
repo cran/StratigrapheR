@@ -9,8 +9,8 @@
 #' @param l  a list of arguments to feed lines(). Go see ?lines to know
 #' which arguments can be provided. See ?merge.list for further information.
 #'
-#' @seealso \code{\link{multilines}}, \code{\link{bedtext}} and
-#' \code{\link{infobar}}
+#' @seealso \code{\link{multilines}}, \code{\link{bedtext}},
+#' \code{\link{infobar}} and \code{\link{nlegend}}
 #'
 #' @examples
 #' plot(c(0,6),c(-20,20), type = "n")

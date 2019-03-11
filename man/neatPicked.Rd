@@ -6,8 +6,8 @@
 \usage{
 neatPicked(fun, n, args = NA, width = 10, height = 10, output = "all",
   name = "Fig", dir = getwd(), gfile = "onePDF", openfile = TRUE,
-  folder = "My file", gfun = "jpeg", ext = ".jpeg", gargs = list(units =
-  "in", res = 300), pargs = list())
+  track = TRUE, folder = "My file", gfun = "jpeg", ext = ".jpeg",
+  gargs = list(units = "in", res = 300), pargs = list())
 }
 \arguments{
 \item{fun}{the function to be applied n times.}
@@ -35,7 +35,7 @@ else is given ("none for instance"), it won't produce graphical files. This
 reduces computation speed by a little more than 15 percents (one try of 1000
 samples with simple graphs).}
 
-\item{openfile}{whether to open the single pdf file}
+\item{openfile, track}{parameters for pdfDisplay()}
 
 \item{folder}{the name of the folder containing the n graphical files}
 
@@ -58,19 +58,22 @@ into a n pages pdf or a n files folder. The output of the function is
 accumulated in a list.
 }
 \examples{
-fun <- function(x, y, xlim = c(-1,1),...)
-{
-  plot(x, y, xlim = xlim,...)
-
-  return(paste(x, y, paste(xlim, collapse = "; "), sep = "; "))
-}
-
-args <- list(x = list(-0.5, 1) , y = c(0.8, 0.8), pch = c(2,4),
-             xlim = list(c(-1,1), c(-20,20)))
-
-temp <- tempfile()
-dir.create(temp)
-
-neatPicked(fun, 2, args = args, width = 5, height = 5, dir = temp)
+# # To run example uncomment all: put in a script, select all and use
+# #  ctrl+shift+c
+#
+# fun <- function(x, y, xlim = c(-1,1),...)
+# {
+#   plot(x, y, xlim = xlim,...)
+#
+#   return(paste(x, y, paste(xlim, collapse = "; "), sep = "; "))
+# }
+#
+# args <- list(x = list(-0.5, 1) , y = c(0.8, 0.8), pch = c(2,4),
+#              xlim = list(c(-1,1), c(-20,20)))
+#
+# temp <- tempfile()
+# dir.create(temp)
+#
+# neatPicked(fun, 2, args = args, width = 5, height = 5, dir = temp)
 
 }

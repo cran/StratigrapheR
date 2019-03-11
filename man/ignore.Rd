@@ -5,7 +5,8 @@
 \title{Ignores useless objects}
 \usage{
 ignore(i, x, y = NA, d = list(), j = unique(i), arg = list(),
-  xlim = par("usr")[c(1, 2)], ylim = par("usr")[c(3, 4)])
+  xlim = par("usr")[c(1, 2)], ylim = par("usr")[c(3, 4)],
+  xlog = par("xlog"), ylog = par("ylog"))
 }
 \arguments{
 \item{i}{a polygon id for each x and y coordinate. If n objects are
@@ -23,6 +24,8 @@ arguments. By default they are in their order of appearance in \code{i}}
 
 \item{xlim, ylim}{the limits in x and y; if any object has all his
 points past one of these limits, it will be removed.}
+
+\item{xlog, ylog}{whether the axes have logarithmic scale}
 }
 \value{
 a list of i, x, y, d, j and arguments.

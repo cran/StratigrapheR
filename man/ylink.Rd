@@ -38,6 +38,6 @@ ylink(c(0,12),c(10,20), x1 = 1, x2 = 5, ratio = 0.2,
 
 }
 \seealso{
-\code{\link{multilines}}, \code{\link{bedtext}} and
-\code{\link{infobar}}
+\code{\link{multilines}}, \code{\link{bedtext}},
+\code{\link{infobar}} and \code{\link{nlegend}}
 }

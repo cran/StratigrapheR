@@ -86,34 +86,31 @@ saved.output$args. The arguments can be provided to the args argument of the
 same neatPick function to rework the changes you made.
 }
 \examples{
-# Use for stratigraphy
-# You create a simple function. This one creates sinusoidal waves between
-# x0 = 0 and x1 = 1. You want to personalise the amplitude (delta), the y
-# offset (pos, see ?sinpoint for more details), the phase (phase, expressed
-# in multiples of pi), the number of waves between x0 and x1, and the number
-# of intervals between each discrete point (nint).
-# So you set all these as arguments of the function. This function can also
-# have a graphical output of one plot (which can be subdivided if necessary
-# using par(mfrow)). And the function can return output.
-
-fun <- function(delta = 1, pos = 1, phase = 1.5, nwave = 1, nint = 50)
-{
-
-  res <- sinpoint(1, 0, delta = delta, pos = pos, phase = phase,
-                  nwave = nwave, nint = nint)
-
-  plot(res$x,res$y)
-
-  return(res)
-
-}
-
-
-# !!!! DEVELOPMENT COMMENT !!!! :
-# I had to comment the underlying code to avoid bugs in devtools::check()
-
-
-
+# # Use for stratigraphy: uncomment the entire example script to make it work
+# # (remove the first # of each line; you can use the
+# # shortcut Ctrl + Shift + c on the whole script)
+# #
+# # You create a simple function. The one below creates sinusoidal waves between
+# # x0 = 0 and x1 = 1. You want to personalise the amplitude (delta), the y
+# # offset (pos, see ?sinpoint for more details), the phase (phase, expressed
+# # in multiples of pi), the number of waves between x0 and x1, and the number
+# # of intervals between each discrete point (nint).
+# # So you set all these as arguments of the function. This function can also
+# # have a graphical output of one plot (which can be subdivided if necessary
+# # using par(mfrow)). And the function can return output.
+#
+# fun <- function(delta = 1, pos = 1, phase = 1.5, nwave = 1, nint = 50)
+# {
+#
+#   res <- sinpoint(1, 0, delta = delta, pos = pos, phase = phase,
+#                   nwave = nwave, nint = nint)
+#
+#   plot(res$x,res$y)
+#
+#   return(res)
+#
+# }
+#
 # # Once this simple function is coded, it can be integrated to neatPick(). The
 # # argument n defines to number of different realisations of the function.
 #

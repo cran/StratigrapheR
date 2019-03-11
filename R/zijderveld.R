@@ -59,6 +59,8 @@
 #' @examples
 #' zd <- zeq_example
 #'
+#' ori <- par()$mfrow
+#'
 #' par(mfrow = c(1,2))
 #'
 #' zijderveld(dec = zd$Dec, inc = zd$Inc, int = zd$Int,
@@ -67,6 +69,8 @@
 #' zijderveld(dec = zd$Dec, inc = zd$Inc, int = zd$Int,
 #'            style = "box1", scientific = FALSE, decimals = 5,
 #'            labels = zd$Treat, nlabels = 2)
+#'
+#' par(mfrow = ori)
 #'
 #' @export
 

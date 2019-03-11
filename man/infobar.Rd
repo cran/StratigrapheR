@@ -4,8 +4,8 @@
 \alias{infobar}
 \title{Draws rectangles with text in them}
 \usage{
-infobar(xmin, xmax, ymax, ymin, labels = NA, m = list(col = "white"),
-  t = list(), srt = 90, family = par("family"), xpd = par("xpd"))
+infobar(xmin, xmax, ymax, ymin, labels = NA, m = list(), t = list(),
+  srt = 90, family = par("family"), xpd = par("xpd"))
 }
 \arguments{
 \item{xmin, xmax, ymin, ymax}{x and y limits for the rectangles. You can
@@ -41,8 +41,8 @@ infobar(xmin = 0, xmax = 1, ymin = ymin, ymax = ymax, labels,
 
 }
 \seealso{
-Similar functions: \code{\link{multigons}}, \code{\link{bedtext}}
-and \code{\link{ylink}}
+Similar functions: \code{\link{multigons}}, \code{\link{bedtext}},
+\code{\link{nlegend}} and \code{\link{ylink}}
 
 To deal with intervals: \code{\link{as.lim}} and related functions
 }

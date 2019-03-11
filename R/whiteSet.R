@@ -40,40 +40,36 @@
 #' points(x, y, pch=19)
 #' @export
 
-whiteSet <- function(xlim, ylim, xtick = NA, ytick = NA, nx = 1, ny = 1,
-                     xaxs = "i", yaxs = "i",
-                     xarg = list(tick.ratio = 0.5),
-                     yarg = list(tick.ratio = 0.5, las = 1), add = FALSE)
+whiteSet <- function (xlim, ylim, xtick = NA, ytick = NA, nx = 1, ny = 1,
+                      xaxs = "i", yaxs = "i", xarg = list(tick.ratio = 0.5),
+                      yarg = list(tick.ratio = 0.5, las = 1), add = FALSE)
 {
 
-  if(!(round(nx)  == nx & nx >= 1) | !(round(ny)  == ny & ny >= 1)){
+  if (!(round(nx) == nx & nx >= 1) | !(round(ny) == ny & ny >= 1)) {
     stop("The nx and ny parameters should be integers and higher or equal to 1")
   }
 
-  opar <- par("xaxs","yaxs")
-
-  on.exit(do.call(par,opar))
+  opar <- par("xaxs", "yaxs")
+  on.exit(do.call(par, opar))
 
   par(xaxs = xaxs, yaxs = yaxs)
 
   plot.new()
-  plot.window(xlim,ylim)
+  plot.window(xlim, ylim)
 
   usr <- par("usr")
 
-  # X axis ----
+  if (!is.null(xarg)) {
 
-  if(!is.null(xarg)){
-
-    if(is.na(xtick)){
-      xpar  <- par("xaxp")
+    if (is.na(xtick)) {
+      xpar <- par("xaxp")
       xtick <- abs(xpar[2] - xpar[1])/xpar[3]
     }
 
-    xra <- usr[c(1,2)]
+    xra <- usr[c(1, 2)]
     xra <- encase(xra[1], xra[2], xtick)
 
-    if(xlim[1] < xlim[2]){
+    if (xlim[1] < xlim[2]) {
 
       xt <- seq(from = xra[1], to = xra[2], by = xtick)
 
@@ -81,43 +77,48 @@ whiteSet <- function(xlim, ylim, xtick = NA, ytick = NA, nx = 1, ny = 1,
 
       xt <- seq(from = xra[1], to = xra[2], by = -xtick)
 
-    } else {stop("The two first elements of xlim must be different numbers")}
+    } else {
+
+      stop("The two first elements of xlim must be different numbers")
+
+    }
 
     lx <- merge_list(xarg, list(side = 1, n = nx, at.maj = xt),
                      list(tick.ratio = 0.5))
 
     do.call(minorAxis, lx)
-
   }
 
-  # Y axis ----
+  if (!is.null(yarg)) {
 
-  if(!is.null(yarg)){
+    if (is.na(ytick)) {
 
-    if(is.na(ytick)){
-      ypar  <- par("yaxp")
+      ypar <- par("yaxp")
       ytick <- abs(ypar[2] - ypar[1])/ypar[3]
+
     }
 
-    yra <- usr[c(3,4)]
+    yra <- usr[c(3, 4)]
     yra <- encase(yra[1], yra[2], ytick)
 
-    if(ylim[1] < ylim[2]){
+    if (ylim[1] < ylim[2]) {
 
       yt <- seq(from = yra[1], to = yra[2], by = ytick)
 
     } else if (ylim[1] > ylim[2]) {
 
-      yt <- seq(from = yra[1] ,to = yra[2],by = -ytick)
+      yt <- seq(from = yra[1], to = yra[2], by = -ytick)
 
-    } else {stop("The two first elements of ylim must be different numbers")}
+    } else {
+
+      stop("The two first elements of ylim must be different numbers")
+
+    }
 
     ly <- merge_list(yarg, list(side = 2, n = ny, at.maj = yt),
                      list(tick.ratio = 0.5, las = 1))
 
     do.call(minorAxis, ly)
-
   }
-
 }
 

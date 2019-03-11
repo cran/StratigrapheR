@@ -2,10 +2,10 @@
 % Please edit documentation in R/minorAxis.R
 \name{minorAxis}
 \alias{minorAxis}
-\title{Adds an axis of with minor ticks to a plot}
+\title{Adds an axis with minor ticks to a plot}
 \usage{
-minorAxis(side, n = NULL, at.maj = NULL, at.min = NULL,
-  tick.ratio = 0.75, labels.maj = TRUE, line = NA, pos = NA,
+minorAxis(side, n = NULL, at.maj = NULL, at.min = NULL, range = NULL,
+  tick.ratio = 0.5, labels.maj = TRUE, line = NA, pos = NA,
   outer = FALSE, font = NA, lty = "solid", lwd = 1, lwd.ticks = lwd,
   col = NULL, col.ticks = NULL, hadj = NA, padj = NA, extend = TRUE,
   tcl = NA, ...)
@@ -23,6 +23,8 @@ part in the ?axis help page.}
 
 \item{at.min}{the positions at which minor tick-marks are to be drawn.
 This parameter overrides n.}
+
+\item{range}{the range of the axis}
 
 \item{tick.ratio}{ratio of lengths of minor tick marks to major tick
 marks. The length of major tick marks is retrieved from par("tcl") unless
@@ -45,11 +47,11 @@ to export a clean plot in vector format. It is based on the
 minor.tick function in the Hmisc package.
 }
 \examples{
-plot(c(0,1), c(0,1), axes = FALSE, type = "n")
+plot(c(0,1), c(0,1), axes = FALSE, type = "n", xlab = "", ylab = "")
 
-minorAxis(1, n = 10)
+minorAxis(1, n = 10, range = c(0.12,0.61))
 
-minorAxis(3, n = 10,extend=FALSE)
+minorAxis(3, n = 10, extend=FALSE)
 }
 \seealso{
 Set a plot environment with minorAxis: \code{\link{whiteSet}},

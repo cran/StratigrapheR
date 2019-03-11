@@ -103,6 +103,15 @@ framesvg <- function(object, xmin, xmax, ymin, ymax,
     stop("The arguments beside 'object' should be of length 1 or n")
   }
 
+  if(all(larg[1:4] == 1) & lj != 1){
+    stop(paste("Multiple graphical parameters should apply for multiple",
+               " drawings\n (they do not apply for each element of ",
+               "the drawing, see multilines\n and multigons for that). ",
+               "For multiple drawings provide at least one\n of the ",
+               "following arguments with multiple information: xmin, "
+               ,"xmax,\n ymin, ymax", sep = ""))
+  }
+
   or1 <- which(larg == lj)
   or2 <- which(larg == 1)
 
