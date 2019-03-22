@@ -21,7 +21,7 @@
 #'
 #' Type: R package
 #'
-#' Version: 0.0.2 (January 2019)
+#' Version: 0.0.3 (March 2019)
 #'
 #' License: GPL-3
 #' @note

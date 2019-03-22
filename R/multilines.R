@@ -27,7 +27,7 @@
 #' @param col the color to draw the line. The default is black.
 #' @param bg background (fill) color for the open plot symbols given by
 #' pch = 21:25.
-#' @param pch plotting ‘character’, i.e., symbol to use. See ?points for
+#' @param pch plotting 'character', i.e., symbol to use. See ?points for
 #' further details
 #' @param lty,lwd the line type and width, see ?par for details.
 #' @param cex haracter (or symbol) expansion: a numerical vector. This

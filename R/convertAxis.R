@@ -55,14 +55,16 @@ convertAxis <- function(side, formula, at.maj, at.min = NULL, labels = at.maj,
        col = col,...)
 
   maj.tick<- f(x = at.maj)
-  axis(side = side, maj.tick,labels = labels, lwd = lwd,
-       lwd.ticks = lwd.ticks, col = col, col.ticks = col.ticks, hadj = hadj,
-       padj = padj, tcl = maj.tcl)
+
+  axis(side = side, maj.tick,labels = labels, lwd = lwd, line = line, pos = pos,
+       font = font, lwd.ticks = lwd.ticks, col = col, col.ticks = col.ticks, hadj = hadj,
+       padj = padj, tcl = maj.tcl,...)
 
   if(!is.null(at.min)) {
     min.tick <- f(x = at.min)
     axis(side = side, min.tick, labels = FALSE, lwd = 0, lwd.ticks = lwd.ticks,
-         tcl = min.tcl)
+         line = line, pos = pos, font = font, col = col, col.ticks = col.ticks,
+         tcl = min.tcl,...)
   }
 
 }

@@ -1,6 +1,6 @@
-52cd565a96915894d923de90de65b961 *DESCRIPTION
+abfbcfa48ddd3819f74f818975af3126 *DESCRIPTION
 088203bd132357bc0aface7bacc36601 *NAMESPACE
-5d9d54737e974df7b8a686afbdb794d9 *R/StratigrapheR.R
+137421eed598676165bd7cf4c019d65d *R/StratigrapheR.R
 9029350a6a3667d2df63421cfe781bc4 *R/as.lim.R
 ea0ac2442cc50d3c3d00f6e80eb0291a *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -9,8 +9,8 @@ ea0ac2442cc50d3c3d00f6e80eb0291a *R/bedtext.R
 35a364cfb1190181eb09c6217d97561f *R/changesvg.R
 1710a7df0f1dd68e1331b91ae5aa81ca *R/clipsvg.R
 e02e4450d916b6d8a347cccb7e333695 *R/convert.R
-cec871b7c2e74bb09fa976c9b676f2c1 *R/convertAxis.R
-afb51deffd25733470dfcc3456f89087 *R/dipfix.R
+6ffe789b0d9d66e36bd67e75f241e899 *R/convertAxis.R
+6cbf7fc9c2d6a1abf141a6784e76d878 *R/dipfix.R
 4c085e86bc5298927bee0f2d99faeb54 *R/earinc.R
 587f99191904f57a41beb8efe2a14d43 *R/earnet.R
 2be3fb73d28720b03d86eed114a3d529 *R/earplanes.R
@@ -35,9 +35,9 @@ eddd798052d7c48abd2a9d51f216d02c *R/infobar.R
 8451b63d61a5d12004b24c0a9b95b13e *R/mat.lag.R
 7345687d545952565b8dd117f8d05bf4 *R/merge_list.R
 bee6fea363424825e4f40c3bb4378630 *R/mid.lim.R
-6824e7abacc3f3bc23d8bce60bb97afb *R/minorAxis.R
+4a5195ee674c3be4b89afe4f54efc4c0 *R/minorAxis.R
 bc38df699e4b8dbb113eedc9feaafd40 *R/multigons.R
-b393460b865b0086fee1091f8dea2417 *R/multilines.R
+1d26555dcaa693f2f3360b2631978cc4 *R/multilines.R
 3d33b4efda8d08d70344c0dd9e1b51ed *R/neatPick.R
 433ea7300f25eead879a9cce83c50b0e *R/neatPicked.R
 67c084e690e241d70ea8758741b5811e *R/nlegend.R
@@ -113,9 +113,9 @@ e1ca945fa411169f443ffa5d44594db8 *man/greySet.Rd
 41b51ce767f5c2b93ff21137dbd638f6 *man/mat.lag.Rd
 b011d92292cb4626e36249b3dabe6920 *man/merge_list.Rd
 9d223aed6bcdfe41ffbeb1b8aec3634e *man/mid.lim.Rd
-72fec89070b2d8efca024ba36acb1e3d *man/minorAxis.Rd
+4a0c3c9b76be79c4866a1570bbf3439b *man/minorAxis.Rd
 19b844e6988cc24c8b0114b8e306c1e3 *man/multigons.Rd
-0bc9173e134573057798d7f6a2b19b78 *man/multilines.Rd
+5d70a7452d4a85d8e2e4a5323711c622 *man/multilines.Rd
 4a3ef0987375bf6630fec348ec9ff80d *man/neatPick.Rd
 fd02547b9e3aa4a5b59b5f0de0003085 *man/neatPicked.Rd
 849f4e14b8959c87d35170136a97833e *man/nlegend.Rd

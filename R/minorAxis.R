@@ -45,7 +45,7 @@ minorAxis <- function(side, n = NULL, at.maj = NULL, at.min = NULL, range = NULL
                       tick.ratio = 0.5, labels.maj = TRUE, line = NA, pos = NA,
                       outer = FALSE, font = NA, lty = "solid", lwd = 1,
                       lwd.ticks = lwd, col = NULL, col.ticks = NULL, hadj = NA,
-                      padj = NA, extend = TRUE, tcl = NA, ...)
+                      padj = NA, extend = FALSE, tcl = NA, ...)
 {
 
   if(side == 1 | side == 3){
@@ -119,7 +119,7 @@ minorAxis <- function(side, n = NULL, at.maj = NULL, at.min = NULL, range = NULL
     axis(side, at = at.maj, labels = labels.maj, tick = TRUE, line = line,
          pos = pos, outer = outer, font = font, lty = lty,
          lwd = 0, lwd.ticks = lwd.ticks, col = col, col.ticks = col.ticks,
-         hadj = hadj, padj = padj, tcl = maj.tcl,...)
+         hadj = hadj, padj = padj, tcl = tcl,...)
 
   } else {
 

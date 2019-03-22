@@ -39,7 +39,7 @@ function it is limited to "l" (lines, is the default), "p" (points) and "o"
 \item{bg}{background (fill) color for the open plot symbols given by
 pch = 21:25.}
 
-\item{pch}{plotting ‘character’, i.e., symbol to use. See ?points for
+\item{pch}{plotting 'character', i.e., symbol to use. See ?points for
 further details}
 
 \item{lty, lwd}{the line type and width, see ?par for details.}

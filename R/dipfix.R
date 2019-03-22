@@ -2,7 +2,7 @@
 #'
 #' @description Fix dip and strike of planes so that they fall in the correct
 #' quadrant. The provided quadrant is the determining factor. If unavailable or
-#' not helpful, the sign of the dip is used as dtermining factor.
+#' not helpful, the sign of the dip is used as determining factor.
 #'
 #' @param strike strike of the data; it is the angle from the north of
 #' the horizontal line of the plane. Corrected, its range goes from 0° to 360°.
@@ -25,7 +25,8 @@
 #' inversion does not influence the calculation of the strike, dip and quadrant:
 #' whether the plane is upside down does not change these parameters output.
 #' @return a list of the corrected strike, dip and quadrant
-#' @seealso \code{\link{fmod}}, \code{\link{incfix}} and \code{\link{transphere}}
+#' @seealso \code{\link{fmod}}, \code{\link{incfix}} and
+#' \code{\link{transphere}}
 #' @examples
 #' strike   <- c(-60, 180,20,0,20)
 #' dip      <- c(-60,20,-45,110,-90)
