@@ -34,7 +34,6 @@
 #' @examples
 #' # # To run example uncomment all: put in a script, select all and use
 #' # #  ctrl+shift+c
-#' #
 #' # temp <- tempfile()
 #' # dir.create(temp)
 #' #
@@ -47,8 +46,8 @@
 #' #
 #' # pdfDisplay(g1(), "TestGraph", dir = temp,
 #' #            parg = list(mar = c(6,6,6,6), ps = 24,lwd = 4))
-#'
-#' @importFrom grDevices cairo_pdf dev.off
+#' #
+#' @importFrom grDevices dev.off
 #' @export
 
 pdfDisplay <- function(g, name,  ext =".pdf", dir = getwd() ,
@@ -94,10 +93,11 @@ pdfDisplay <- function(g, name,  ext =".pdf", dir = getwd() ,
 
   filename <- paste(dir, "/", act.name, ext, sep="")
 
-  cairo_pdf(filename = filename, width = width, height = height,
-            bg = FALSE, onefile = TRUE)
+  # cairo_pdf(filename = filename, width = width, height = height,
+  #           bg = FALSE, onefile = TRUE)
 
-  # pdf(file = filename, width = width, height = height, bg = F) # Vestigial
+  pdf(file = filename, width = width, height = height,
+      bg = "transparent", onefile = T)
 
   if(length(parg) != 0) {
 

@@ -1,7 +1,7 @@
 Package: StratigrapheR
 Type: Package
 Title: Integrated Stratigraphy
-Version: 0.0.3
+Version: 0.0.4
 Author: Sebastien Wouters [aut, cre], Adam D. Smith [ctb]
 Maintainer: Sebastien Wouters <sebastien.wouters@doct.uliege.be>
 Description: Includes bases for litholog generation: graphical functions
@@ -9,6 +9,12 @@ Description: Includes bases for litholog generation: graphical functions
     functions among others. Also include stereographic projection functions, 
     and other functions made to deal with large datasets while keeping options
     to get into the details of the data.
+    When using for publication please cite Wouters, S., Da Silva, A.C. Crucifix, 
+    M., Sinnesael, M., Zivanovic, M., Boulvain, F., Devleeschouwer, X., 2019,
+    Litholog generation with the StratigrapheR package and signal decomposition 
+    for cyclostratigraphic purposes. Geophysical Research Abstracts Vol. 21, 
+    EGU2019-5520, 2019, EGU General Assembly 2019. 
+    <http://hdl.handle.net/2268/234402>
     The palaeomagnetism functions are based on:
     Tauxe, L., 2010. Essentials of Paleomagnetism. University of California 
     Press. <https://earthref.org/MagIC/books/Tauxe/Essentials/>;
@@ -27,6 +33,6 @@ Imports: graphics, grDevices, stats, utils, dplyr, stringr, ggplot2,
         GGally, shiny, diagram
 Suggests: astrochron, RFOC, plyr
 NeedsCompilation: no
-Packaged: 2019-03-22 10:01:33 UTC; Seb
+Packaged: 2019-04-18 18:22:55 UTC; Seb
 Repository: CRAN
-Date/Publication: 2019-03-22 10:33:24 UTC
+Date/Publication: 2019-04-18 21:30:03 UTC

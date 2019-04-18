@@ -29,7 +29,7 @@ a list of the corrected strike, dip and quadrant
 \description{
 Fix dip and strike of planes so that they fall in the correct
 quadrant. The provided quadrant is the determining factor. If unavailable or
-not helpful, the sign of the dip is used as dtermining factor.
+not helpful, the sign of the dip is used as determining factor.
 }
 \details{
 the strike will be corrected as the orientation of the dip (i.e.
@@ -53,5 +53,6 @@ dipfix(strike,dip,quadrant)
 
 }
 \seealso{
-\code{\link{fmod}}, \code{\link{incfix}} and \code{\link{transphere}}
+\code{\link{fmod}}, \code{\link{incfix}} and
+\code{\link{transphere}}
 }

@@ -56,7 +56,6 @@ scrupulously for R base graphics.
 \examples{
 # # To run example uncomment all: put in a script, select all and use
 # #  ctrl+shift+c
-#
 # temp <- tempfile()
 # dir.create(temp)
 #
@@ -69,5 +68,5 @@ scrupulously for R base graphics.
 #
 # pdfDisplay(g1(), "TestGraph", dir = temp,
 #            parg = list(mar = c(6,6,6,6), ps = 24,lwd = 4))
-
+#
 }

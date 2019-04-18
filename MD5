@@ -1,6 +1,6 @@
-abfbcfa48ddd3819f74f818975af3126 *DESCRIPTION
-088203bd132357bc0aface7bacc36601 *NAMESPACE
-137421eed598676165bd7cf4c019d65d *R/StratigrapheR.R
+cc13efc81d47d789530b45ef06a30aca *DESCRIPTION
+22afe453dba93d353d7ab45615dd2175 *NAMESPACE
+5f125b365cd01db8d5e061949d522915 *R/StratigrapheR.R
 9029350a6a3667d2df63421cfe781bc4 *R/as.lim.R
 ea0ac2442cc50d3c3d00f6e80eb0291a *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -21,6 +21,7 @@ b6d20407aa27cbff2efd25d4eed47d69 *R/enlarge.R
 272638750cd6a09094be99bb5e15a055 *R/every_nth.R
 3434b8705e1460287a22213ec0202647 *R/fastPairs.R
 04a13de7ded65a5583f96bc5d1c89752 *R/flip.lim.R
+2b7d74c4f4fe494f4714d9b5261d17ac *R/fmean.R
 d42110ae690e76eab615c8ae6f6b2aba *R/fmod.R
 99fb5337e5e123539f063db2713f7012 *R/folder.R
 9872502c62b0bf12ea0a0e9b4add7628 *R/formFunction.R
@@ -41,10 +42,10 @@ bc38df699e4b8dbb113eedc9feaafd40 *R/multigons.R
 3d33b4efda8d08d70344c0dd9e1b51ed *R/neatPick.R
 433ea7300f25eead879a9cce83c50b0e *R/neatPicked.R
 67c084e690e241d70ea8758741b5811e *R/nlegend.R
-ddcc46f3dd57b492504e8fb80d2db7e0 *R/pdfDisplay.R
+507f96ac91c99aa8f32669b1909401b2 *R/pdfDisplay.R
 d64533c42ba55dd9e7cacf702c25958a *R/placesvg.R
 d7bd6ab55199f0a6cfa7ad79270a5f81 *R/planepoints.R
-f97a2a58e92f343284b5c07bca6fcc0e *R/pointsvg.R
+0b817da0453443220f60d42638fe8567 *R/pointsvg.R
 b16d62b22a9c778b7397d9bc3a54d443 *R/rebound.R
 f0a85215b07520ad19f18331cae35408 *R/repitch.R
 7618ba77b5d83404e4dfec88293986dc *R/reposition.R
@@ -57,7 +58,7 @@ cca17e871114e75c4bdcc085fea6a1dc *R/simp.lim.R
 2d2908682a1cd239332d7d2647e6b8c8 *R/sinpoint.R
 6e8ef67c2ecbc38ad8ccc71209d903ed *R/supporting.examples.R
 e49a514f08a6fef028357d9c0e24e357 *R/tie.lim.R
-46becaaed90137f6b03f550111083188 *R/transphere.R
+e8b275716b82ac42cdd1002fcfc7389a *R/transphere.R
 24a97d5bfb8ace4136313ab5f4697d7a *R/weld.R
 902ba336e38ef215468e7521bf7a7497 *R/weldlog.R
 655ba44939af0c0c60a531200dfd2c14 *R/whiteSet.R
@@ -77,7 +78,7 @@ c872a1113284af64ee38c57592091c8b *data/fossil.example.rda
 3c670f38aff8450d12b9273fe480ae35 *data/proxy.example.litho.rda
 1e98e2c75c037c96f2c25c82b21ac1cb *data/proxy.example.rda
 1974126240f867554852e1c10c13c14c *data/zeq_example.rda
-05f74799a48cd21327b63b180edf833a *man/StratigrapheR.Rd
+f058d62e975429b1e273448b7281a9f1 *man/StratigrapheR.Rd
 5b9803d3fbddd1b289d3e50c79c479b1 *man/StratigrapheR.examples.Rd
 5d9340bfd42005c366ddcd6e15cb6192 *man/as.lim.Rd
 4750a3bd23f14c91c3d3c88ad863d2ac *man/bedtext.Rd
@@ -88,7 +89,7 @@ c872a1113284af64ee38c57592091c8b *data/fossil.example.rda
 8b3323985ccff2a84563edca0e90bce9 *man/clipsvg.Rd
 8d8cfad9ab1fa09b0311e8989c7e296e *man/convert.Rd
 687309a35582db641b9c29a5492d5f3d *man/convertAxis.Rd
-318c9334c83c0b81da9385c90867b06a *man/dipfix.Rd
+c816d7c019b4c895938bf1e7c97e571e *man/dipfix.Rd
 1592ddfea75351de8022ecc63268a1cd *man/earinc.Rd
 92e1e8c9e6b129e10288c19a6dd1906c *man/earnet.Rd
 f23e4bb007d7c3214b199494b0a4eaa0 *man/earplanes.Rd
@@ -99,6 +100,7 @@ f24713ba89a5e92924c35f9194715a72 *man/enlarge.Rd
 22e027e246bdfd9fdbca57268a359bbb *man/every_nth.Rd
 965a2941e23c757a160e27f2aedee9cb *man/fastPairs.Rd
 6cb1139ba19cb2635fbcd19c2a0b1e89 *man/flip.lim.Rd
+00b7f14593a5b332dfc256f160f8ac26 *man/fmean.Rd
 caa3ca066756a8c1bfef0ab69e7cbb7a *man/fmod.Rd
 4e210aa2a6259a21f8f0767de94e4c1d *man/folder.Rd
 6ad1382f7652f71dc1063518b6aa42a0 *man/formFunction.Rd
@@ -119,7 +121,7 @@ b011d92292cb4626e36249b3dabe6920 *man/merge_list.Rd
 4a3ef0987375bf6630fec348ec9ff80d *man/neatPick.Rd
 fd02547b9e3aa4a5b59b5f0de0003085 *man/neatPicked.Rd
 849f4e14b8959c87d35170136a97833e *man/nlegend.Rd
-cb2804f92073c69b4fd0cee506479e88 *man/pdfDisplay.Rd
+27efefe718318aeff04c4a45c61c73da *man/pdfDisplay.Rd
 0dc34709799a3535938223bec327a594 *man/placesvg.Rd
 3a2a11e5cb7374e238fb56c7c6c4247a *man/planepoints.Rd
 370143abc1a114c2f9a119e8e0b342ea *man/pointsvg.Rd
@@ -134,7 +136,7 @@ d7523cc2b9e7b2e60330acab0f45e480 *man/repitch.Rd
 f6483c234afd0a12a1bac8db4b0bda94 *man/simp.lim.Rd
 5540d0ae4bc6faeacba7cd7e8b648bbf *man/sinpoint.Rd
 b0ec29347c6f6b49465282f69b2c81ca *man/tie.lim.Rd
-9ab583f2037960c35bd6321b96d398e1 *man/transphere.Rd
+67fbb5da82efd92ff0704cb5668e20b4 *man/transphere.Rd
 f55c35705bd37e89b01583638d82258e *man/weld.Rd
 276d3d69fcf119fb381a5476dad316bb *man/weldlog.Rd
 058c1075aae22c2faca9ea38ac21273a *man/whiteSet.Rd

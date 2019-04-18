@@ -16,6 +16,9 @@
 #' @param x,y,z cartesian coordinates. x is the North, y the East, and z
 #' straight down. If dec and inc are not provided they are used to be converted
 #' back in dec, inc and int data. Output is corrected by incfix().
+#' @param into overriding parameter for generalisation: if "dii" dec, inc and
+#' int will remain as they are, and if "xyz" cartesian coordinates will remain
+#' as they are
 #' @return a list of coordinates, in cartesian form or dec, inc, int form
 #' following the input
 #' @seealso \code{\link{fmod}}, \code{\link{dipfix}} and \code{\link{incfix}}
@@ -27,12 +30,19 @@
 #'
 #' @export
 
-transphere <- function(dec = NA, inc = NA, int = 1, x = NA, y  = NA, z = NA)
+transphere <- function(dec = NA, inc = NA, int = 1, x = NA, y  = NA, z = NA,
+                       into = "other")
 {
 
   if(!is.na(dec[[1]]) & !is.na(inc[[1]])){
 
     l <- incfix(dec,inc)
+
+    if(into == "dii"){
+      if(length(int) == 1 & length(dec) != 1) int <- rep(int, length(dec))
+      res <- list(dec = l$dec, inc = l$inc, int = int)
+      return(res)
+    }
 
     deci <- l$dec * pi/180
     inci <- l$inc * pi/180
@@ -45,6 +55,11 @@ transphere <- function(dec = NA, inc = NA, int = 1, x = NA, y  = NA, z = NA)
     return(res)
 
   } else if(!is.na(x[[1]]) & !is.na(y[[1]]) & !is.na(z[[1]])){
+
+    if(into == "xyz"){
+      res <- list(x = x, y = y, z = z)
+      return(res)
+    }
 
     inti <- sqrt(x^2 + y^2 + z^2)
     deci <- 180/pi * atan2(y,x)

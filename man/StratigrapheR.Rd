@@ -30,14 +30,18 @@ Package: StratigrapheR
 
 Type: R package
 
-Version: 0.0.2 (January 2019)
+Version: 0.0.4 (April 2019)
 
 License: GPL-3
 }
 \note{
 If you want to use this package for publication or research
-purposes, I guess you can, but there is no article to cite yet; a little note
-anywhere would be welcome (in the acknoledgments for instance).
+purposes, please cite Wouters, S., Da Silva, A.C. Crucifix,
+M., Sinnesael, M., Zivanovic, M., Boulvain, F., Devleeschouwer, X., 2019,
+Litholog generation with the StratigrapheR package and signal decomposition
+for cyclostratigraphic purposes. Geophysical Research Abstracts Vol. 21,
+EGU2019-5520, 2019, EGU General Assembly 2019.
+<http://hdl.handle.net/2268/234402>
 }
 \examples{
 # # To run example uncomment all: put in a script, select all and use

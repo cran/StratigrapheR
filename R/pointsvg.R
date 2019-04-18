@@ -121,10 +121,10 @@ pointsvg <-function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
                     "to convert these objects into polygons using a vector ",
                     "graphics editor.",sep = ""))
 
-    }
+      gline <- gline[-tran.match]
+      gtype <- gtype[-tran.match]
 
-    gline <- gline[-tran.match]
-    gtype <- gtype[-tran.match]
+    }
 
   }
 
@@ -143,15 +143,13 @@ pointsvg <-function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
 
     tline <- a[ji]
 
-
-
     if(ti == 'line'){
 
       # LINE ----
 
-      pd  <- unlist(str_match_all(tline,"[a-zA-Z0-9]+= *\"-*[0-9]+\""))
+      pd  <- unlist(str_match_all(tline,"[a-zA-Z0-9]+= *\"-*[0-9.]+\""))
 
-      line.id <- sub("= *\"[0-9]+\"", "", pd)
+      line.id <- sub("= *\"[0-9.]+\"", "", pd)
 
       if(warn & !all(c("x1", "y1", "x2", "y2") %in% line.id)){
 
@@ -183,7 +181,7 @@ pointsvg <-function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
 
       }
 
-      line.xy <- as.numeric(gsub("\"", "", str_match(pd, "\"[0-9]+\"")))
+      line.xy <- as.numeric(gsub("\"", "", str_match(pd, "\"[0-9.]+\"")))
       line.xy <- as.list(line.xy)
 
       names(line.xy) <- line.id
@@ -197,7 +195,7 @@ pointsvg <-function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
 
       # POLY -line and -gon ----
 
-      poly.t <- as.character(str_match(tline, "points= *\"[[0-9]+,[0-9]+ ]*\""))
+      poly.t <- as.character(str_match(tline, "points= *\"[[0-9.]+,[0-9.]+ ]*\""))
 
       if(warn & length(poly.t) == 0){
 
@@ -215,7 +213,7 @@ pointsvg <-function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
 
       }
 
-      pd <- unlist(str_match_all(tline,"-*[0-9]+,-*[0-9]+"))
+      pd <- unlist(str_match_all(tline,"-*[0-9.]+,-*[0-9.]+"))
       pe <- read.table(text=pd,sep=",")
       colnames(pe) <- c("x","y")
 
@@ -227,7 +225,7 @@ pointsvg <-function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
 
       pd  <- unlist(str_match_all(tline,"[a-zA-Z0-9]+= *\"-*[0-9]+\""))
 
-      rect.id <- sub("= *\"[0-9]+\"", "", pd)
+      rect.id <- sub("= *\"[0-9.]+\"", "", pd)
 
       if(warn & !all(c("x", "y", "height", "width") %in% rect.id)){
 
