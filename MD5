@@ -1,6 +1,6 @@
-cc13efc81d47d789530b45ef06a30aca *DESCRIPTION
-22afe453dba93d353d7ab45615dd2175 *NAMESPACE
-5f125b365cd01db8d5e061949d522915 *R/StratigrapheR.R
+19b6687603c859789b5ed022f44996a7 *DESCRIPTION
+b0aad357eff26ca74814ed816a06dc88 *NAMESPACE
+4afc0a80f0ca2344e7e8dd5d7e98b819 *R/StratigrapheR.R
 9029350a6a3667d2df63421cfe781bc4 *R/as.lim.R
 ea0ac2442cc50d3c3d00f6e80eb0291a *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -45,7 +45,7 @@ bc38df699e4b8dbb113eedc9feaafd40 *R/multigons.R
 507f96ac91c99aa8f32669b1909401b2 *R/pdfDisplay.R
 d64533c42ba55dd9e7cacf702c25958a *R/placesvg.R
 d7bd6ab55199f0a6cfa7ad79270a5f81 *R/planepoints.R
-0b817da0453443220f60d42638fe8567 *R/pointsvg.R
+7d047d885438c2016f6f9f46b19566db *R/pointsvg.R
 b16d62b22a9c778b7397d9bc3a54d443 *R/rebound.R
 f0a85215b07520ad19f18331cae35408 *R/repitch.R
 7618ba77b5d83404e4dfec88293986dc *R/reposition.R
@@ -78,7 +78,7 @@ c872a1113284af64ee38c57592091c8b *data/fossil.example.rda
 3c670f38aff8450d12b9273fe480ae35 *data/proxy.example.litho.rda
 1e98e2c75c037c96f2c25c82b21ac1cb *data/proxy.example.rda
 1974126240f867554852e1c10c13c14c *data/zeq_example.rda
-f058d62e975429b1e273448b7281a9f1 *man/StratigrapheR.Rd
+96466b744f43ba34abc7ddc940860498 *man/StratigrapheR.Rd
 5b9803d3fbddd1b289d3e50c79c479b1 *man/StratigrapheR.examples.Rd
 5d9340bfd42005c366ddcd6e15cb6192 *man/as.lim.Rd
 4750a3bd23f14c91c3d3c88ad863d2ac *man/bedtext.Rd

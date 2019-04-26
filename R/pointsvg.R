@@ -54,16 +54,26 @@
 #' # pointsvg(file.choose())
 #'
 #' @importFrom stringr str_match str_match_all
+#' @importFrom XML xmlParse saveXML
 #' @importFrom utils read.table
 #' @export
 
-pointsvg <-function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
+pointsvg <- function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
                     xdigits = 4, ydigits = 4, xinverse = FALSE, yinverse = TRUE,
                     warn = T)
 {
   if(!isTRUE(warn) | !isTRUE(warn)) stop("Argument 'warn' should be T or F")
 
-  a <- readLines(file)
+  svg <- xmlParse(file)
+
+  TEMPFILE     <- tempfile()
+  FILENAME <- paste0(TEMPFILE,"_rewrite.svg")
+
+  saveXML(svg, FILENAME)
+
+  a <- readLines(FILENAME)
+
+  # as.list(a)
 
   line <- grep(a, pattern = ".*<.* class=.*")
   type <- gsub(".*<\\s*| class=.*", "", a[line])
