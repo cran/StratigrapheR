@@ -130,13 +130,13 @@ weldlog <- function(log, dt, seg, j = 1:length(dt),
 
   limits <- arrange(segsimp[retrieve,], i, gloVar.xy)
 
-  inftest <- limits$dt[!duplicated(limits$i)] != 0
+  inftest <- limits$dt != 0
 
   if(any(inftest) & all(add.dt == 0) & warn){
 
     warning(paste("The dt values of the beginning of following segment(s) ",
                   "are not zero : ",
-                  paste(limits$i[inftest], collapse = " "),
+                  paste(unique(limits$i[inftest]), collapse = " "),
                   ". This could bring erroneous ",
                   "results (check it yourself at the boundaries in question,",
                   " because in the end you're the boss boss). If you want to ",

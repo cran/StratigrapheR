@@ -9,7 +9,8 @@ neatPick(fun, n, args = list(), class.args = list(), pick = NA,
   plotwidth = 800, plotheight = 600, args.only = F, width = 10,
   height = 10, name = "fig", dir = getwd(), gfile = "onePDF",
   openfile = TRUE, folder = "Rfig", gfun = "jpeg", ext = ".jpeg",
-  gargs = list(units = "in", res = 300), pargs = list(ps = 12, cex = 1.5))
+  gargs = list(units = "in", res = 300), pargs = list(ps = 12, cex =
+  1.5))
 }
 \arguments{
 \item{fun}{the function to be applied n times.}

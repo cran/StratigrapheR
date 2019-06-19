@@ -21,7 +21,7 @@
 #'
 #' Type: R package
 #'
-#' Version: 0.0.5 (end April 2019)
+#' Version: 0.0.6 (June 2019)
 #'
 #' License: GPL-3
 #' @note
@@ -760,7 +760,7 @@ StratigrapheR <- function(i = 1:3)
 }
 
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage(paste("Welcome to StatigrapheR\nType ?StratigrapheR",
+  packageStartupMessage(paste("\nWelcome to StatigrapheR\nType ?StratigrapheR",
                               "to get started and StratigrapheR() for",
                               "organisational charts of the functions in the",
                               "package"))

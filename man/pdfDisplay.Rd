@@ -5,8 +5,8 @@
 \title{Generates PDF and SVG figures}
 \usage{
 pdfDisplay(g, name, ext = ".pdf", dir = getwd(), width = 10,
-  height = 10, parg = list(), track = T, openfile = T, output = F,
-  warn = F)
+  height = 10, parg = list(), track = T, openfile = T,
+  output = F, warn = F)
 }
 \arguments{
 \item{g}{the plot function to be exported and looked at}

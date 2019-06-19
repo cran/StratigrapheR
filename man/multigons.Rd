@@ -5,9 +5,9 @@
 \title{Draws several polygons}
 \usage{
 multigons(i, x, y, j = unique(i), forget = NULL, front = NULL,
-  back = NULL, density = NA, angle = 45, border = "black", col = NA,
-  lty = par("lty"), lwd = par("lwd"), scol = border, slty = lty,
-  slwd = lwd, lend = 0, ljoin = 0, lmitre = 10)
+  back = NULL, density = NA, angle = 45, border = "black",
+  col = NA, lty = par("lty"), lwd = par("lwd"), scol = border,
+  slty = lty, slwd = lwd, lend = 0, ljoin = 0, lmitre = 10)
 }
 \arguments{
 \item{i}{a polygon id for each x and y coordinate, i.e. the name of

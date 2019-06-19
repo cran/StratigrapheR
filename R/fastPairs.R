@@ -11,7 +11,6 @@
 #' different units (?) than base_size
 #' @examples
 #' fastPairs(iris[1:4],bins=10)
-#'
 #' @import ggplot2
 #' @importFrom GGally ggpairs putPlot ggally_cor
 #' @export

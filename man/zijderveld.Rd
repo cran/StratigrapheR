@@ -4,12 +4,13 @@
 \alias{zijderveld}
 \title{Draws a Zijderveld plot}
 \usage{
-zijderveld(dec, inc, int, xh = "WE", xv = xh, centre = F, xlim = NA,
-  ylim = NA, unit = NA, xlab = "", ylab = "", labels = NA,
-  nlabels = 1, h = list(pch = 19), v = list(pch = 21, bg = "white"),
-  f = list(pch = 21, bg = "white", cex = 1.5), t = list(pos = 3, offset =
-  0.5), l = list(), anchored = T, style = "branches", tcl = 0.2,
-  orientation = TRUE, scientific = NA, decimals = 10, add = FALSE)
+zijderveld(dec, inc, int, xh = "WE", xv = xh, centre = F,
+  xlim = NA, ylim = NA, unit = NA, xlab = "", ylab = "",
+  labels = NA, nlabels = 1, h = list(pch = 19), v = list(pch = 21,
+  bg = "white"), f = list(pch = 21, bg = "white", cex = 1.5),
+  t = list(pos = 3, offset = 0.5), l = list(), anchored = T,
+  style = "branches", tcl = 0.2, orientation = TRUE,
+  scientific = NA, decimals = 10, add = FALSE)
 }
 \arguments{
 \item{dec}{declination of the data; it is the angle from the north

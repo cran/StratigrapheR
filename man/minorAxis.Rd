@@ -4,11 +4,11 @@
 \alias{minorAxis}
 \title{Adds an axis with minor ticks to a plot}
 \usage{
-minorAxis(side, n = NULL, at.maj = NULL, at.min = NULL, range = NULL,
-  tick.ratio = 0.5, labels.maj = TRUE, line = NA, pos = NA,
-  outer = FALSE, font = NA, lty = "solid", lwd = 1, lwd.ticks = lwd,
-  col = NULL, col.ticks = NULL, hadj = NA, padj = NA, extend = FALSE,
-  tcl = NA, ...)
+minorAxis(side, n = NULL, at.maj = NULL, at.min = NULL,
+  range = NULL, tick.ratio = 0.5, labels.maj = TRUE, line = NA,
+  pos = NA, outer = FALSE, font = NA, lty = "solid", lwd = 1,
+  lwd.ticks = lwd, col = NULL, col.ticks = NULL, hadj = NA,
+  padj = NA, extend = FALSE, tcl = NA, ...)
 }
 \arguments{
 \item{side}{an integer (here 1,2,3 or 4) specifying which side of the

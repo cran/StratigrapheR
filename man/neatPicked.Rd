@@ -4,10 +4,11 @@
 \alias{neatPicked}
 \title{Runs neatPick without user input}
 \usage{
-neatPicked(fun, n, args = NA, width = 10, height = 10, output = "all",
-  name = "Fig", dir = getwd(), gfile = "onePDF", openfile = TRUE,
-  track = TRUE, folder = "My file", gfun = "jpeg", ext = ".jpeg",
-  gargs = list(units = "in", res = 300), pargs = list())
+neatPicked(fun, n, args = NA, width = 10, height = 10,
+  output = "all", name = "Fig", dir = getwd(), gfile = "onePDF",
+  openfile = TRUE, track = TRUE, folder = "My file", gfun = "jpeg",
+  ext = ".jpeg", gargs = list(units = "in", res = 300),
+  pargs = list())
 }
 \arguments{
 \item{fun}{the function to be applied n times.}

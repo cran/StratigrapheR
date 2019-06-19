@@ -18,6 +18,9 @@ the directory of the folder itself
 Creates a new folder where wanted if it does not exist yet
 }
 \examples{
-folder(getwd(),"test")
+# # To run example uncomment all: put in a script, select all and use
+# #  ctrl+shift+c
+#
+# folder(getwd(),"test")
 
 }

@@ -4,8 +4,8 @@
 \alias{nlegend}
 \title{New legend element}
 \usage{
-nlegend(temp = FALSE, t = "Text", xt = 1.3, xmax = 5, xmin = -1.2,
-  ymax = 1.5, ymin = -ymax)
+nlegend(temp = FALSE, t = "Text", xt = 1.3, xmax = 5,
+  xmin = -1.2, ymax = 1.5, ymin = -ymax)
 }
 \arguments{
 \item{temp}{whether to plot a template for visualisation}

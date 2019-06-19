@@ -23,5 +23,4 @@ size using hexagonal binning (similar result than the pairs function)
 }
 \examples{
 fastPairs(iris[1:4],bins=10)
-
 }

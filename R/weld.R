@@ -83,9 +83,9 @@ weld <- function(log, dt, xy, begin, end,
     u <- log[0,]
   }
 
-  i <- rep(n1,nxy)
+  i <- as.character(rep(n1,nxy))
 
-  ad <- data.frame(i, dt, xy)
+  ad <- data.frame(i, dt, xy, stringsAsFactors = F)
   colnames(ad) <- c("i", "dt", "xy")
 
   if (order == "xy"){

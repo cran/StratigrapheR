@@ -6,9 +6,9 @@
 \usage{
 greySet(xlim, ylim, xtick = NA, ytick = NA, nx = 1, ny = 1,
   xaxs = "i", yaxs = "i", xarg = list(tick.ratio = 0.5),
-  yarg = list(tick.ratio = 0.5, las = 1), v = T, inverse = F, abbr = "",
-  skip = 0, targ = list(col = "white", lwd = 2), rarg = list(border = NA,
-  col = "grey85"))
+  yarg = list(tick.ratio = 0.5, las = 1), v = T, inverse = F,
+  abbr = "", skip = 0, targ = list(col = "white", lwd = 2),
+  rarg = list(border = NA, col = "grey85"))
 }
 \arguments{
 \item{xlim, ylim}{the x and y limits (e.g. xlim = c(-1,1))}
