@@ -18,7 +18,11 @@
 #' @return A merged list of all lists provided, each element (determined by its
 #' name) appearing only once.
 #'
-#' @seealso To get a better understanding of this, go see ?do.call and ?list
+#' @seealso \code{\link{homogenise}} provides a general way of dealing with
+#' function arguments.
+#'
+#' To get a better understanding of how to deal with function arguements, go see
+#' ?do.call and ?list
 #'
 #' @examples
 #' # Simple use

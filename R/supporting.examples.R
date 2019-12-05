@@ -63,6 +63,10 @@ NULL
 NULL
 
 #' @rdname StratigrapheR.examples
+#' @name noise_emd
+NULL
+
+#' @rdname StratigrapheR.examples
 #' @name proxy.example
 NULL
 

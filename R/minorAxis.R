@@ -34,7 +34,8 @@
 #' every multiple of a given number.
 #'
 #' @examples
-#' plot(c(0,1), c(0,1), axes = FALSE, type = "n", xlab = "", ylab = "")
+#' plot.new()
+#' plot.window(xlim = c(0,1), ylim = c(0,1))
 #'
 #' minorAxis(1, n = 10, range = c(0.12,0.61))
 #'
@@ -112,6 +113,8 @@ minorAxis <- function(side, n = NULL, at.maj = NULL, at.min = NULL, range = NULL
 
   if(is.null(n) & is.null(at.min)){
 
+    if(is.na(tcl)) tcl <- par("tcl")
+
     axis(side, at = limits, labels = FALSE, tick = TRUE, line = line,
          pos = pos, outer = outer, lty = lty, lwd = lwd, lwd.ticks = 0,
          col = col,...)
@@ -179,7 +182,7 @@ minorAxis <- function(side, n = NULL, at.maj = NULL, at.min = NULL, range = NULL
         if(!(abs(r3[p3]/min(eff.range)) <  1.5e-8) & r3[p3] < 0) p3 <- p3 + 1
         if(!(abs(r4[p4]/max(eff.range)) <  1.5e-8) & r4[p4] > 0) p4 <- p4 - 1
 
-        if(p3 < length(possible.low.minors + 1)){
+        if(p3 < length(possible.low.minors) + 1){
           low.candidates <- seq(p3, length(possible.low.minors), 1)
           low.laureates  <- possible.low.minors[low.candidates]
         } else {

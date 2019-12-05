@@ -8,7 +8,7 @@
 \alias{are.lim.distinct}
 \alias{are.lim.ordered}
 \alias{order.lim}
-\title{Creates / Checks / Manipulates lim objects}
+\title{Create / Check / Manipulate lim objects}
 \usage{
 as.lim(lim = NULL, l = NULL, r = NULL, id = 1L, b = "[]")
 
@@ -56,7 +56,7 @@ decreasing}
 relatively to the other}
 }
 \description{
-Creates and checks limits of intervals (what
+Functions to create and check limits of intervals (what
 we define here as a 'lim' object), with control of specified properties.
 Basically we define an interval by its left and right boundaries, by an id
 and by a rule of boundary inclusion.

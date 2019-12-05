@@ -18,6 +18,7 @@
 
 mat.lag <- function(m, n = 1L, default = NA)
 {
+  m <- as.matrix(m)
 
   if(n >= 0 & n < 1) return(m)
 
@@ -37,6 +38,7 @@ mat.lag <- function(m, n = 1L, default = NA)
 
 mat.lead <- function(m, n = 1L, default = NA)
 {
+  m <- as.matrix(m)
 
   if(n >= 0 & n < 1) return(m)
 

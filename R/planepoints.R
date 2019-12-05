@@ -8,7 +8,7 @@
 #' @param dip dip of the data; it is the angle from the horizontal taken
 #' on the line of the plane perpendicular to the one of the strike. It is
 #' corrected by dipfix().
-#' @param quadrant the quadrant were the plane dips downward. Accepted
+#' @param quadrant the quadrant where the plane dips downward. Accepted
 #' values are NA, 'N', 'S', 'W' or 'E' (lower- or uppercase alike) for
 #' correction by dipfix().
 #' @param inverted whether the plane is inverted or not. The default is

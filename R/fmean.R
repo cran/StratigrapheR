@@ -34,8 +34,9 @@
 #' @export
 
 fmean <- function(dec = NA, inc = NA, int = 1, x = NA, y = NA, z = NA,
-                  id = NA, cart = F)
+                  id = NULL, cart = F)
 {
+  if(is.null(id)) id <- rep(1, length(dec))
 
   xyz <- transphere(dec = dec, inc = inc, int = int, x = x, y = y, z = z,
                     into = "xyz")

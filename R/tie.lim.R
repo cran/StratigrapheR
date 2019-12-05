@@ -17,7 +17,7 @@
 #' @param id a vector of n interval IDs (default is 1 for each interval)
 #' @param to.lower whether to take the left (lower) or right point for
 #' interpolation at adjacent points
-#' @param quiet whether to warn if the sampling interval is prone to
+#' @param warn whether to warn if the sampling interval is prone to
 #' miss the smallest intervals.
 #'
 #' @seealso \code{\link{as.lim}}
@@ -44,7 +44,7 @@
 
 
 tie.lim <- function(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
-                    id = 1L, to.lower = T, quiet = F)
+                    id = 1L, to.lower = T, warn = T)
 {
 
   if(to.lower != TRUE &
@@ -52,8 +52,8 @@ tie.lim <- function(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
     stop("The parameter 'to.lower' should be T or F")
   }
 
-  if(quiet != TRUE &
-     quiet != FALSE){
+  if(warn != TRUE &
+     warn != FALSE){
     stop("The parameter 'quiet' should be T or F")
   }
 
@@ -76,31 +76,27 @@ tie.lim <- function(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
 
   int <- min(r-l, na.rm = T)
 
-  if(!quiet & any(int <= abs(xout - lag(xout)), na.rm = T)){
+  if(warn & any(int <= abs(xout - lag(xout)), na.rm = T)){
     warning(paste("The intervals are undersampled, some may be lost,",
                   " try a sampling rate lower than ", int, sep = ""))
   }
 
-  if(class(la) == "matrix"){
+  lcol <- ncol(la )
 
-    lcol <- ncol(la )
+  matcond1 <- all(apply(ida, 2, function(i) length(unique(i))) == 1)
+  matcond2 <- length(unique(ida[1,])) == lcol
 
-    matcond1 <- all(apply(ida, 2, function(i) length(unique(i))) == 1)
-    matcond2 <- length(unique(ida[1,])) == lcol
-
-    if(!matcond1 | !matcond2) {
-      stop(paste("If under matrix form, the 'id' parameter should be different",
-                 " for each column and similar for each row", sep = ""))
-    }
-
-    la  <- as.vector(la)
-    ra  <- as.vector(ra)
-    ida <- as.vector(ida)
-    y   <- as.vector(y)
-
-    isMATRIX <- T
-
+  if(!matcond1 | !matcond2) {
+    stop(paste("If under matrix form, the 'id' parameter should be different",
+               " for each column and similar for each row", sep = ""))
   }
+
+  la  <- as.vector(la)
+  ra  <- as.vector(ra)
+  ida <- as.vector(ida)
+  y   <- as.vector(y)
+
+  isMATRIX <- T
 
   nl <- length(l)
 
@@ -116,13 +112,7 @@ tie.lim <- function(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
 
   if(is.null(xout)){
 
-    if(isMATRIX){
-
-      cont <- lapply(cont, matrix, ncol = lcol)
-
-    }
-
-    return(cont)
+    res <- lapply(cont, matrix, ncol = lcol)
 
   } else {
 
@@ -143,18 +133,20 @@ tie.lim <- function(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
     idb <- factor(idb, levels = unique(idb))
     ls  <- split(xb, idb)
 
-    minx <- unlist(lapply(ls, min, na.rm = T), use.names = F)
-    maxx <- unlist(lapply(ls, max, na.rm = T), use.names = F)
+    nax  <- unlist(lapply(ls, function(x) all(is.na(x))), use.names = F)
+    minx <- unlist(mapply(min, ls, na.rm = !nax), use.names = F)
+    maxx <- unlist(mapply(max, ls, na.rm = !nax), use.names = F)
 
     minmat <- xoutb - as.vector(matrix(rep(minx, lout), ncol = ni, byrow = T))
     maxmat <- xoutb - as.vector(matrix(rep(maxx, lout), ncol = ni, byrow = T))
 
-    keep <- !(minmat < 0 | maxmat > 0)
+    keep              <- !(minmat < 0 | maxmat > 0)
+    keep[is.na(keep)] <- F
 
-    addx <- (loc$p - 1) * (max(maxx) + max(abs(minx)) + 1)
+    addx <- (loc$p - 1) * (max(maxx, na.rm = T) + max(abs(minx), na.rm = T) + 1)
 
     add <- as.vector(matrix(rep(seq_len(ni) - 1, lout), ncol = ni, byrow = T)) *
-      (max(maxx) + max(abs(minx)) + 1)
+      (max(maxx, na.rm = T) + max(abs(minx), na.rm = T) + 1)
 
     xb    <- xb    + addx
     xoutb <- xoutb + add
@@ -185,16 +177,13 @@ tie.lim <- function(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
 
     res$id <-  as.vector(matrix(rep(ui, lout), ncol = ni, byrow = T))
 
-    if(isMATRIX)
-    {
-      res <- list(x = matrix(res$x, ncol = ni),
-                  y = matrix(res$y, ncol = ni),
-                  id = matrix(res$id, ncol = ni))
-    }
-
-    return(res)
+    res <- list(x = matrix(res$x, ncol = ni),
+                y = matrix(res$y, ncol = ni),
+                id = matrix(res$id, ncol = ni))
 
   }
+
+  return(res)
 
 }
 

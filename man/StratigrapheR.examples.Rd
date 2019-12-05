@@ -13,6 +13,7 @@
 \alias{example.liquefaction}
 \alias{fossil.example}
 \alias{log.loop.tex}
+\alias{noise_emd}
 \alias{proxy.example}
 \alias{proxy.example.litho}
 \alias{zeq_example}

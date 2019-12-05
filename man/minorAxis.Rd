@@ -47,7 +47,8 @@ to export a clean plot in vector format. It is based on the
 minor.tick function in the Hmisc package.
 }
 \examples{
-plot(c(0,1), c(0,1), axes = FALSE, type = "n", xlab = "", ylab = "")
+plot.new()
+plot.window(xlim = c(0,1), ylim = c(0,1))
 
 minorAxis(1, n = 10, range = c(0.12,0.61))
 

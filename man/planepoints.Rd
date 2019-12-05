@@ -14,7 +14,7 @@ the horizontal line of the plane. It is corrected by dipfix().}
 on the line of the plane perpendicular to the one of the strike. It is
 corrected by dipfix().}
 
-\item{quadrant}{the quadrant were the plane dips downward. Accepted
+\item{quadrant}{the quadrant where the plane dips downward. Accepted
 values are NA, 'N', 'S', 'W' or 'E' (lower- or uppercase alike) for
 correction by dipfix().}
 

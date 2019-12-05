@@ -5,7 +5,7 @@
 \title{Discretises lim objects}
 \usage{
 tie.lim(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
-  id = 1L, to.lower = T, quiet = F)
+  id = 1L, to.lower = T, warn = T)
 }
 \arguments{
 \item{lim}{an object convertible into a lim object: either a vector
@@ -30,7 +30,7 @@ be continuous (points of a continous line).}
 \item{to.lower}{whether to take the left (lower) or right point for
 interpolation at adjacent points}
 
-\item{quiet}{whether to warn if the sampling interval is prone to
+\item{warn}{whether to warn if the sampling interval is prone to
 miss the smallest intervals.}
 }
 \description{

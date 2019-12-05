@@ -1,7 +1,7 @@
 Package: StratigrapheR
 Type: Package
 Title: Integrated Stratigraphy
-Version: 0.0.6
+Version: 0.0.7
 Author: Sebastien Wouters [aut, cre], Adam D. Smith [ctb]
 Maintainer: Sebastien Wouters <sebastien.wouters@doct.uliege.be>
 Description: Includes bases for litholog generation: graphical functions
@@ -28,11 +28,11 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Depends: R (>= 3.5.0)
-Imports: graphics, grDevices, XML, stats, utils, dplyr, stringr,
-        ggplot2, GGally, shiny, diagram
-Suggests: astrochron, RFOC, plyr
+Depends: R (>= 3.6.0)
+Imports: graphics, grDevices, XML, stats, utils, dplyr, stringr, shiny,
+        diagram
+Suggests: astrochron, RFOC, tidyverse, plyr
 NeedsCompilation: no
-Packaged: 2019-06-19 08:56:53 UTC; Seb
+Packaged: 2019-12-05 09:02:20 UTC; Seb
 Repository: CRAN
-Date/Publication: 2019-06-19 09:30:03 UTC
+Date/Publication: 2019-12-05 09:20:06 UTC

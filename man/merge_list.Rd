@@ -123,5 +123,9 @@ par(mfrow = omfrow)
 
 }
 \seealso{
-To get a better understanding of this, go see ?do.call and ?list
+\code{\link{homogenise}} provides a general way of dealing with
+function arguments.
+
+To get a better understanding of how to deal with function arguements, go see
+?do.call and ?list
 }

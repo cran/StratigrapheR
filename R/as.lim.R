@@ -1,6 +1,6 @@
-#' @title Creates / Checks / Manipulates lim objects
+#' @title Create / Check / Manipulate lim objects
 #'
-#' @description Creates and checks limits of intervals (what
+#' @description Functions to create and check limits of intervals (what
 #' we define here as a 'lim' object), with control of specified properties.
 #' Basically we define an interval by its left and right boundaries, by an id
 #' and by a rule of boundary inclusion.
@@ -108,7 +108,7 @@ as.lim <- function(lim = NULL, l = NULL, r = NULL, id = 1L, b = "[]")
 
     }
 
-    if(class(l) == "matrix" & class(r) == "matrix"){
+    if(inherits(l, "matrix") & inherits(r, "matrix")){
 
       test.l   <- as.vector(l)
       test.r   <- as.vector(r)
@@ -122,8 +122,8 @@ as.lim <- function(lim = NULL, l = NULL, r = NULL, id = 1L, b = "[]")
 
     }
 
-    if(!(class(test.l) == "numeric" | class(test.l) == "integer" |
-         class(test.r) == "numeric" | class(test.r ) == "integer")){
+    if(!(inherits(test.l, "numeric") | inherits(test.l, "integer") |
+         inherits(test.r, "numeric") | inherits(test.r, "integer"))){
       stop(paste("The inputs (elements of lim or l and r) ",
                  "should be integers or numericals", sep = ""))
     }
@@ -201,7 +201,7 @@ is.lim <- function(lim = NULL, l = NULL, r = NULL, id = 1L, b = "[]")
 
     }
 
-    if(class(l) == "matrix" & class(r) == "matrix"){
+    if(inherits(l, "matrix") & inherits(r, "matrix")){
 
       test.l   <- as.vector(l)
       test.r   <- as.vector(r)
@@ -213,8 +213,8 @@ is.lim <- function(lim = NULL, l = NULL, r = NULL, id = 1L, b = "[]")
 
     }
 
-    if(!(class(test.l) == "numeric" | class(test.l) == "integer" |
-         class(test.r) == "numeric" | class(test.r ) == "integer")){
+    if(!(inherits(test.l, "numeric") | inherits(test.l, "integer") |
+         inherits(test.r, "numeric") | inherits(test.r, "integer"))){
       return(FALSE)
     }
 
@@ -312,7 +312,7 @@ are.lim.distinct <- function(lim = NULL, l = NULL, r = NULL,
     r <- lim[[2]]
   }
 
-  do <- cbind(l,r)[order(l),]
+  do <- cbind(l,r)[order(l),,drop = F]
 
   o  <- c(rbind(do[,1],do[,2]))
 

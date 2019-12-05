@@ -21,7 +21,7 @@
 #'
 #' Type: R package
 #'
-#' Version: 0.0.6 (June 2019)
+#' Version: 0.0.7 (December 2019)
 #'
 #' License: GPL-3
 #' @note
@@ -610,11 +610,11 @@
 StratigrapheR <- function(i = 1:3)
 {
 
-  omar <- par("mar")
+  opar <- par("mar", "mfrow")
 
-  on.exit(par(mar = omar))
+  on.exit(par(opar))
 
-  par(mar = c(0,0,5,0))
+  par(mar = c(0,0,5,0), mfrow = c(1,1))
 
   if(1 %in% i){
 
@@ -688,7 +688,7 @@ StratigrapheR <- function(i = 1:3)
     fun.name <- c("earnet()\nearinc()\nencircle()",
                   "earplanes()\nearpoints()", "zijderveld()",
                   "incfix()         dipfix()\nrepitch()  transphere()",
-                  "planepoints()",
+                  "planepoints()\nfmean()",
                   "restore()  reposition()\nrotate()    rmatrix()")
 
     plotmat(M, pos = pos,
@@ -760,8 +760,8 @@ StratigrapheR <- function(i = 1:3)
 }
 
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage(paste("\nWelcome to StatigrapheR\nType ?StratigrapheR",
-                              "to get started and StratigrapheR() for",
+  packageStartupMessage(paste("Welcome to StratigrapheR \n Type ?StratigrapheR",
+                              "for a tutorial \n Type StratigrapheR() for",
                               "organisational charts of the functions in the",
                               "package"))
 }
