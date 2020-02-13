@@ -14,7 +14,6 @@
 #' @param xh orientation of the x axis: can be 'WE' or 'SN'. Has to be
 #' provided to earplanes and earpoints
 #' @param add logical, whether to add the circle to an existing plot
-#' @param ... graphical parameters to feed to lines
 #' @references Snyder, John P., 1987, Map Projections-a working manual,
 #' USGS-Professional Paper, 383p. pages 185-186, RFOC package
 #' @seealso  \code{\link{earinc}}, \code{\link{earplanes}},

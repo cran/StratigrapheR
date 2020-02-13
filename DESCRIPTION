@@ -1,7 +1,7 @@
 Package: StratigrapheR
 Type: Package
 Title: Integrated Stratigraphy
-Version: 0.0.7
+Version: 0.0.8
 Author: Sebastien Wouters [aut, cre], Adam D. Smith [ctb]
 Maintainer: Sebastien Wouters <sebastien.wouters@doct.uliege.be>
 Description: Includes bases for litholog generation: graphical functions
@@ -33,6 +33,6 @@ Imports: graphics, grDevices, XML, stats, utils, dplyr, stringr, shiny,
         diagram
 Suggests: astrochron, RFOC, tidyverse, plyr
 NeedsCompilation: no
-Packaged: 2019-12-05 09:02:20 UTC; Seb
+Packaged: 2020-02-13 13:31:53 UTC; Seb
 Repository: CRAN
-Date/Publication: 2019-12-05 09:20:06 UTC
+Date/Publication: 2020-02-13 13:50:02 UTC

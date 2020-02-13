@@ -27,8 +27,6 @@ orientation of the plot.}
 provided to earplanes and earpoints}
 
 \item{add}{logical, whether to add the circle to an existing plot}
-
-\item{...}{graphical parameters to feed to lines}
 }
 \description{
 Draws Equal Area Stereo-Net. Lambert azimuthal Equal-Area

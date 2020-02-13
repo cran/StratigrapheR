@@ -1,6 +1,6 @@
-ad63ee22f0c1e7f424af6c94ff306471 *DESCRIPTION
+f21b3bf377100786443f4889e5dad2c9 *DESCRIPTION
 e5446c89d1ce5d80eb5d88be0770bf55 *NAMESPACE
-03d352bd4d1f3f9d7f3f591eb9fe4c51 *R/StratigrapheR.R
+276aa16f030f570cc205e3feb91fc852 *R/StratigrapheR.R
 7c528951446787a1ff8bbbe844dd0340 *R/as.lim.R
 ea0ac2442cc50d3c3d00f6e80eb0291a *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -13,7 +13,7 @@ e02e4450d916b6d8a347cccb7e333695 *R/convert.R
 6cbf7fc9c2d6a1abf141a6784e76d878 *R/dipfix.R
 a55a02ac969863cff60ea692000cdae6 *R/divisor.R
 4c085e86bc5298927bee0f2d99faeb54 *R/earinc.R
-587f99191904f57a41beb8efe2a14d43 *R/earnet.R
+c6d2ef3b761b51201c057b4179d24518 *R/earnet.R
 2be3fb73d28720b03d86eed114a3d529 *R/earplanes.R
 2c43f2d9a275f610adcea39555423acc *R/earpoints.R
 5f94ef79a98424ef39ae6aa969c75df5 *R/encase.R
@@ -81,7 +81,7 @@ d8000634ef0894b2a7406210b9640deb *data/noise_emd.rda
 98e93cbe8707f1929cb3006ef6469871 *data/proxy.example.litho.rda
 51657538af728b3a218b86dced8a417a *data/proxy.example.rda
 1974126240f867554852e1c10c13c14c *data/zeq_example.rda
-b77fcf0ae5e3deab4cf05eabf129d6c7 *man/StratigrapheR.Rd
+b9958921d27b93e81354a32660afe4d1 *man/StratigrapheR.Rd
 aea534f16c64fd9f4ff5f8071d8e9104 *man/StratigrapheR.examples.Rd
 9d79e8f806ea1c13616f1678fb5d4a10 *man/as.lim.Rd
 beda5fb1b26f7da50bc6795ca104695d *man/bedtext.Rd
@@ -95,7 +95,7 @@ beda5fb1b26f7da50bc6795ca104695d *man/bedtext.Rd
 c816d7c019b4c895938bf1e7c97e571e *man/dipfix.Rd
 9b68813a0261f71d16ea84f4fcf46360 *man/divisor.Rd
 1592ddfea75351de8022ecc63268a1cd *man/earinc.Rd
-92e1e8c9e6b129e10288c19a6dd1906c *man/earnet.Rd
+0aa84e72fc8985dcc40c2c30fc757ce6 *man/earnet.Rd
 de4cb75120ef8a6945a329837961b4a1 *man/earplanes.Rd
 a67123c91082a186cded577f02e48aad *man/earpoints.Rd
 4dfef10afde1d42a0f87ee0f049f2c84 *man/encase.Rd
