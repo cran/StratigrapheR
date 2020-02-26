@@ -58,6 +58,5 @@ minorAxis(3, n = 10, extend=FALSE)
 Set a plot environment with minorAxis: \code{\link{whiteSet}},
 \code{\link{blackSet}} and \code{\link{greySet}}
 
-This function is based on \code{\link{every_nth}}, which suppresses values
-every multiple of a given number.
+The ticks repartition is computed using \code{\link{minorAxisTicks}}
 }

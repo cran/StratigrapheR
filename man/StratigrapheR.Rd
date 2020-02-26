@@ -30,7 +30,7 @@ Package: StratigrapheR
 
 Type: R package
 
-Version: 0.0.8 (February 2020)
+Version: 1.0.0 (February 2020, Compatibility with DecomposeR)
 
 License: GPL-3
 }
@@ -612,7 +612,7 @@ EGU2019-5520, 2019, EGU General Assembly 2019.
 #
 }
 \author{
-Sébastien Wouters
+Sebastien Wouters
 
-Maintainer: Sébastien Wouters \email{sébastien.wouters@doct.uliege.be}
+Maintainer: Sebastien Wouters \email{sebastien.wouters@doct.uliege.be}
 }
