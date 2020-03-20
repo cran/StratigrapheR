@@ -4,8 +4,7 @@
 \alias{ylink}
 \title{Draws connection lines to connect two points in y}
 \usage{
-ylink(y1, y2, x1, x2, ratio = 0.1, xi1 = NA, xi2 = NA, l = list(lty
-  = 3))
+ylink(y1, y2, x1, x2, ratio = 0.1, xi1 = NA, xi2 = NA, l = list(lty = 3))
 }
 \arguments{
 \item{y1, y2}{y positions (you can provide several ones at once)}

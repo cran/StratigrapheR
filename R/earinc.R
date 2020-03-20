@@ -1,4 +1,6 @@
-#' Recalculates inclination in equal area projection
+#' @title Recalculates inclination in equal area projection
+#'
+#' @description Recalculates the inclination in equal area projection
 #'
 #' @param inc inclination of the data; it is the angle from the
 #' horizontal, is positive downward, and ranges from +90° for straight down to

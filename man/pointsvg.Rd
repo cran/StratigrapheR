@@ -5,9 +5,17 @@
 \title{Converts line, rect, polygon and polyline class SVG objects into
 data frames}
 \usage{
-pointsvg(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
-  xdigits = 4, ydigits = 4, xinverse = FALSE, yinverse = TRUE,
-  warn = T)
+pointsvg(
+  file,
+  standard = TRUE,
+  keep.ratio = FALSE,
+  round = TRUE,
+  xdigits = 4,
+  ydigits = 4,
+  xinverse = FALSE,
+  yinverse = TRUE,
+  warn = T
+)
 }
 \arguments{
 \item{file}{a .svg file}

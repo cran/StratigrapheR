@@ -4,10 +4,25 @@
 \alias{multilines}
 \title{Draws several lines}
 \usage{
-multilines(i, x, y, j = unique(i), forget = NULL, front = NULL,
-  back = NULL, type = "l", col = "black", bg = NA, pch = 19,
-  lty = par("lty"), lwd = par("lwd"), cex = par("cex"), lend = 0,
-  ljoin = 0, lmitre = 10)
+multilines(
+  i,
+  x,
+  y,
+  j = unique(i),
+  forget = NULL,
+  front = NULL,
+  back = NULL,
+  type = "l",
+  col = "black",
+  bg = NA,
+  pch = 19,
+  lty = par("lty"),
+  lwd = par("lwd"),
+  cex = par("cex"),
+  lend = 0,
+  ljoin = 0,
+  lmitre = 10
+)
 }
 \arguments{
 \item{i}{a  line id for each x and y coordinate, i.e. the name of

@@ -49,6 +49,8 @@ bedtext <- function(labels, l, r, x = 0.2, arg = list(cex = 1),
                     adj = c(0.5,0.5), ymin = NA, edge = FALSE)
 {
 
+  labels <- as.character(labels)
+
   if(is.na(ymin)){
 
     ymin <- mean(abs(l - r), na.rm = T)/3

@@ -4,8 +4,16 @@
 \alias{encircle}
 \title{Draws circles}
 \usage{
-encircle(r = 1, x = 0, y = 0, ndiv = 360, plot = TRUE,
-  add = TRUE, output = FALSE, ...)
+encircle(
+  r = 1,
+  x = 0,
+  y = 0,
+  ndiv = 360,
+  plot = TRUE,
+  add = TRUE,
+  output = FALSE,
+  ...
+)
 }
 \arguments{
 \item{r}{the radius of the circles (of length 1 or n)}

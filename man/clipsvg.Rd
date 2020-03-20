@@ -4,8 +4,14 @@
 \alias{clipsvg}
 \title{Clips a standardised pointsvg object into a given frame}
 \usage{
-clipsvg(object, xmin = -Inf, xmax = +Inf, ymin = -Inf, ymax = +Inf,
-  by.entity = TRUE)
+clipsvg(
+  object,
+  xmin = -Inf,
+  xmax = +Inf,
+  ymin = -Inf,
+  ymax = +Inf,
+  by.entity = TRUE
+)
 }
 \arguments{
 \item{object}{a pointsvg object (svg object imported as data frame

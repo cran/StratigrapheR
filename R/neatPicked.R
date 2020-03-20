@@ -16,7 +16,8 @@
 #' outputs of the function (list of n elements), "all" to add args, and
 #' everything else to output nothing
 #' @param name the names of the graphic file(s)
-#' @param dir the directory of the file or of the folder of files
+#' @param dir the directory of the file or of the folder of files, by default a
+#' temporary file
 #' @param gfile whether to create a single pdf with n pages
 #' ("onePDF"; default) or a folder of n graphical files ("gfun"). If anything
 #' else is given ("none for instance"), it won't produce graphical files. This
@@ -31,23 +32,20 @@
 #' @param pargs list of arguments transmitted to the par() function
 #' @return the accumulated outputs of fun (and arguments if asked) if asked
 #' @examples
-#' # # To run example uncomment all: put in a script, select all and use
-#' # #  ctrl+shift+c
-#' #
-#' # fun <- function(x, y, xlim = c(-1,1),...)
-#' # {
-#' #   plot(x, y, xlim = xlim,...)
-#' #
-#' #   return(paste(x, y, paste(xlim, collapse = "; "), sep = "; "))
-#' # }
-#' #
-#' # args <- list(x = list(-0.5, 1) , y = c(0.8, 0.8), pch = c(2,4),
-#' #              xlim = list(c(-1,1), c(-20,20)))
-#' #
-#' # temp <- tempfile()
-#' # dir.create(temp)
-#' #
-#' # neatPicked(fun, 2, args = args, width = 5, height = 5, dir = temp)
+#' \donttest{fun <- function(x, y, xlim = c(-1,1),...)
+#' {
+#'   plot(x, y, xlim = xlim,...)
+#'
+#'   return(paste(x, y, paste(xlim, collapse = "; "), sep = "; "))
+#' }
+#'
+#' args <- list(x = list(-0.5, 1) , y = c(0.8, 0.8), pch = c(2,4),
+#'              xlim = list(c(-1,1), c(-20,20)))
+#'
+#' temp <- tempfile()
+#' dir.create(temp)
+#'
+#' neatPicked(fun, 2, args = args, width = 5, height = 5, dir = temp)}
 #'
 #' @export
 #' @import shiny
@@ -55,7 +53,7 @@
 
 neatPicked <- function(fun, n, args = NA,
                        width = 10, height = 10,
-                       output = "all", name = "Fig", dir = getwd(),
+                       output = "all", name = "Fig", dir = tempdir(),
 
                        gfile = "onePDF", openfile = TRUE, track = TRUE,
 

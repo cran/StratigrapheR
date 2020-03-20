@@ -51,7 +51,7 @@ infobar <- function(xmin, xmax, ymax, ymin, labels = NA,
 
   if (cond){
 
-    l <- list(labels = labels)
+    l <- list(labels = as.character(labels))
 
     s1 <- unlist(lapply(l,length))
     s3 <- unlist(lapply(t,length))

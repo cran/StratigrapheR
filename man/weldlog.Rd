@@ -4,8 +4,19 @@
 \alias{weldlog}
 \title{Changes boundaries segments in basic lithologs}
 \usage{
-weldlog(log, dt, seg, j = 1:length(dt), col.xy = 1, col.dt = 2,
-  auto.dt = T, add.dt = 0, omit1 = NULL, omit2 = NULL, warn = T)
+weldlog(
+  log,
+  dt,
+  seg,
+  j = 1:length(dt),
+  col.xy = 1,
+  col.dt = 2,
+  auto.dt = T,
+  add.dt = 0,
+  omit1 = NULL,
+  omit2 = NULL,
+  warn = T
+)
 }
 \arguments{
 \item{log}{a "litholog()"-like data frame on which the new segments

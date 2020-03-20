@@ -5,17 +5,57 @@
 \alias{centersvg}
 \title{Draws a pointsvg object around a given point}
 \usage{
-centresvg(object, x, y, xfac = 1, yfac = 1, xadj = 0, yadj = 0,
-  forget = NULL, front = NULL, back = NULL, standard = FALSE,
-  keep.ratio = FALSE, col = NA, border = "black", density = NA,
-  angle = 45, lty = par("lty"), lwd = par("lwd"), scol = border,
-  slty = lty, slwd = lwd, plot = TRUE, output = FALSE)
+centresvg(
+  object,
+  x,
+  y,
+  xfac = 1,
+  yfac = 1,
+  xadj = 0,
+  yadj = 0,
+  forget = NULL,
+  front = NULL,
+  back = NULL,
+  standard = FALSE,
+  keep.ratio = FALSE,
+  col = NA,
+  border = "black",
+  density = NA,
+  angle = 45,
+  lty = par("lty"),
+  lwd = par("lwd"),
+  scol = border,
+  slty = lty,
+  slwd = lwd,
+  plot = TRUE,
+  output = FALSE
+)
 
-centersvg(object, x, y, xfac = 1, yfac = 1, xadj = 0, yadj = 0,
-  forget = NULL, front = NULL, back = NULL, standard = FALSE,
-  keep.ratio = FALSE, col = NA, border = "black", density = NA,
-  angle = 45, lty = par("lty"), lwd = par("lwd"), scol = border,
-  slty = lty, slwd = lwd, plot = TRUE, output = FALSE)
+centersvg(
+  object,
+  x,
+  y,
+  xfac = 1,
+  yfac = 1,
+  xadj = 0,
+  yadj = 0,
+  forget = NULL,
+  front = NULL,
+  back = NULL,
+  standard = FALSE,
+  keep.ratio = FALSE,
+  col = NA,
+  border = "black",
+  density = NA,
+  angle = 45,
+  lty = par("lty"),
+  lwd = par("lwd"),
+  scol = border,
+  slty = lty,
+  slwd = lwd,
+  plot = TRUE,
+  output = FALSE
+)
 }
 \arguments{
 \item{object}{a pointsvg object (svg object imported as data frame

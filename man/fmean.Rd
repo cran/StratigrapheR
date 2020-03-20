@@ -4,8 +4,7 @@
 \alias{fmean}
 \title{Fischer mean}
 \usage{
-fmean(dec = NA, inc = NA, int = 1, x = NA, y = NA, z = NA,
-  id = NULL, cart = F)
+fmean(dec = NA, inc = NA, int = 1, x = NA, y = NA, z = NA, id = NULL, cart = F)
 }
 \arguments{
 \item{dec}{declination of the data; it is the angle from the north

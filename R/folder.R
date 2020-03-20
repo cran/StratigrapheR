@@ -4,10 +4,7 @@
 #' @param name name of the folder
 #' @return the directory of the folder itself
 #' @examples
-#' # # To run example uncomment all: put in a script, select all and use
-#' # #  ctrl+shift+c
-#' #
-#' # folder(getwd(),"test")
+#' \donttest{folder(tempdir(),"test")}
 #'
 #' @export
 

@@ -4,9 +4,17 @@
 \alias{earnet}
 \title{Draws an equal area stereonet}
 \usage{
-earnet(xlim = c(-1.1, 1.1), ylim = c(-1.1, 1.1), ndiv = 10,
-  col = gray(0.7), border = "black", lwd = 1, orientation = TRUE,
-  xh = "WE", add = FALSE)
+earnet(
+  xlim = c(-1.1, 1.1),
+  ylim = c(-1.1, 1.1),
+  ndiv = 10,
+  col = gray(0.7),
+  border = "black",
+  lwd = 1,
+  orientation = TRUE,
+  xh = "WE",
+  add = FALSE
+)
 }
 \arguments{
 \item{xlim, ylim}{the x and y minimal limits. The actual limits can

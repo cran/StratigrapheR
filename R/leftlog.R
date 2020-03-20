@@ -46,6 +46,7 @@
 
 leftlog <- function(i, dt, xy, warn = TRUE)
 {
+  i <- as.character(i)
 
   log <- data.frame(i = i, dt = dt, xy = xy, stringsAsFactors = F)
 

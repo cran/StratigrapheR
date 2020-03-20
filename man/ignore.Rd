@@ -4,9 +4,18 @@
 \alias{ignore}
 \title{Ignores useless objects}
 \usage{
-ignore(i, x, y = NA, d = list(), j = unique(i), arg = list(),
-  xlim = par("usr")[c(1, 2)], ylim = par("usr")[c(3, 4)],
-  xlog = par("xlog"), ylog = par("ylog"))
+ignore(
+  i,
+  x,
+  y = NA,
+  d = list(),
+  j = unique(i),
+  arg = list(),
+  xlim = par("usr")[c(1, 2)],
+  ylim = par("usr")[c(3, 4)],
+  xlog = par("xlog"),
+  ylog = par("ylog")
+)
 }
 \arguments{
 \item{i}{a polygon id for each x and y coordinate. If n objects are

@@ -4,8 +4,15 @@
 \alias{nlegend}
 \title{New legend element}
 \usage{
-nlegend(temp = FALSE, t = "Text", xt = 1.3, xmax = 5,
-  xmin = -1.2, ymax = 1.5, ymin = -ymax)
+nlegend(
+  temp = FALSE,
+  t = "Text",
+  xt = 1.3,
+  xmax = 5,
+  xmin = -1.2,
+  ymax = 1.5,
+  ymin = -ymax
+)
 }
 \arguments{
 \item{temp}{whether to plot a template for visualisation}
@@ -27,7 +34,7 @@ par(mar = c(0,0,0,0))
 
 layout(matrix(1:6, 6, 1, byrow = TRUE))
 
-nlegend(t = paste("Shaded stuff. By the way you can\\nwrite",
+nlegend(t = paste("Shaded stuff. By the way you can\nwrite",
                   "text in several lines if needed"))
 
 rect(-1,-1,1,1, density = 10)

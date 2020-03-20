@@ -4,10 +4,23 @@
 \alias{placesvg}
 \title{Draws a pointsvg object}
 \usage{
-placesvg(object, forget = NULL, front = NULL, back = NULL,
-  standard = FALSE, keep.ratio = FALSE, col = NA, border = "black",
-  density = NULL, angle = 45, lwd = par("lwd"), lty = par("lty"),
-  scol = border, slty = lty, slwd = lwd)
+placesvg(
+  object,
+  forget = NULL,
+  front = NULL,
+  back = NULL,
+  standard = FALSE,
+  keep.ratio = FALSE,
+  col = NA,
+  border = "black",
+  density = NULL,
+  angle = 45,
+  lwd = par("lwd"),
+  lty = par("lty"),
+  scol = border,
+  slty = lty,
+  slwd = lwd
+)
 }
 \arguments{
 \item{object}{a pointsvg object (svg object imported as data frame

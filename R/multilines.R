@@ -59,6 +59,10 @@ multilines <- function(i, x, y, j = unique(i),
                        lend = 0, ljoin = 0, lmitre = 10)
 {
 
+  i <- as.character(i)
+
+  j <- as.character(j)
+
   argi <- list(type = type, col = col, bg = bg, pch = pch, lty = lty, lwd = lwd,
                cex = cex, lend = lend, ljoin = ljoin, lmitre = lmitre)
 

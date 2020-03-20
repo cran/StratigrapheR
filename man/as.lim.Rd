@@ -16,16 +16,28 @@ is.lim(lim = NULL, l = NULL, r = NULL, id = 1L, b = "[]")
 
 are.lim.nonunique(lim = NULL, l = NULL, r = NULL, check.lim = TRUE)
 
-are.lim.nonadjacent(lim = NULL, l = NULL, r = NULL, b = "[]",
-  check.lim = TRUE)
+are.lim.nonadjacent(lim = NULL, l = NULL, r = NULL, b = "[]", check.lim = TRUE)
 
 are.lim.distinct(lim = NULL, l = NULL, r = NULL, check.lim = TRUE)
 
-are.lim.ordered(lim = NULL, l = NULL, r = NULL, id = 1L,
-  decreasingly = FALSE, dependently = FALSE, check.lim = TRUE)
+are.lim.ordered(
+  lim = NULL,
+  l = NULL,
+  r = NULL,
+  id = 1L,
+  decreasingly = FALSE,
+  dependently = FALSE,
+  check.lim = TRUE
+)
 
-order.lim(lim = NULL, l = NULL, r = NULL, id = 1L, b = "[]",
-  decreasingly = FALSE)
+order.lim(
+  lim = NULL,
+  l = NULL,
+  r = NULL,
+  id = 1L,
+  b = "[]",
+  decreasingly = FALSE
+)
 }
 \arguments{
 \item{lim}{a list of n left (1st element) and n right (2ndt element)

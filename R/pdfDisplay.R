@@ -6,8 +6,8 @@
 #'
 #' @param g the plot function to be exported and looked at
 #' @param name the name of the document
-#' @param dir the file where the document will be saved (by default the
-#' working directory, getwd())
+#' @param dir the file where the document will be saved (by default a temporary
+#'  directory, tempdir())
 #' @param ext the extension of the document: ".pdf" by default, but
 #' ".svg" works also.
 #' @param width the width of the drawing area (in inches)
@@ -32,25 +32,23 @@
 #' @return the output of the g() function if output = TRUE
 #'
 #' @examples
-#' # # To run example uncomment all: put in a script, select all and use
-#' # #  ctrl+shift+c
-#' # temp <- tempfile()
-#' # dir.create(temp)
-#' #
-#' # g1   <- function() plot(1,1)
-#' #
-#' # pdfDisplay(g1(),"TestGraph", dir = temp,
-#' #            parg = list(mar = c(6,6,6,6), ps = 24,lwd = 4))
-#' #
-#' # g1   <- function() plot(1,1, col = "red")
-#' #
-#' # pdfDisplay(g1(), "TestGraph", dir = temp,
-#' #            parg = list(mar = c(6,6,6,6), ps = 24,lwd = 4))
-#' #
+#' \donttest{temp <- tempfile()
+#' dir.create(temp)
+#'
+#' g1   <- function() plot(1,1)
+#'
+#' pdfDisplay(g1(),"TestGraph", dir = temp,
+#'            parg = list(mar = c(6,6,6,6), ps = 24,lwd = 4))
+#'
+#' g1   <- function() plot(1,1, col = "red")
+#'
+#' pdfDisplay(g1(), "TestGraph", dir = temp,
+#'            parg = list(mar = c(6,6,6,6), ps = 24,lwd = 4))}
+#'
 #' @importFrom grDevices dev.off
 #' @export
 
-pdfDisplay <- function(g, name,  ext =".pdf", dir = getwd() ,
+pdfDisplay <- function(g, name,  ext =".pdf", dir = tempdir() ,
                        width = 10, height = 10, parg = list(),
                        track = T, openfile = T, output = F, warn= F)
 {

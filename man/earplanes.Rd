@@ -4,9 +4,20 @@
 \alias{earplanes}
 \title{Draws planes on an equal area stereonet}
 \usage{
-earplanes(strike, dip, quadrant = NA, hsphere = "l", ndiv = 10,
-  a = list(col = "black", lwd = 1), l = list(lty = 1), u = list(lty =
-  3), output = FALSE, plot = TRUE, xh = "WE", unique = TRUE)
+earplanes(
+  strike,
+  dip,
+  quadrant = NA,
+  hsphere = "l",
+  ndiv = 10,
+  a = list(col = "black", lwd = 1),
+  l = list(lty = 1),
+  u = list(lty = 3),
+  output = FALSE,
+  plot = TRUE,
+  xh = "WE",
+  unique = TRUE
+)
 }
 \arguments{
 \item{strike}{strike of the data; it is the angle from the north of

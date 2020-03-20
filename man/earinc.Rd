@@ -12,7 +12,7 @@ horizontal, is positive downward, and ranges from +90° for straight down to
 -90° for straight up (Tauxe, 2010).}
 }
 \description{
-Recalculates inclination in equal area projection
+Recalculates the inclination in equal area projection
 }
 \examples{
 earinc(20)

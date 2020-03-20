@@ -49,11 +49,14 @@ divisor <- function(x, tolerance = 8, relative = T, tries = 4, speak = T)
   }
 
   x <- unique(abs(x))
+
+  x <- x - x[which.min(abs(x))]
+
   x <- x[x != 0]
 
   # Divide by smallest
 
-  mx <- min(x)
+  mx <- x[which.min(abs(x))]
   d  <- x/mx
 
   if(!relative){

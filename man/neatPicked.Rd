@@ -4,11 +4,24 @@
 \alias{neatPicked}
 \title{Runs neatPick without user input}
 \usage{
-neatPicked(fun, n, args = NA, width = 10, height = 10,
-  output = "all", name = "Fig", dir = getwd(), gfile = "onePDF",
-  openfile = TRUE, track = TRUE, folder = "My file", gfun = "jpeg",
-  ext = ".jpeg", gargs = list(units = "in", res = 300),
-  pargs = list())
+neatPicked(
+  fun,
+  n,
+  args = NA,
+  width = 10,
+  height = 10,
+  output = "all",
+  name = "Fig",
+  dir = tempdir(),
+  gfile = "onePDF",
+  openfile = TRUE,
+  track = TRUE,
+  folder = "My file",
+  gfun = "jpeg",
+  ext = ".jpeg",
+  gargs = list(units = "in", res = 300),
+  pargs = list()
+)
 }
 \arguments{
 \item{fun}{the function to be applied n times.}
@@ -28,7 +41,8 @@ everything else to output nothing}
 
 \item{name}{the names of the graphic file(s)}
 
-\item{dir}{the directory of the file or of the folder of files}
+\item{dir}{the directory of the file or of the folder of files, by default a
+temporary file}
 
 \item{gfile}{whether to create a single pdf with n pages
 ("onePDF"; default) or a folder of n graphical files ("gfun"). If anything
@@ -59,22 +73,19 @@ into a n pages pdf or a n files folder. The output of the function is
 accumulated in a list.
 }
 \examples{
-# # To run example uncomment all: put in a script, select all and use
-# #  ctrl+shift+c
-#
-# fun <- function(x, y, xlim = c(-1,1),...)
-# {
-#   plot(x, y, xlim = xlim,...)
-#
-#   return(paste(x, y, paste(xlim, collapse = "; "), sep = "; "))
-# }
-#
-# args <- list(x = list(-0.5, 1) , y = c(0.8, 0.8), pch = c(2,4),
-#              xlim = list(c(-1,1), c(-20,20)))
-#
-# temp <- tempfile()
-# dir.create(temp)
-#
-# neatPicked(fun, 2, args = args, width = 5, height = 5, dir = temp)
+\donttest{fun <- function(x, y, xlim = c(-1,1),...)
+{
+  plot(x, y, xlim = xlim,...)
+
+  return(paste(x, y, paste(xlim, collapse = "; "), sep = "; "))
+}
+
+args <- list(x = list(-0.5, 1) , y = c(0.8, 0.8), pch = c(2,4),
+             xlim = list(c(-1,1), c(-20,20)))
+
+temp <- tempfile()
+dir.create(temp)
+
+neatPicked(fun, 2, args = args, width = 5, height = 5, dir = temp)}
 
 }

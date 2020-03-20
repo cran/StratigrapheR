@@ -53,6 +53,7 @@
 
 litholog <- function(l, r, h, i)
 {
+  i <- as.character(i)
 
   d <- data.frame(i, l, r, h, stringsAsFactors = F)
   d["k"] <- 1:nrow(d)

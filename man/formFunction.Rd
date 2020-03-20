@@ -7,8 +7,7 @@
 formFunction(formula)
 }
 \arguments{
-\item{formula}{the formula to be converted. Should be of the form y ~
-f(x)}
+\item{formula}{the formula to be converted. Should be of the form y ~ f(x)}
 }
 \description{
 Converts a formula into a function

@@ -4,8 +4,7 @@
 \alias{sinpoint}
 \title{Gives a table of equally sampled points following a sinusoidal function}
 \usage{
-sinpoint(x, y, delta, x0 = 0, pos = 1, phase = 1.5, nwave = 1,
-  nint = 50)
+sinpoint(x, y, delta, x0 = 0, pos = 1, phase = 1.5, nwave = 1, nint = 50)
 }
 \arguments{
 \item{x}{the x value of the end of the interval}

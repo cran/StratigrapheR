@@ -4,9 +4,19 @@
 \alias{changesvg}
 \title{Changes a pointsvg object}
 \usage{
-changesvg(object, forget = NULL, front = NULL, back = NULL,
-  standard = FALSE, keep.ratio = F, round = FALSE, xdigits = 4,
-  ydigits = 4, xinverse = FALSE, yinverse = FALSE)
+changesvg(
+  object,
+  forget = NULL,
+  front = NULL,
+  back = NULL,
+  standard = FALSE,
+  keep.ratio = F,
+  round = FALSE,
+  xdigits = 4,
+  ydigits = 4,
+  xinverse = FALSE,
+  yinverse = FALSE
+)
 }
 \arguments{
 \item{object}{a pointsvg object (svg object imported as data frame

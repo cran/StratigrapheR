@@ -49,6 +49,8 @@ ignore <- function(i, x, y = NA, d = list(), j = unique(i), arg = list(),
                    xlog = par("xlog"), ylog = par("ylog"))
 {
 
+  i <- as.character(i)
+
   if(xlog) xlim <- 10^xlim
 
   if(ylog) ylim <- 10^ylim

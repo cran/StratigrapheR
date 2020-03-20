@@ -4,11 +4,29 @@
 \alias{framesvg}
 \title{Draws a standardised pointsvg object into a given frame}
 \usage{
-framesvg(object, xmin, xmax, ymin, ymax, forget = NULL, front = NULL,
-  back = NULL, standard = FALSE, keep.ratio = FALSE, col = NA,
-  border = "black", density = NA, angle = 45, lwd = par("lwd"),
-  lty = par("lty"), scol = border, slty = lty, slwd = lwd,
-  plot = TRUE, output = FALSE)
+framesvg(
+  object,
+  xmin,
+  xmax,
+  ymin,
+  ymax,
+  forget = NULL,
+  front = NULL,
+  back = NULL,
+  standard = FALSE,
+  keep.ratio = FALSE,
+  col = NA,
+  border = "black",
+  density = NA,
+  angle = 45,
+  lwd = par("lwd"),
+  lty = par("lty"),
+  scol = border,
+  slty = lty,
+  slwd = lwd,
+  plot = TRUE,
+  output = FALSE
+)
 }
 \arguments{
 \item{object}{a pointsvg object (svg object imported as data frame

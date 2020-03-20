@@ -4,8 +4,18 @@
 \alias{infobar}
 \title{Draws rectangles with text in them}
 \usage{
-infobar(xmin, xmax, ymax, ymin, labels = NA, m = list(), t = list(),
-  srt = 90, family = par("family"), xpd = par("xpd"))
+infobar(
+  xmin,
+  xmax,
+  ymax,
+  ymin,
+  labels = NA,
+  m = list(),
+  t = list(),
+  srt = 90,
+  family = par("family"),
+  xpd = par("xpd")
+)
 }
 \arguments{
 \item{xmin, xmax, ymin, ymax}{x and y limits for the rectangles. You can

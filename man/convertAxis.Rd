@@ -4,10 +4,26 @@
 \alias{convertAxis}
 \title{Converts the axis following a given formula}
 \usage{
-convertAxis(side, formula, at.maj, at.min = NULL, labels = at.maj,
-  tick.ratio = 0.75, line = NA, pos = NA, font = NA,
-  lty = "solid", lwd = 1, lwd.ticks = lwd, col = NULL,
-  col.ticks = NULL, hadj = NA, padj = NA, tcl = NA, ...)
+convertAxis(
+  side,
+  formula,
+  at.maj,
+  at.min = NULL,
+  labels = at.maj,
+  tick.ratio = 0.75,
+  line = NA,
+  pos = NA,
+  font = NA,
+  lty = "solid",
+  lwd = 1,
+  lwd.ticks = lwd,
+  col = NULL,
+  col.ticks = NULL,
+  hadj = NA,
+  padj = NA,
+  tcl = NA,
+  ...
+)
 }
 \arguments{
 \item{side}{an integer specifying which side of the plot the axis is

@@ -130,6 +130,10 @@ multigons <- function(i, x, y, j = unique(i),
                       lend = 0, ljoin = 0, lmitre = 10)
 {
 
+  i <- as.character(i)
+
+  j <- as.character(j)
+
   argi <- list(density = density, angle = angle, border = border, col = col,
                lty = lty, lwd = lwd, scol = scol, slty = slty, slwd = slwd,
                lend = lend, ljoin = ljoin, lmitre = lmitre)

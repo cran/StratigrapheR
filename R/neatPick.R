@@ -60,62 +60,57 @@
 #' same neatPick function to rework the changes you made.
 #'
 #' @examples
-#' # # Use for stratigraphy: uncomment the entire example script to make it work
-#' # # (remove the first # of each line; you can use the
-#' # # shortcut Ctrl + Shift + c on the whole script)
-#' # #
-#' # # You create a simple function. The one below creates sinusoidal waves between
-#' # # x0 = 0 and x1 = 1. You want to personalise the amplitude (delta), the y
-#' # # offset (pos, see ?sinpoint for more details), the phase (phase, expressed
-#' # # in multiples of pi), the number of waves between x0 and x1, and the number
-#' # # of intervals between each discrete point (nint).
-#' # # So you set all these as arguments of the function. This function can also
-#' # # have a graphical output of one plot (which can be subdivided if necessary
-#' # # using par(mfrow)). And the function can return output.
-#' #
-#' # fun <- function(delta = 1, pos = 1, phase = 1.5, nwave = 1, nint = 50)
-#' # {
-#' #
-#' #   res <- sinpoint(1, 0, delta = delta, pos = pos, phase = phase,
-#' #                   nwave = nwave, nint = nint)
-#' #
-#' #   plot(res$x,res$y)
-#' #
-#' #   return(res)
-#' #
-#' # }
-#' #
-#' # # Once this simple function is coded, it can be integrated to neatPick(). The
-#' # # argument n defines to number of different realisations of the function.
-#' #
-#' # # WHEN YOU ARE HAPPY WITH THE OUTPUTS, click on 'END & RETURN ARGUMENTS'
-#' #
-#' # a <- neatPick(fun, n = 10, args.only = TRUE)
-#' #
-#' # # If you have clicked right (on the 'END & RETURN ARGUMENTS' button), the
-#' # # arguments will be returned and stored in a;
-#' #
-#' # a
-#' #
-#' # # These arguments can then serve for a more efficient function:
-#' #
-#' # seg <- sinpoint(1, 0, delta = a$delta, pos = a$pos, phase = a$phase,
-#' #                 nwave = a$nwave, nint = a$nint)
-#' #
-#' # # Basically neatPick applies a for loop to fun, but if you work on a large
-#' # # dataset, you can also create a function that can handle the arguments more
-#' # # efficiently. This is what sinpoint does here
-#' #
-#' # # Now you can see the results imported in R and do whatever you want with:
-#' #
-#' # plot(seg$x, seg$y, type = "n")
-#' #
-#' # multilines(seg$i, seg$x, seg$y)
-#' #
-#' # # You can even rework your initial changes:
-#' #
-#' # b <- neatPick(fun, n = 10, args.only = TRUE, args = a)
+#' \donttest{# You create a simple function. The one below creates sinusoidal waves between
+#' # x0 = 0 and x1 = 1. You want to personalise the amplitude (delta), the y
+#' # offset (pos, see ?sinpoint for more details), the phase (phase, expressed
+#' # in multiples of pi), the number of waves between x0 and x1, and the number
+#' # of intervals between each discrete point (nint).
+#' # So you set all these as arguments of the function. This function can also
+#' # have a graphical output of one plot (which can be subdivided if necessary
+#' # using par(mfrow)). And the function can return output.
 #'
+#' fun <- function(delta = 1, pos = 1, phase = 1.5, nwave = 1, nint = 50)
+#' {
+#'
+#'   res <- sinpoint(1, 0, delta = delta, pos = pos, phase = phase,
+#'                   nwave = nwave, nint = nint)
+#'
+#'   plot(res$x,res$y)
+#'
+#'   return(res)
+#'
+#' }
+#'
+#' # Once this simple function is coded, it can be integrated to neatPick(). The
+#' # argument n defines to number of different realisations of the function.
+#'
+#' # WHEN YOU ARE HAPPY WITH THE OUTPUTS, click on 'END & RETURN ARGUMENTS'
+#'
+#' a <- neatPick(fun, n = 10, args.only = TRUE)
+#'
+#' # If you have clicked right (on the 'END & RETURN ARGUMENTS' button), the
+#' # arguments will be returned and stored in a;
+#'
+#' a
+#'
+#' # These arguments can then serve for a more efficient function:
+#'
+#' seg <- sinpoint(1, 0, delta = a$delta, pos = a$pos, phase = a$phase,
+#'                 nwave = a$nwave, nint = a$nint)
+#'
+#' # Basically neatPick applies a for loop to fun, but if you work on a large
+#' # dataset, you can also create a function that can handle the arguments more
+#' # efficiently. This is what sinpoint does here
+#'
+#' # Now you can see the results imported in R and do whatever you want with:
+#'
+#' plot(seg$x, seg$y, type = "n")
+#'
+#' multilines(seg$i, seg$x, seg$y)
+#'
+#' # You can even rework your initial changes:
+#'
+#' b <- neatPick(fun, n = 10, args.only = TRUE, args = a)}
 #'
 #' @export
 #' @import shiny
@@ -125,7 +120,7 @@ neatPick <- function(fun, n, args = list(), class.args = list(),
                      text = "output", textwidth = 4,
                      plotwidth = 800, plotheight = 600, args.only = F,
                      width = 10, height = 10, name = "fig",
-                     dir = getwd(), gfile = "onePDF", openfile = TRUE,
+                     dir = tempdir(), gfile = "onePDF", openfile = TRUE,
                      folder = "Rfig", gfun = "jpeg", ext = ".jpeg",
                      gargs = list(units = "in", res = 300),
                      pargs = list(ps = 12, cex = 1.5))

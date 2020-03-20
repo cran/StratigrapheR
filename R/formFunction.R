@@ -1,7 +1,8 @@
-#' Converts a formula into a function
+#' @title Converts a formula into a function
 #'
-#' @param formula the formula to be converted. Should be of the form y ~
-#' f(x)
+#' @description Converts a formula into a function
+#'
+#' @param formula the formula to be converted. Should be of the form y ~ f(x)
 #' @examples
 #' f <- formFunction(y ~ log10(x))
 #'

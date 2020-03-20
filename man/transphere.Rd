@@ -5,8 +5,7 @@
 \title{Convertion between declinaison/inclination/intensity and cartesian
 coordinates}
 \usage{
-transphere(dec = NA, inc = NA, int = 1, x = NA, y = NA, z = NA,
-  into = "other")
+transphere(dec = NA, inc = NA, int = 1, x = NA, y = NA, z = NA, into = "other")
 }
 \arguments{
 \item{dec}{declination of the data; it is the angle from the north

@@ -4,8 +4,7 @@
 \alias{in.lim}
 \title{Finds the intervals encompassing values}
 \usage{
-in.lim(x, lim = NULL, l = NULL, r = NULL, id = 1L, b = "][",
-  index = FALSE)
+in.lim(x, lim = NULL, l = NULL, r = NULL, id = 1L, b = "][", index = FALSE)
 }
 \arguments{
 \item{x}{a vector values}

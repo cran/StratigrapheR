@@ -4,8 +4,7 @@
 \alias{restore}
 \title{Plane correction}
 \usage{
-restore(dec, inc, strike, dip, quadrant = NA, inverted = NA,
-  percent = 100)
+restore(dec, inc, strike, dip, quadrant = NA, inverted = NA, percent = 100)
 }
 \arguments{
 \item{dec}{declination of the data; it is the angle from the north

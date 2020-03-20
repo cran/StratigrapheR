@@ -4,8 +4,16 @@
 \alias{tie.lim}
 \title{Discretises lim objects}
 \usage{
-tie.lim(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
-  id = 1L, to.lower = T, warn = T)
+tie.lim(
+  lim = NULL,
+  l = NULL,
+  r = NULL,
+  y = NULL,
+  xout = NULL,
+  id = 1L,
+  to.lower = T,
+  warn = T
+)
 }
 \arguments{
 \item{lim}{an object convertible into a lim object: either a vector

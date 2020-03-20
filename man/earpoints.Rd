@@ -4,10 +4,21 @@
 \alias{earpoints}
 \title{Draws points on an equal area stereonet}
 \usage{
-earpoints(dec, inc, hsphere = "b", double = FALSE, a = list(pch = 21,
-  col = "black"), l = list(bg = "black"), h = list(bg = "grey"),
-  u = list(bg = "white"), labels = NA, pos = 4, output = FALSE,
-  plot = TRUE, xh = "WE")
+earpoints(
+  dec,
+  inc,
+  hsphere = "b",
+  double = FALSE,
+  a = list(pch = 21, col = "black"),
+  l = list(bg = "black"),
+  h = list(bg = "grey"),
+  u = list(bg = "white"),
+  labels = NA,
+  pos = 4,
+  output = FALSE,
+  plot = TRUE,
+  xh = "WE"
+)
 }
 \arguments{
 \item{dec}{declination of the data; it is the angle from the north
