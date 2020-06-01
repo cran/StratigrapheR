@@ -6,7 +6,7 @@
 #' of length 2 or a list of n left (1st element) and n right (2ndt element)
 #' interval limits, and of n interval IDs. In this case the lim objects have to
 #' be ordered, by ids, dependently to each other, and from left to right. For
-#' each id the lim objects heve to cover the entire interval from the lowest
+#' each id the lim objects have to cover the entire interval from the lowest
 #' to the highest value, without overlap.
 #' @param l a vector of n left interval limits
 #' @param r a vector of n right interval limits
@@ -39,7 +39,7 @@
 #' lines(cont$x[,2], cont$y[,2])
 #' lines(cont$x[,3], cont$y[,3])
 #'
-#' @importFrom dplyr left_join
+#' @importFrom dplyr left_join lag
 #' @export
 
 
@@ -68,7 +68,7 @@ tie.lim <- function(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
                "(see are.lim.ordered help page for details)", sep = ""))
   }
 
-  if(!all(l == mat.lag(r), na.rm = T)){
+  if(!all(l == lag(r), na.rm = T)){
     stop(paste("The elements of the lim objects should be adjacent to",
                " each other, covering the whole interval from the ",
                "lowest to highest value", sep = ""))
@@ -76,12 +76,14 @@ tie.lim <- function(lim = NULL, l = NULL, r = NULL, y = NULL, xout = NULL,
 
   int <- min(r-l, na.rm = T)
 
-  if(warn & any(int <= abs(xout - lag(xout)), na.rm = T)){
-    warning(paste("The intervals are undersampled, some may be lost,",
-                  " try a sampling rate lower than ", int, sep = ""))
+  if(!is.null(xout)){
+    if(warn & any(int <= abs(xout - lag(xout)), na.rm = T)){
+      warning(paste("The intervals are undersampled, some may be lost,",
+                    " try a sampling rate lower than ", int, sep = ""))
+    }
   }
 
-  lcol <- ncol(la )
+  lcol <- ncol(la)
 
   matcond1 <- all(apply(ida, 2, function(i) length(unique(i))) == 1)
   matcond2 <- length(unique(ida[1,])) == lcol

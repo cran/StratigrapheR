@@ -20,7 +20,7 @@ tie.lim(
 of length 2 or a list of n left (1st element) and n right (2ndt element)
 interval limits, and of n interval IDs. In this case the lim objects have to
 be ordered, by ids, dependently to each other, and from left to right. For
-each id the lim objects heve to cover the entire interval from the lowest
+each id the lim objects have to cover the entire interval from the lowest
 to the highest value, without overlap.}
 
 \item{l}{a vector of n left interval limits}
