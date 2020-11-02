@@ -12,9 +12,14 @@
 #'   \item{\strong{Magnetostratigraphical data}}{chron.example}
 #'   \item{\strong{Litholog exportation script}}{log.loop.tex}
 #'   \item{\strong{Oriented data}}{zeq_example}
+#'   \item{\strong{Stratigraphical tie points}}{tie.points.example}
 #' }
 #'
 #' @name StratigrapheR.examples
+NULL
+
+#' @rdname StratigrapheR.examples
+#' @name tie.points.example
 NULL
 
 #' @rdname StratigrapheR.examples

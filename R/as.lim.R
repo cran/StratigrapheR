@@ -306,11 +306,10 @@ are.lim.distinct <- function(lim = NULL, l = NULL, r = NULL,
     }
   }
 
-  if(length(lim) != 0){
+  lim1 <- order.lim(lim = lim, l = l, r = r)
 
-    l <- lim[[1]]
-    r <- lim[[2]]
-  }
+  l <- lim1[[1]]
+  r <- lim1[[2]]
 
   do <- cbind(l,r)[order(l),,drop = F]
 

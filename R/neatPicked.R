@@ -32,7 +32,8 @@
 #' @param pargs list of arguments transmitted to the par() function
 #' @return the accumulated outputs of fun (and arguments if asked) if asked
 #' @examples
-#' \donttest{fun <- function(x, y, xlim = c(-1,1),...)
+#' \dontrun{
+#' fun <- function(x, y, xlim = c(-1,1),...)
 #' {
 #'   plot(x, y, xlim = xlim,...)
 #'

@@ -2,6 +2,7 @@
 % Please edit documentation in R/supporting.examples.R
 \name{StratigrapheR.examples}
 \alias{StratigrapheR.examples}
+\alias{tie.points.example}
 \alias{bed.example}
 \alias{boundary.example}
 \alias{chron.example}
@@ -32,5 +33,6 @@ respective .svg and .tex files.
   \item{\strong{Magnetostratigraphical data}}{chron.example}
   \item{\strong{Litholog exportation script}}{log.loop.tex}
   \item{\strong{Oriented data}}{zeq_example}
+  \item{\strong{Stratigraphical tie points}}{tie.points.example}
 }
 }

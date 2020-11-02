@@ -30,7 +30,7 @@ Package: StratigrapheR
 
 Type: R package
 
-Version: 1.1.0 (June 2019: dplyr update)
+Version: 1.1.1 (November 2020, compatibility with R 4.0)
 
 License: GPL-3
 }
@@ -56,7 +56,7 @@ library(dplyr) # very useful package, used here for joining data frames
 # setwd()
 
 # If you want to have an organisational chart of the functions:
-\donttest{
+\dontrun{
 pdfDisplay(StratigrapheR(), "Organisational Chart StratigrapheR",
            width = 9, height = 7.5, track = FALSE)}
 
@@ -517,7 +517,7 @@ repeated.log()
 # causes the pdf to open, only works in Windows. If You are working with
 # Windows, I recommend using SumatraPDF as your default pdf reader: this will
 # allow pdfs to be changed while they are being visualised.
-\donttest{
+\dontrun{
 pdfDisplay(repeated.log(), width = 10, height = 15,
           name = "StratigrapheR_Example_a", track = FALSE)}
 
@@ -559,7 +559,7 @@ graphical.function.1 <- function()
   par(mar = opar$mar, mfrow = opar$mfrow)
 
 }
-\donttest{
+\dontrun{
 pdfDisplay(graphical.function.1(), width = 10, height = 15,
            name = "StratigrapheR_Example_b", track = FALSE)}
 
@@ -567,7 +567,7 @@ pdfDisplay(graphical.function.1(), width = 10, height = 15,
 # use LaTeX. The following lines of code will create a TeX file that would
 # do that, test it if you want (the file will be in a temporary directory,
 # but you can change tempdir(), to getwd() for instance):
-\donttest{
+\dontrun{
 writeLines(log.loop.tex, paste(tempdir(),"log.loop.tex", sep = "/"))}
 
 # Another way to work this out is to create more space than needed on the
@@ -607,7 +607,7 @@ graphical.function.2 <- function()
   par(mar = omar)
 
 }
-\donttest{
+\dontrun{
 pdfDisplay(graphical.function.2(), width = 8, height = 15,
            name = "StratigrapheR_Example_c", track = FALSE)}
 

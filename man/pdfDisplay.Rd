@@ -64,7 +64,8 @@ I could not find a pdf printing function that respects dimensions
 scrupulously for R base graphics.
 }
 \examples{
-\donttest{temp <- tempfile()
+\dontrun{
+temp <- tempfile()
 dir.create(temp)
 
 g1   <- function() plot(1,1)

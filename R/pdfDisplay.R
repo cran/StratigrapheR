@@ -32,7 +32,8 @@
 #' @return the output of the g() function if output = TRUE
 #'
 #' @examples
-#' \donttest{temp <- tempfile()
+#' \dontrun{
+#' temp <- tempfile()
 #' dir.create(temp)
 #'
 #' g1   <- function() plot(1,1)

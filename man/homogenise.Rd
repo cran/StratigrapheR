@@ -7,7 +7,7 @@
 \usage{
 homogenise(i = NULL, n = NULL, l = list(), cycle = TRUE)
 
-homogenize(i = NULL, l = list(), cycle = TRUE)
+homogenize(i = NULL, n = NULL, l = list(), cycle = TRUE)
 }
 \arguments{
 \item{i}{reference object of length n}
@@ -28,6 +28,8 @@ homogenized to i
 Takes each element of a list and repeats each one so they
 have the same length. This function is designed to be
 integrated in another function and clean its arguments.
+\strong{IF YOU RECEIVED A WARNING FROM THIS FUNCTION IN ANOTHER FUNCTION:}
+Check that the length of the arguments indicated by the warning are correct.
 }
 \examples{
 i     <- rep(1:4, 2)
@@ -35,7 +37,9 @@ i     <- rep(1:4, 2)
 l <- list(a = c(1,2,3),
           b = "R",
           d = 1:100,
-          e = c("a", "b"))
+          e = c("a", "b"),
+          f = FALSE
+          )
 
 homogenise(i = i, l = l)
 

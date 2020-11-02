@@ -44,7 +44,7 @@ shift <- function(x, n = 1L, names = T)
     stop("The parameter 'names' should be TRUE or FALSE")
   }
 
-  if(class(x) == "data.frame") {
+  if(inherits(x, "data.frame")) {
 
     len.s <- nrow(x)
     namex <- rownames(x)
@@ -65,18 +65,28 @@ shift <- function(x, n = 1L, names = T)
 
   shifted[is.na(shifted)] <- shift.inv[!is.na(shift.inv)]
 
-  if(class(x) == "data.frame") res <- x[shifted,] else res <- x[shifted]
+  if(inherits(x, "data.frame")) {
+    res <- x[shifted,,drop = FALSE]
+  } else {
+    res <- x[shifted]
+  }
 
-  if(!is.null(namex)){
-    if(names){
+  if(!is.null(namex) & isTRUE(names)){
 
-      if(class(x) != "data.frame") names(res) <- namex[shifted]
-
-    } else if (!names){
-
-      if(class(x) == "data.frame") rownames(res) <- namex
-
+    if(inherits(x, "data.frame")) {
+      rownames(res) <- namex[shifted]
+    } else {
+      names(res) <- namex[shifted]
     }
+
+  } else {
+
+    if(inherits(x, "data.frame")) {
+      rownames(res) <- namex
+    } else {
+      names(res) <- namex
+    }
+
   }
 
   return(res)

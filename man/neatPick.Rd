@@ -105,7 +105,8 @@ saved.output$args. The arguments can be provided to the args argument of the
 same neatPick function to rework the changes you made.
 }
 \examples{
-\donttest{# You create a simple function. The one below creates sinusoidal waves between
+\dontrun{
+# You create a simple function. The one below creates sinusoidal waves between
 # x0 = 0 and x1 = 1. You want to personalise the amplitude (delta), the y
 # offset (pos, see ?sinpoint for more details), the phase (phase, expressed
 # in multiples of pi), the number of waves between x0 and x1, and the number

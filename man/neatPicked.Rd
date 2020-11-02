@@ -73,7 +73,8 @@ into a n pages pdf or a n files folder. The output of the function is
 accumulated in a list.
 }
 \examples{
-\donttest{fun <- function(x, y, xlim = c(-1,1),...)
+\dontrun{
+fun <- function(x, y, xlim = c(-1,1),...)
 {
   plot(x, y, xlim = xlim,...)
 
