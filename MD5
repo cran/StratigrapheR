@@ -1,7 +1,7 @@
-6f71f769a6dcfc1ecc56600d888ff2cb *DESCRIPTION
+65d1d41a1b29a03df83b335e208eb483 *DESCRIPTION
 7784da4bf897127f2dde9fb85ec3b6f6 *NAMESPACE
-ad3aef68bd0a06a28fd27d9910bfeafa *NEWS
-38ed29769b236e84211f0413428f3029 *R/StratigrapheR.R
+c6cd3439b9cdf07264c6ce88a61e00db *NEWS
+0e9bdf45a43335ea191893128ff867da *R/StratigrapheR.R
 9d17b89b31a68089b81062cbd309b8a0 *R/as.lim.R
 26692939f9d04f13efa67a67a2c4bdae *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -26,7 +26,7 @@ b6d20407aa27cbff2efd25d4eed47d69 *R/enlarge.R
 d42110ae690e76eab615c8ae6f6b2aba *R/fmod.R
 8fa4306953676cca313010ba19d5caab *R/folder.R
 0e946263b610036e6d2452f9cc2a083d *R/formFunction.R
-49572801690a11893246a8cc21436e90 *R/framesvg.R
+ef2e525658b2fca7287d4fe21805431e *R/framesvg.R
 d0122ae2f90bc57a9a6a0fdbec72ffd1 *R/greySet.R
 3fc2dbefe543c778f71d0510807bd842 *R/homogenise.R
 f99dcef50e4c68e683a18660038fbccb *R/ignore.R
@@ -43,13 +43,13 @@ f20ab08489df5f561d5909c8b575d9ff *R/multigons.R
 6ff3d72dd0aa94571c8aedde7e8f4072 *R/multilines.R
 958cd9864566d617d5824a44971a837b *R/neatPick.R
 e4eb7ffdb0fe67c59f6d2f14a8b35324 *R/neatPicked.R
-67c084e690e241d70ea8758741b5811e *R/nlegend.R
+e3ef88b683f0a5a210630377e3d0bdc4 *R/nlegend.R
 371b9caed388f2f7604f0c80aa792cfe *R/nset.R
 5aebdd7ab06bbc6985dfdb97f664e8de *R/pdfDisplay.R
 eb953420b00fc0d8b792d00978883011 *R/pkgfind.R
 d64533c42ba55dd9e7cacf702c25958a *R/placesvg.R
 da2818b99456ea1dfa6091f6c2b9a9e9 *R/planepoints.R
-7d047d885438c2016f6f9f46b19566db *R/pointsvg.R
+baa43aa6588331e3ca20a08292531ff8 *R/pointsvg.R
 b16d62b22a9c778b7397d9bc3a54d443 *R/rebound.R
 f0a85215b07520ad19f18331cae35408 *R/repitch.R
 7618ba77b5d83404e4dfec88293986dc *R/reposition.R
@@ -88,7 +88,7 @@ d8000634ef0894b2a7406210b9640deb *data/noise_emd.rda
 51657538af728b3a218b86dced8a417a *data/proxy.example.rda
 9a701a21fef65937e8b7a63e8a58e22f *data/tie.points.example.rda
 1974126240f867554852e1c10c13c14c *data/zeq_example.rda
-54d970b11e041bef247eadaf94e58375 *man/StratigrapheR.Rd
+c8609088f26859e3886efa621e18a41f *man/StratigrapheR.Rd
 58bd902278d4e2e303cb59a6cddb3a7b *man/StratigrapheR.examples.Rd
 310a7539e7c63b480abb5a9f3771b4e7 *man/as.lim.Rd
 38053398a6e17c6cded437da1fd6358b *man/bedtext.Rd
@@ -131,7 +131,7 @@ f5d8653eac2524e360a1fcde12866b7e *man/merge_list.Rd
 ecbba800194af2fcd4806e38d036a857 *man/multilines.Rd
 2b9fc99cec2741ebe42c75c98ab850b5 *man/neatPick.Rd
 e5ead4b17596ca9922642052e94b1452 *man/neatPicked.Rd
-92ea58b111da6a7fceb56325408ef919 *man/nlegend.Rd
+e9121baf92667f510314283ad33ef7f4 *man/nlegend.Rd
 bdfbc2b6a12a479c2e997c9ddc7eb323 *man/nset.Rd
 4c1baadbbecb3d3da533d83fae8be61c *man/pdfDisplay.Rd
 d7874d9aaaf690db84121e40f5c6535c *man/pkgfind.Rd

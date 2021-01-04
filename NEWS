@@ -1,3 +1,9 @@
+Changes in version 1.1.2
+
+   * Removal of the welcome message (I got tired of it)
+   * Debugging and optimising the pointsvg() function
+   * Improving personalisation of the nlegend() function (& slight debugging)
+
 Changes in version 1.1.1
 
    * Adaptation for R 4.0

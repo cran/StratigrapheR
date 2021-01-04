@@ -21,7 +21,7 @@
 #'
 #' Type: R package
 #'
-#' Version: 1.1.1 (November 2020, compatibility with R 4.0)
+#' Version: 1.1.2 (December 2020)
 #'
 #' License: GPL-3
 #' @note
@@ -761,17 +761,11 @@ StratigrapheR <- function(i = 1:3)
 
 }
 
-.onAttach <- function(libname, pkgname) {
-  packageStartupMessage(paste("Welcome to StratigrapheR \n Type ?StratigrapheR",
-                              "for a tutorial \n Type StratigrapheR() for",
-                              "organisational charts of the functions in the",
-                              "package"))
-}
-
 utils::globalVariables(c("gloVar.neworder", "gloVar.ni", "gloVar.bs",
                          "gloVar.k", "gloVar.adapt.buttons",
                          "gloVar.x", "gloVar.i", "gloVar.xy", "gloVar.o",
-                         "glovar.wdt", "glovar.order"))
+                         "glovar.wdt", "glovar.order",
+                         "gloVar.id", "gloVar.coord"))
 
 
 

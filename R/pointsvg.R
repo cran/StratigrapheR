@@ -56,13 +56,16 @@
 #' @importFrom stringr str_match str_match_all
 #' @importFrom XML xmlParse saveXML
 #' @importFrom utils read.table
+#' @importFrom dplyr arrange
 #' @export
 
 pointsvg <- function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
-                    xdigits = 4, ydigits = 4, xinverse = FALSE, yinverse = TRUE,
-                    warn = T)
+                     xdigits = 4, ydigits = 4, xinverse = FALSE, yinverse = TRUE,
+                     warn = T)
 {
   if(!isTRUE(warn) | !isTRUE(warn)) stop("Argument 'warn' should be T or F")
+
+  # Read the XML file, and transform it in a text file ----
 
   svg <- xmlParse(file)
 
@@ -71,25 +74,36 @@ pointsvg <- function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
 
   saveXML(svg, FILENAME)
 
+  # Read text file, select readable objects from it ----
+
   a <- readLines(FILENAME)
 
-  # as.list(a)
+  polygon.l  <- grep(a, pattern = ".*<polygon ")
+  polyline.l <- grep(a, pattern = ".*<polyline ")
+  line.l     <- grep(a, pattern = ".*<line ")
+  rect.l     <- grep(a, pattern = ".*<rect ")
+  path.l     <- grep(a, pattern = ".*<path ")
 
-  line <- grep(a, pattern = ".*<.* class=.*")
-  type <- gsub(".*<\\s*| class=.*", "", a[line])
+  line.1 <- c(polygon.l, polyline.l, line.l, rect.l)
 
-  able <- c("polygon", "polyline", "line", "rect")
+  type.1 <- c(rep("polygon",  length(polygon.l)),
+              rep("polyline", length(polyline.l)),
+              rep("line",     length(line.l)),
+              rep("rect",     length(rect.l)))
 
-  loc.miss <- !(type %in% able)
+  reorder <- order(line.1)
 
-  if(any(loc.miss)) {
+  line <- line.1[reorder]
+  type <- type.1[reorder]
 
-    type.miss <- unique(type[loc.miss])
-    line.miss <- line[loc.miss]
+  # Path objects ----
 
-    warning(paste("Elements of the .svg file are of the following class(es): ",
-                  paste(type.miss, collapse = ", "), " at line(s) ",
-                  paste(line.miss, collapse = ", "), " in the .svg file",
+  if(any(path.l)) {
+
+    warning(paste("Elements of the .svg file are of class 'path' at line(s) ",
+                  paste(path.l, collapse = ", "), " in the parsed .svg file ",
+                  "(run XML::xmlParse(\"", file,
+                  "\") to obtain it)",
                   ". These cannot be uploaded in R with this function.",
                   " Use a vector graphics editor to change these elements and",
                   " generate point-based objects only (polygon, polyline, ",
@@ -105,34 +119,34 @@ pointsvg <- function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
                   "users to look for the 'node', 'insert new node' and 'make ",
                   "selected segments lines' tools. \n  - for Adobe users to ",
                   "look for the 'convert anchor point' and 'straight lines'",
-                  " tools",sep = ""))
+                  " tools", sep = ""))
   }
 
-  find <- type %in% able
-
-  gline <- line[find]
-  gtype <- type[find]
+  # Transformed objects ----
 
   tran <- grep(a, pattern = ".*transform=.*")
 
   if(length(tran) != 0){
 
-    tran.match <- match(tran, gline)
+    tran.match <- match(tran, line)
 
     if(any(!is.na(tran.match))){
 
-      tran.type <- unique(gtype[tran.match])
+      tran.type <- unique(type[tran.match])
 
       warning(paste("Some of the elements of the following type were ",
                     "transformed (rotation, translation, ...): ",
                     paste(tran.type, collapse = ", "), ", at line(s) ",
-                    paste(gline[tran.match], collapse = ", "),
+                    paste(line[tran.match], collapse = ", "),
+                    " in the parsed .svg file ",
+                    "(run XML::xmlParse(\"", file,
+                    "\") to obtain it)",
                     ". They cannot be imported using this function. We advise ",
                     "to convert these objects into polygons using a vector ",
                     "graphics editor.",sep = ""))
 
-      gline <- gline[-tran.match]
-      gtype <- gtype[-tran.match]
+      line <- line[-tran.match]
+      type <- type[-tran.match]
 
     }
 
@@ -143,155 +157,284 @@ pointsvg <- function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
   accu           <- data.frame(matrix(ncol = 4,nrow = 0))
   colnames(accu) <- c("x","y","i","type")
 
-  # j <- 1
+  # LINE ----
 
-  for(j in seq_len(length(gline)))
-  {
+  if(length(line.l) != 0){
 
-    ji <- gline[j]
-    ti <- gtype[j]
+    line.ex <- a[line.l]
 
-    tline <- a[ji]
+    pat <- paste(" x1= *\"-*[0-9.]+\"",
+                 " x2= *\"-*[0-9.]+\"",
+                 " y1= *\"-*[0-9.]+\"",
+                 " y2= *\"-*[0-9.]+\"",
+                 sep = "|")
 
-    if(ti == 'line'){
+    pd  <- str_match_all(line.ex, pat)
 
-      # LINE ----
+    cl1 <- grepl(pat, line.ex)
 
-      pd  <- unlist(str_match_all(tline,"[a-zA-Z0-9]+= *\"-*[0-9.]+\""))
+    if(!all(cl1)){
+      warning(paste("Strange format detected for 'line' class object. ",
+                    "If this leads to incorrect output, the best you can do ",
+                    "is to identify the 'line' object at line(s) ",
+                    paste(line.l[which(!cl1)], collapse = ", "),
+                    " in the parsed .svg file ",
+                    "(run XML::xmlParse(\"", file,  "\") to obtain it).",
+                    " The abnormality is the absence of",
+                    " at least one of the arguments 'x1', 'y1', 'x2' or ",
+                    "'y2', or that these arguments are not followed by '=' and ",
+                    "then by a positive numerical value. You can modify the object in a ",
+                    "vector graphics ",
+                    "editor to fit a format this function can understand. ",
+                    "You can also send the maintainer an email explaining ",
+                    "the problem and providing the problematic .svg file to ",
+                    "help improve StratigrapheR.", sep = ""))
+    }
 
-      line.id <- sub("= *\"[0-9.]+\"", "", pd)
+    lpd   <- sapply(pd, length)
+    lpdid <- rep(seq_len(length(lpd)), lpd)
 
-      if(warn & !all(c("x1", "y1", "x2", "y2") %in% line.id)){
+    dpd <- data.frame(gloVar.id = lpdid, text = unlist(pd))
 
-        warning(paste("Strange format detected for 'line' class object. ",
-                      "If this leads to incorrect output, the best you can do ",
-                      "is to identify the 'line' object at line ", ji,
-                      " in the .svg file. The abnormality is the absence of",
-                      " at least one of the arguments 'x1', 'y1', 'x2' or ",
-                      "'y2'. You can modify the object in a vector graphics  ",
-                      "editor to fit a format this function can understand. ",
-                      "You can also send the maintainer an email explaining ",
-                      "the problem and providing the problematic .svg file to ",
-                      "help improve StratigrapheR.", sep = ""))
+    tinter <- sub("= *\"[0-9.]+\"", "", dpd$text)
 
-      }
+    dpd$gloVar.coord <- sub(" ", "", tinter)
 
-      if(warn & !all(line.id %in% c("x1", "y1", "x2", "y2"))){
+    dpd$xy <- as.numeric(gsub("\"", "", str_match(dpd$text, "\"[0-9.]+\"")))
 
-        warning(paste("Strange format detected for 'line' class object. ",
-                      "If this leads to incorrect output, the best you can do ",
-                      "is to identify the 'line' object at line ", ji,
-                      " in the .svg file. The abnormalities are arguments ",
-                      "other than 'x1', 'y1', 'x2' and 'y2'. You can ",
-                      "modify the object in a vector graphics editor to fit a ",
-                      "format this function can understand. You can also send ",
-                      " the maintainer an email explaining the problem and ",
-                      "providing the problematic .svg file to help improve ",
-                      "StratigrapheR.", sep = ""))
+    check.line <- split(dpd$gloVar.coord, dpd$gloVar.id)
 
-      }
+    cl2 <- sapply(check.line, function(x) all(c("x1", "y1", "x2", "y2") %in% x))
 
-      line.xy <- as.numeric(gsub("\"", "", str_match(pd, "\"[0-9.]+\"")))
-      line.xy <- as.list(line.xy)
+    if(!all(cl2)){
 
-      names(line.xy) <- line.id
+      warning(paste("Strange format detected for 'line' class object. ",
+                    "If this leads to incorrect output, the best you can do ",
+                    "is to identify the 'line' object at line ",
+                    paste(line.l[which(!cl2)], collapse = ", "),
+                    " in the parsed .svg file ",
+                    "(run XML::xmlParse(\"", file,  "\") to obtain it).",
+                    " The abnormality is the absence of",
+                    " at least one of the arguments 'x1', 'y1', 'x2' or ",
+                    "'y2'. You can modify the object in a vector graphics  ",
+                    "editor to fit a format this function can understand. ",
+                    "You can also send the maintainer an email explaining ",
+                    "the problem and providing the problematic .svg file to ",
+                    "help improve StratigrapheR.", sep = ""))
 
-      pe <- data.frame(x = c(line.xy$x1, line.xy$x2),
-                       y = c(line.xy$y1, line.xy$y2))
-
-      tr <- "L"
-
-    } else if (ti == "polygon" | ti == "polyline"){
-
-      # POLY -line and -gon ----
-
-      poly.t <- as.character(str_match(tline, "points= *\"[[0-9.]+,[0-9.]+ ]*\""))
-
-      if(warn & length(poly.t) == 0){
-
-        warning(paste("Strange format detected for ", ti, " class object. ",
-                      "If this leads to incorrect output, the best you can do ",
-                      "is to identify the object at line ", ji,
-                      " in the .svg file. The abnormality is the lack of the ",
-                      "argument 'points' providing the x and y coordinates in ",
-                      "a 'points=\"X1,Y1 X2,Y2 \"' format. You can modify the ",
-                      "object in a vector graphics editor to fit a format ",
-                      "this function can understand. You can also send the ",
-                      "maintainer an email explaining the problem and ",
-                      "providing the problematic .svg file to help improve ",
-                      "StratigrapheR.", sep = ""))
-
-      }
-
-      pd <- unlist(str_match_all(tline,"-*[0-9.]+,-*[0-9.]+"))
-      pe <- read.table(text=pd,sep=",")
-      colnames(pe) <- c("x","y")
-
-      if(ti == "polygon") tr <- "P" else if(ti == "polyline") tr <- "L"
-
-    } else if (ti == "rect"){
-
-      # RECT ----
-
-      pd  <- unlist(str_match_all(tline,"[a-zA-Z0-9]+= *\"-*[0-9]+\""))
-
-      rect.id <- sub("= *\"[0-9.]+\"", "", pd)
-
-      if(warn & !all(c("x", "y", "height", "width") %in% rect.id)){
-
-        warning(paste("Strange format detected for 'rest' class object. ",
-                      "If this leads to incorrect output, the best you can do ",
-                      "is to identify the 'rect' object at line ", ji,
-                      " in the .svg file. The abnormalities are arguments ",
-                      "other than 'x', 'y', 'height' and 'width'. You can ",
-                      "modify the object in a vector graphics editor to fit a ",
-                      "format this function can understand. You can also send ",
-                      " the maintainer an email explaining the problem and ",
-                      "providing the problematic .svg file to help improve ",
-                      "StratigrapheR.", sep = ""))
-
-      }
-
-      if(warn & !all(rect.id %in% c("x", "y", "height", "width"))){
-
-        warning(paste("Strange format detected for rect class object. ",
-                      "If this leads to incorrect output, the best you can do ",
-                      "is to identify the rect object at line ", ji,
-                      " in the .svg file. The abnormalities are arguments ",
-                      "other than 'x', 'y', 'height' and 'width'. You can ",
-                      "modify the object in a vector graphics editor to fit a ",
-                      "format this function can understand. You can also send ",
-                      " the maintainer an email explaining the problem and ",
-                      "providing the problematic .svg file to help improve ",
-                      "StratigrapheR.", sep = ""))
-
-      }
-
-      rect.xy <- as.numeric(str_match(pd, "[0-9]+"))
-      rect.xy <- as.list(rect.xy)
-
-      names(rect.xy) <- rect.id
-
-      x1 <- rect.xy$x
-      x2 <- rect.xy$x + rect.xy$width
-      y1 <- rect.xy$y
-      y2 <- rect.xy$y + rect.xy$height
-
-      pe <- data.frame(x = c(x1, x1, x2, x2), y = c(y1, y2, y2, y1))
-
-      tr <- "P"
+      dpd <- dpd[!(dpd$gloVar.id %in% seq_len(length(pd))[which(!cl2)]),]
 
     }
 
-    pn  <- nrow(pe)
+    if(nrow(dpd) != 0){
 
-    pid <- data.frame(id = rep(paste(tr,j,sep = ""),pn), type = rep(tr,pn),
-                      stringsAsFactors = F)
+      clean.line <- arrange(dpd, gloVar.id, gloVar.coord)
 
-    pf           <- cbind(pe,pid)
-    accu <- rbind(accu,pf)
+      tll <- nrow(clean.line)
+
+      lposx <- c(seq(1,tll,4), seq(2,tll,4))[seq_mult(l = tll/2, 2, inv = T)]
+      lposy <- c(seq(3,tll,4), seq(4,tll,4))[seq_mult(l = tll/2, 2, inv = T)]
+
+      data.line <- data.frame(x = clean.line$xy[lposx],
+                              y = clean.line$xy[lposy],
+                              id = line.l[clean.line$gloVar.id[lposx]])
+
+      data.line$type <- "L"
+
+      accu <- rbind(accu, data.line)
+
+    }
 
   }
+
+  # POLY -line and -gon ----
+
+  p.id <- c(polyline.l, polygon.l)
+
+  if(length(p.id) != 0){
+
+    poly.ex <- a[p.id]
+
+    p.type    <- c(rep("L", length(polyline.l)), rep("P", length(polygon.l)))
+    p.type.ex <- c(rep("polyline", length(polyline.l)),
+                   rep("polygon", length(polygon.l)))
+
+    pat2 <- "points= *\"[[0-9.]+,[0-9.]+ ]*\""
+
+    tline <- as.character(str_match(poly.ex, pat2))
+
+    check.poly <- grepl("points= *\"[0-9.]+\\,[0-9.]+", poly.ex)
+
+    if(warn & any(!check.poly)){
+
+      warning(paste("Strange format detected for ",
+                    paste(unique(p.type.ex[!check.poly]), collapse = " and "),
+                    " class object(s). ",
+                    "If this leads to incorrect output, the best you can do ",
+                    "is to identify the object at line(s) ",
+                    paste(p.id[which(!check.poly)], collapse = ", "),
+                    " in the parsed .svg file ",
+                    "(run XML::xmlParse(\"", file,  "\") to obtain it).",
+                    " The abnormality is the lack of the ",
+                    "argument 'points' providing the x and y coordinates in ",
+                    "a 'points=\"X1,Y1 X2,Y2 \"' format. You can modify the ",
+                    "object in a vector graphics editor to fit a format ",
+                    "this function can understand. You can also send the ",
+                    "maintainer an email explaining the problem and ",
+                    "providing the problematic .svg file to help improve ",
+                    "StratigrapheR.", sep = ""))
+
+      tline <- tline[check.poly]
+
+    }
+
+    if(length(tline) != 0){
+
+      pd2 <- str_match_all(tline,"-*[0-9.]+,-*[0-9.]+")
+
+      p.rep <- sapply(pd2, length)
+
+      p.type.2 <- rep(p.type, p.rep)
+      p.num    <- rep(p.id, p.rep)
+
+      pd4 <- data.frame(text = unlist(pd2), id = p.num, type = p.type.2)
+
+      pe <- read.table(text=pd4$text, sep=",")
+
+      colnames(pe) <- c("x","y")
+
+      nd <- cbind(pe, pd4[,-1])
+
+      accu <- rbind(accu, nd)
+
+    }
+
+  }
+
+  # RECT ----
+
+  if(length(rect.l) != 0){
+
+    rect.ex <- a[rect.l]
+
+    pat3 <- paste(" x= *\"-*[0-9.]+\"",
+                  " y= *\"-*[0-9.]+\"",
+                  " width= *\"-*[0-9.]+\"",
+                  " height= *\"-*[0-9.]+\"",
+                  sep = "|")
+
+    pd3  <- str_match_all(rect.ex, pat3)
+
+    cl3 <- grepl(pat3, rect.ex)
+
+    if(!all(cl3)){
+      warning(paste("Strange format detected for 'rect' class object. ",
+                    "If this leads to incorrect output, the best you can do ",
+                    "is to identify the 'rect' object at line(s) ",
+                    paste(rect.l[which(!cl3)], collapse = ", "),
+                    " in the parsed .svg file ",
+                    "(run XML::xmlParse(\"", file,  "\") to obtain it).",
+                    " The abnormality is the absence of",
+                    " at least one of the arguments 'x', 'y', 'height' and ",
+                    "'width', or that these arguments are not followed by '=' and ",
+                    "then by a positive numerical value. You can modify the object in a ",
+                    "vector graphics  ",
+                    "editor to fit a format this function can understand. ",
+                    "You can also send the maintainer an email explaining ",
+                    "the problem and providing the problematic .svg file to ",
+                    "help improve StratigrapheR.", sep = ""))
+    }
+
+    lpd3   <- sapply(pd3, length)
+    lpdid3 <- rep(seq_len(length(lpd3)), lpd3)
+
+    dpd3 <- data.frame(gloVar.id = lpdid3, text = unlist(pd3))
+
+    tinter3 <- sub("= *\"[0-9.]+\"", "", dpd3$text)
+
+    dpd3$gloVar.coord <- sub(" ", "", tinter3)
+
+    dpd3$xy <- as.numeric(gsub("\"", "", str_match(dpd3$text, "\"[0-9.]+\"")))
+
+    check.line3 <- split(dpd3$gloVar.coord, dpd3$gloVar.id)
+
+    cl4 <- sapply(check.line3, function(x) all(c("x", "y", "width", "height") %in% x))
+
+    if(!all(cl4)){
+
+      warning(paste("Strange format detected for 'rect' class object. ",
+                    "If this leads to incorrect output, the best you can do ",
+                    "is to identify the 'rect' object at line(s) ",
+                    paste(rect.l[which(!cl4)], collapse = ", "),
+                    " in the parsed .svg file ",
+                    "(run XML::xmlParse(\"", file,  "\") to obtain it).",
+                    " The abnormality is the absence of",
+                    " at least one of the arguments 'x', 'y', 'height' and ",
+                    "'width', or that these arguments are not followed by",
+                    " '=' and then by a positive numerical value. You can modify the ",
+                    "object in a vector graphics  ",
+                    "editor to fit a format this function can understand. ",
+                    "You can also send the maintainer an email explaining ",
+                    "the problem and providing the problematic .svg file to ",
+                    "help improve StratigrapheR.", sep = ""))
+
+      dpd3 <- dpd3[!(dpd3$gloVar.id %in% seq_len(length(pd3))[which(!cl4)]),]
+
+    }
+
+    if(nrow(dpd3) != 0){
+
+      clean.rect <- arrange(dpd3, gloVar.id, gloVar.coord)
+
+      trl <- nrow(clean.rect)
+
+      rposh <- seq(1,trl,4)
+      rposw <- seq(2,trl,4)
+      rposx <- seq(3,trl,4)
+      rposy <- seq(4,trl,4)
+
+      data.rect <- data.frame(xc = clean.rect$xy[rposx],
+                              yc = clean.rect$xy[rposy],
+                              h = clean.rect$xy[rposh],
+                              w = clean.rect$xy[rposw],
+                              id = rect.l[clean.rect$gloVar.id[rposx]])
+
+      data.rect$type <- "P"
+
+      data.rect$x1 <- data.rect$xc
+      data.rect$x2 <- data.rect$xc + data.rect$w
+      data.rect$y1 <- data.rect$yc
+      data.rect$y2 <- data.rect$yc + data.rect$h
+
+      end.x <- c(data.rect$x1,
+                 data.rect$x2)[seq_mult(l = nrow(data.rect) * 2, mult = 2, inv = T)]
+
+      endx <- rep(end.x, each = 2)
+
+      end.y <- c(data.rect$y1, data.rect$y2, data.rect$y2, data.rect$y1)
+
+      endy <- end.y[seq_mult(l = nrow(data.rect) * 4, mult = 4, inv = T)]
+
+      endr <- data.frame(x = endx, y = endy,
+                         id = rep(data.rect$id, each = 4),
+                         type = rep(data.rect$type, each = 4))
+
+      accu <- rbind(accu, endr)
+
+    }
+
+  }
+
+  # Final adjustments ----
+
+  accu$gloVar.id    <- accu$id
+  accu$gloVar.coord <- seq_len(nrow(accu))
+
+  accu <- arrange(accu, gloVar.id, gloVar.coord)[,-c(5,6)]
+
+  endl <- sapply(split(accu$id, accu$id), length)
+
+  accu$id <- paste0(accu$type, rep(seq_len(length(endl)), endl))
 
   # Correct if necessary ----
 

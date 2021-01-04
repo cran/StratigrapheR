@@ -200,6 +200,8 @@ framesvg <- function(object, xmin, xmax, ymin, ymax,
     }
   }
 
-  if(isTRUE(output)) return(o)
+  if(isTRUE(output)) {
+    return(data.frame(o[,1:4]))
+  }
 
 }
