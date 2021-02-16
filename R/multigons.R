@@ -134,6 +134,30 @@ multigons <- function(i, x, y, j = unique(i),
 
   j <- as.character(j)
 
+  if(inherits(lty, "character")){
+    lty[lty == "blank"]    <- 0
+    lty[lty == "solid"]    <- 1
+    lty[lty == "dashed"]   <- 2
+    lty[lty == "dotted"]   <- 3
+    lty[lty == "dotdash"]  <- 4
+    lty[lty == "longdash"] <- 5
+    lty[lty == "twodash"]  <- 6
+
+    lty <- as.integer(lty)
+  }
+
+  if(inherits(slty, "character")){
+    slty[slty == "blank"]    <- 0
+    slty[slty == "solid"]    <- 1
+    slty[slty == "dashed"]   <- 2
+    slty[slty == "dotted"]   <- 3
+    slty[slty == "dotdash"]  <- 4
+    slty[slty == "longdash"] <- 5
+    slty[slty == "twodash"]  <- 6
+
+    slty <- as.integer(slty)
+  }
+
   argi <- list(density = density, angle = angle, border = border, col = col,
                lty = lty, lwd = lwd, scol = scol, slty = slty, slwd = slwd,
                lend = lend, ljoin = ljoin, lmitre = lmitre)
@@ -143,138 +167,174 @@ multigons <- function(i, x, y, j = unique(i),
   j  <- draw$j
   lj <- length(j)
 
-  if(lj != 0){
+  # if(lj != 0){
 
-    d <- data.frame(i = draw$i, x = draw$x, y = draw$y, stringsAsFactors = F)
+  d <- data.frame(i = draw$i, x = draw$x, y = draw$y, stringsAsFactors = F)
 
-    arg  <- draw[-c(1:4)]
-    larg <- unlist(lapply(arg,length))
+  arg  <- draw[-c(1:4)]
+  larg <- unlist(lapply(arg,length))
 
-    if(any(!(larg == 1 | larg == lj))){
-      stop("The arguments beside 'i', 'x' and 'y' should be of length 1 or n")
-    }
-
-    am <- data.frame(arg[which(larg == lj)], stringsAsFactors = F)
-
-    au <- data.frame(arg[which(larg == 1)], stringsAsFactors = F)
-    au <- au[rep(1,lj),]
-
-    if(lj == 1) {
-      a <- am
-    } else if(ncol(am) != 0 & ncol(au) != 0){
-      a <- cbind(am,au)
-    } else if (ncol(am) == 0 & ncol(au) != 0){
-      a <- au
-    } else if (ncol(am) != 0 & ncol(au) == 0){
-      a <- am
-    }
-
-    ca <- colnames(a)
-
-    fca <- which(ca == "border" | ca ==  "col" | ca ==  "lty" | ca == "lwd" |
-                   ca ==  "lend" |  ca ==  "ljoin" | ca == "lmitre")
-
-    fa <- a[,fca,drop = F]
-
-    shading <- !(is.na(density[[1]]) & length(density) == 1)
-
-    if(shading){
-
-      sca <- which(ca == "density" | ca ==  "angle" | ca ==  "scol" |
-                     ca ==  "slty"   | ca ==  "slwd"  | ca ==  "lend" |
-                     ca ==  "ljoin" | ca == "lmitre" )
-
-      sa <- a[,sca,drop = F]
-
-      colnames(sa)[colnames(sa) == "scol"]   <- "col"
-      colnames(sa)[colnames(sa) == "slty"]   <- "lty"
-      colnames(sa)[colnames(sa) == "slwd"]   <- "lwd"
-
-      bca <- which(ca == "border" | ca == "lty" | ca == "lwd" | ca ==  "lend"  |
-                     ca ==  "ljoin" | ca == "lmitre" )
-
-      ba <- a[,bca,drop = F]
-
-    } else {
-
-      placebo <- TRUE
-
-    }
-
-    # Order of drawing ----
-
-    transformers <- c(front, back, forget)
-
-    if(any(!is.na(suppressWarnings(as.numeric(transformers))))){
-
-      num.front  <- suppressWarnings(as.numeric(front))
-      num.back   <- suppressWarnings(as.numeric(back))
-      num.forget <- suppressWarnings(as.numeric(forget))
-
-      front[!is.na(num.front)]   <- j[num.front[!is.na(num.front)]]
-      back[!is.na(num.back)]     <- j[num.back[!is.na(num.back)]]
-      forget[!is.na(num.forget)] <- j[num.forget[!is.na(num.forget)]]
-
-    }
-
-    transformers <- c(front, back, forget)
-
-    if(any(duplicated(transformers))) {
-      stop(paste("There should be no shared elements between ",
-                 "the 'front', 'back' and 'forget' parameters", sep = ""))
-    }
-
-    if(!any(transformers %in% unique(draw$i))){
-
-      o <- seq_len(lj)
-
-    } else {
-
-      unj <- unique(j)
-
-      lose <- match(forget, unj, integer(0))
-      fo   <- match(front, unj, integer(0))
-      lo   <- match(back, unj, integer(0))
-
-      out <- c(fo,lo,lose)
-
-      if(length(out) != 0) ro <- seq_len(lj)[-out]
-
-      o <- c(lo,ro,rev(fo))
-
-    }
-
-    # Drawing ----
-
-    for(k in o)
-    {
-      fak <- as.list(fa[k,])
-
-      if(shading){
-        sak     <- as.list(sa[k,])
-        bak     <- as.list(ba[k,])
-        placebo <- is.na(sak$density) | sak$density == 0
-      }
-
-      dk <- subset(d,d$i == as.character(j[k]))
-
-      if(placebo){
-
-        lk <- merge_list(list(x = dk$x, y = dk$y), fak)
-
-        do.call("polygon", lk)
-
-      } else {
-
-        lfk <- merge_list(list(x = dk$x, y = dk$y, border = NA), fak)
-        lsk <- merge_list(list(x = dk$x, y = dk$y, border = NA), sak)
-        lbk <- merge_list(list(x = dk$x, y = dk$y), bak)
-
-        do.call("polygon", lfk)
-        do.call("polygon", lsk)
-        do.call("polygon", lbk)
-
-      }
-    }
+  if(any(!(larg == 1 | larg == lj))){
+    stop("The arguments beside 'i', 'x' and 'y' should be of length 1 or n")
   }
+
+  am <- data.frame(arg[which(larg == lj)], stringsAsFactors = F)
+
+  au <- data.frame(arg[which(larg == 1)], stringsAsFactors = F)
+  au <- au[rep(1,lj),]
+
+  if(lj == 1) {
+    a <- am
+  } else if(ncol(am) != 0 & ncol(au) != 0){
+    a <- cbind(am,au)
+  } else if (ncol(am) == 0 & ncol(au) != 0){
+    a <- au
+  } else if (ncol(am) != 0 & ncol(au) == 0){
+    a <- am
+  }
+
+  ca <- colnames(a)
+
+  fca <- which(ca == "border" | ca ==  "col" | ca ==  "lty" | ca == "lwd" |
+                 ca ==  "lend" |  ca ==  "ljoin" | ca == "lmitre")
+
+  fa <- a[,fca,drop = F]
+
+  shading <- !(is.na(density[[1]]) & length(density) == 1)
+
+  if(shading){
+
+    sca <- which(ca == "density" | ca ==  "angle" | ca ==  "scol" |
+                   ca ==  "slty"   | ca ==  "slwd"  | ca ==  "lend" |
+                   ca ==  "ljoin" | ca == "lmitre" )
+
+    sa <- a[,sca,drop = F]
+
+    colnames(sa)[colnames(sa) == "scol"]   <- "col"
+    colnames(sa)[colnames(sa) == "slty"]   <- "lty"
+    colnames(sa)[colnames(sa) == "slwd"]   <- "lwd"
+
+    bca <- which(ca == "border" | ca == "lty" | ca == "lwd" | ca ==  "lend"  |
+                   ca ==  "ljoin" | ca == "lmitre" )
+
+    ba <- a[,bca,drop = F]
+
+  } else {
+
+    placebo <- TRUE
+
+  }
+
+  # Order of drawing ----
+
+  transformers <- c(front, back, forget)
+
+  if(any(!is.na(suppressWarnings(as.numeric(transformers))))){
+
+    num.front  <- suppressWarnings(as.numeric(front))
+    num.back   <- suppressWarnings(as.numeric(back))
+    num.forget <- suppressWarnings(as.numeric(forget))
+
+    front[!is.na(num.front)]   <- j[num.front[!is.na(num.front)]]
+    back[!is.na(num.back)]     <- j[num.back[!is.na(num.back)]]
+    forget[!is.na(num.forget)] <- j[num.forget[!is.na(num.forget)]]
+
+  }
+
+  transformers <- c(front, back, forget)
+
+  if(any(duplicated(transformers))) {
+    stop(paste("There should be no shared elements between ",
+               "the 'front', 'back' and 'forget' parameters", sep = ""))
+  }
+
+  if(!any(transformers %in% unique(draw$i))){
+
+    o <- seq_len(lj)
+
+  } else {
+
+    unj <- unique(j)
+
+    lose <- match(forget, unj, integer(0))
+    fo   <- match(front, unj, integer(0))
+    lo   <- match(back, unj, integer(0))
+
+    out <- c(fo,lo,lose)
+
+    if(length(out) != 0) ro <- seq_len(lj)[-out]
+
+    o <- c(lo,ro,rev(fo))
+
+  }
+
+  # Drawing ----
+
+  divi <- split(d, d$i)
+
+  divi <- divi[match(j[o], names(divi))]
+
+  if(shading){
+
+    divi <- rep(divi, each = 3)
+
+    fai <- fa[o,]
+    sai <- sa[o,]
+    bai <- ba[o,]
+
+    prob.line <- sai$density == 0 | is.na(sai$density)
+
+    fai$density <- NA
+    fai$angle   <- 45
+    fai$border[!prob.line] <- NA
+
+    bai$density <- NA
+    bai$angle   <- 45
+    bai$col     <- NA
+
+    sai$border <- NA
+
+    sai <- sai[,c(9,3,4,5,6,7,8,1,2)]
+    bai <- bai[,c(1,9,2:8)]
+
+    gp <- rbind(fai, sai, bai)[seq_mult(3*nrow(fai), 3, inv = T),]
+
+    if(any(prob.line)){
+      rem1 <- which(prob.line) * 3
+      rem2 <- rem1 - 1
+
+      rem <- c(rem2, rem1)[seq_mult(2*length(rem1), 2, inv = T)]
+
+      gp <- gp[-rem,]
+
+      divi <- divi[-rem]
+    }
+
+  } else {
+
+    fai <- fa[o,]
+
+    fai$density <- NA
+    fai$angle   <- 45
+
+    gp <- fai
+
+  }
+
+  gpl <- split(gp, seq(nrow(gp)))
+
+  poly_fun <- function(coor, leg)
+  {
+    polygon(x = coor$x, y = coor$y,
+            density = leg$density, angle = leg$angle,
+            border = leg$border, col = leg$col,
+            lty = leg$lty, lwd = leg$lwd,
+            lend = leg$lend, ljoin = leg$ljoin,
+            lmitre = leg$lmitre)
+  }
+
+  mapply(poly_fun, divi, gpl)
+
+  return(invisible())
+
 }

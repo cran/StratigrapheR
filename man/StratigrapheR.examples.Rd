@@ -10,6 +10,7 @@
 \alias{example.ammonite.svg}
 \alias{example.belemnite}
 \alias{example.breccia}
+\alias{example.HB2000.svg}
 \alias{example.lense}
 \alias{example.liquefaction}
 \alias{fossil.example}
@@ -28,8 +29,8 @@ respective .svg and .tex files.
 \describe{
   \item{\strong{Litholog drawing data}}{bed.example, boundary.example,
   example.ammonite, example.ammonite.svg, example.belemnite, example.breccia,
-  example.lense, example.liquefaction, fossil.example, proxy.example,
-  proxy.example.litho}
+  example.HB2000.svg, example.lense, example.liquefaction, fossil.example,
+  proxy.example, proxy.example.litho}
   \item{\strong{Magnetostratigraphical data}}{chron.example}
   \item{\strong{Litholog exportation script}}{log.loop.tex}
   \item{\strong{Oriented data}}{zeq_example}

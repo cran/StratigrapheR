@@ -1,3 +1,11 @@
+Changes in version 1.2.0
+
+   * Addition of the in.window() function, that computes efficiently which data
+   points in time-series fall in specific windows, even with irregular
+   sampling rate
+   * Improvement of multigons() and multilines() with mapply() rather than
+   'for' loops
+
 Changes in version 1.1.2
 
    * Removal of the welcome message (I got tired of it)
@@ -14,7 +22,7 @@ Changes in version 1.1.1
    typically to average them.
    * Addition of the pkgfind() functions, that allows to find a character
    pattern in the code of functions in an entire package.
-   * Addition of a new set of functions to infine compare sedimentation rates
+   * Addition of a new set of functions to in fine compare sedimentation rates
    between sections correlated by tie-point. The strat.repair() function, among
    others is added to remove instantaneous deposits (e.g. turbidites) and add
    thickness estimated to be lost (i.e. hiatuses). This is still in development.

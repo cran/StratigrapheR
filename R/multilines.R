@@ -136,34 +136,27 @@ multilines <- function(i, x, y, j = unique(i),
 
     # Drawing ----
 
-    for(k in o)
+    gpl <- split(a1, seq(nrow(a1)))[o]
+
+    divi <- split(d, d$i)
+
+    divi <- divi[match(j[o], names(divi))]
+
+    poly_fun <- function(coor, leg)
     {
-      ak <- as.list(a1[k,])
-
-      dk <- subset(d,d$i == as.character(j[k]))
-
-      if(ak$type == "p" | ak$type == "o"){
-
-        lk   <- merge_list(list(x = dk$x, y = dk$y),
-                           list(col = ak$col, bg = ak$bg, lwd = ak$lwd,
-                                cex = ak$cex, pch = ak$pch))
-
-        do.call("points", lk)
-
-      }
-
-      if(ak$type == "l" | ak$type == "o"){
-
-        lk   <- merge_list(list(x = dk$x, y = dk$y),
-                           list(col = ak$col, lty = ak$lty, lwd = ak$lwd,
-                                lend = ak$lend, ljoin = ak$ljoin,
-                                lmitre = ak$lmitre))
-
-        do.call("lines", lk)
-
-      }
-
-
+      lines(x = coor$x, y = coor$y,
+            type = leg$type, pch = leg$pch,
+            cex = leg$cex, bg = leg$bg,
+            col = leg$col,
+            lty = leg$lty, lwd = leg$lwd,
+            lend = leg$lend, ljoin = leg$ljoin,
+            lmitre = leg$lmitre)
     }
+
+    mapply(poly_fun, divi, gpl)
+
+    return(invisible())
+
   }
+
 }
