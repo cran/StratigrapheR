@@ -30,7 +30,7 @@ Package: StratigrapheR
 
 Type: R package
 
-Version: 1.2.0 (February 2020)
+Version: 1.2.1 (End Winter 2021)
 
 License: GPL-3
 }

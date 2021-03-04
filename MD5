@@ -1,7 +1,7 @@
-92a04fcb5facc6654ed0abd11f87b81d *DESCRIPTION
+1e323229d9dab9217c01742bdb2bb0d5 *DESCRIPTION
 77644bb52bce800d6678556bbe2f3901 *NAMESPACE
-7537f026f3081937515a7081d1032c3c *NEWS
-4d4e468d37cf490affd552b57a3664fc *R/StratigrapheR.R
+a1d76657bc70ecd390a3493db0c947d3 *NEWS
+6ba006acfbbf6bb9fb848f45e874766c *R/StratigrapheR.R
 9d17b89b31a68089b81062cbd309b8a0 *R/as.lim.R
 26692939f9d04f13efa67a67a2c4bdae *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -31,7 +31,7 @@ d0122ae2f90bc57a9a6a0fdbec72ffd1 *R/greySet.R
 3fc2dbefe543c778f71d0510807bd842 *R/homogenise.R
 f99dcef50e4c68e683a18660038fbccb *R/ignore.R
 6a7ef328f834995bb09495a4688a0dc2 *R/in.lim.R
-622a9e7e1491d7e7762a900232f54a24 *R/in.window.R
+27c9b6c323ac7889543a9a866a32a7f1 *R/in.window.R
 4fa40de81f6090c913234c41cdfbbe2d *R/incfix.R
 d2603aa906b88bbe36ad8b98dde30192 *R/infobar.R
 cd39d44e83bb417e6d0413f15a5a434b *R/leftlog.R
@@ -65,7 +65,7 @@ cca17e871114e75c4bdcc085fea6a1dc *R/simp.lim.R
 5bd34f1507563acf9c5e4b710495b616 *R/strat.mean.R
 35b07260744dfd7181af03cda0ac7eb7 *R/strat.repair.R
 dd15fbfeb2fab54ea0b0af7b73a705bc *R/strat.var.R
-1a93f085248bb546368c7d3e2a7c1097 *R/supporting.examples.R
+c60b68100775cdfab2456c1555ab9f69 *R/supporting.examples.R
 365345cc186f28c2f681ab4c98b1d38f *R/tie.lim.R
 e8b275716b82ac42cdd1002fcfc7389a *R/transphere.R
 aa64c4e975727a2f78671e901fe90395 *R/weld.R
@@ -73,6 +73,7 @@ aa64c4e975727a2f78671e901fe90395 *R/weld.R
 655ba44939af0c0c60a531200dfd2c14 *R/whiteSet.R
 bdb68f34ea01608bf75193d52cee5461 *R/ylink.R
 b4a013d392f724cf31643f17b0125668 *R/zijderveld.R
+8af6d48aeaaafd3f78a9580672dfb325 *README.md
 514aae259e7fb3493bd085f8df688c5d *data/bed.example.rda
 1c97395c7c6ff8ddbcaac038067c4f0a *data/boundary.example.rda
 fe4f255ed131d0386537d04765bb434c *data/chron.example.rda
@@ -84,14 +85,15 @@ b6c900f11c74d6b4762dff31a2b2f030 *data/example.breccia.rda
 2dc22e0e9c4f89844e2d1f7316170650 *data/example.lense.rda
 a7967a90049ac7f194b4ebbb1abb664b *data/example.liquefaction.rda
 26e6af7bd12e1d45ef610300b04a7e44 *data/fossil.example.rda
+42b4d9a660cae5573a5410fa45d174b4 *data/irreg.example.rda
 7e6ff8c171c4b84f514c2bbb89a215c2 *data/log.loop.tex.rda
 d8000634ef0894b2a7406210b9640deb *data/noise_emd.rda
 98e93cbe8707f1929cb3006ef6469871 *data/proxy.example.litho.rda
 51657538af728b3a218b86dced8a417a *data/proxy.example.rda
 9a701a21fef65937e8b7a63e8a58e22f *data/tie.points.example.rda
 1974126240f867554852e1c10c13c14c *data/zeq_example.rda
-2240ff19aa4c04394ae7f2a86e93bc71 *man/StratigrapheR.Rd
-e815a05762d5832b3597bfa029d157e9 *man/StratigrapheR.examples.Rd
+a9537ac03a61b8b73d13373617c1a950 *man/StratigrapheR.Rd
+701e3292d3877ca2778ecd378cbfc180 *man/StratigrapheR.examples.Rd
 310a7539e7c63b480abb5a9f3771b4e7 *man/as.lim.Rd
 38053398a6e17c6cded437da1fd6358b *man/bedtext.Rd
 3b4747f1d166a0e3b0995a78dbe0c614 *man/blackSet.Rd
