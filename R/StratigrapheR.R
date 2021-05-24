@@ -21,7 +21,7 @@
 #'
 #' Type: R package
 #'
-#' Version: 1.2.1 (End Winter 2021)
+#' Version: 1.2.2 (Summer 2021)
 #'
 #' License: GPL-3
 #' @note
@@ -765,7 +765,8 @@ utils::globalVariables(c("gloVar.neworder", "gloVar.ni", "gloVar.bs",
                          "gloVar.k", "gloVar.adapt.buttons",
                          "gloVar.x", "gloVar.i", "gloVar.xy", "gloVar.o",
                          "glovar.wdt", "glovar.order",
-                         "gloVar.id", "gloVar.coord"))
+                         "gloVar.id", "gloVar.coord", "gloVar.args.save",
+                         "gloVar.what.save", "gloVar.seed.save", "gloVar.out"))
 
 
 

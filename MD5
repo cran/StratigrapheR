@@ -1,7 +1,7 @@
-1e323229d9dab9217c01742bdb2bb0d5 *DESCRIPTION
-77644bb52bce800d6678556bbe2f3901 *NAMESPACE
-a1d76657bc70ecd390a3493db0c947d3 *NEWS
-6ba006acfbbf6bb9fb848f45e874766c *R/StratigrapheR.R
+36cee42664b57f425283dc7ad6ef149e *DESCRIPTION
+48aa4e0453050302f962526f4505b017 *NAMESPACE
+e78d0c88084a3e6f8d0662bc0798165b *NEWS
+3c154285a79c6fb045fca81f73c7070d *R/StratigrapheR.R
 9d17b89b31a68089b81062cbd309b8a0 *R/as.lim.R
 26692939f9d04f13efa67a67a2c4bdae *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -12,7 +12,7 @@ a1d76657bc70ecd390a3493db0c947d3 *NEWS
 e02e4450d916b6d8a347cccb7e333695 *R/convert.R
 6ffe789b0d9d66e36bd67e75f241e899 *R/convertAxis.R
 6cbf7fc9c2d6a1abf141a6784e76d878 *R/dipfix.R
-82da996d074651046a4833894f85ccbf *R/divisor.R
+907896472ba7b8048ba5b063ba0ecb30 *R/divisor.R
 8efe0d484ce8e1eedfa6af23d851758e *R/earinc.R
 c6d2ef3b761b51201c057b4179d24518 *R/earnet.R
 2be3fb73d28720b03d86eed114a3d529 *R/earplanes.R
@@ -36,6 +36,7 @@ f99dcef50e4c68e683a18660038fbccb *R/ignore.R
 d2603aa906b88bbe36ad8b98dde30192 *R/infobar.R
 cd39d44e83bb417e6d0413f15a5a434b *R/leftlog.R
 192d4006a50eaf764b8343a4e3b64dfe *R/litholog.R
+ce75e47dce19bbc35086a39a3dc8011f *R/memento.R
 b7c034b9e593be8e454fa50d08a696a5 *R/merge_list.R
 bee6fea363424825e4f40c3bb4378630 *R/mid.lim.R
 eb44077f091230d460dfed3b36d77138 *R/minorAxis.R
@@ -69,7 +70,7 @@ c60b68100775cdfab2456c1555ab9f69 *R/supporting.examples.R
 365345cc186f28c2f681ab4c98b1d38f *R/tie.lim.R
 e8b275716b82ac42cdd1002fcfc7389a *R/transphere.R
 aa64c4e975727a2f78671e901fe90395 *R/weld.R
-0d32a66728169ab063fe3d0594da4396 *R/weldlog.R
+d739dfe69e7e017afac0c6797742ea4b *R/weldlog.R
 655ba44939af0c0c60a531200dfd2c14 *R/whiteSet.R
 bdb68f34ea01608bf75193d52cee5461 *R/ylink.R
 b4a013d392f724cf31643f17b0125668 *R/zijderveld.R
@@ -92,7 +93,7 @@ d8000634ef0894b2a7406210b9640deb *data/noise_emd.rda
 51657538af728b3a218b86dced8a417a *data/proxy.example.rda
 9a701a21fef65937e8b7a63e8a58e22f *data/tie.points.example.rda
 1974126240f867554852e1c10c13c14c *data/zeq_example.rda
-a9537ac03a61b8b73d13373617c1a950 *man/StratigrapheR.Rd
+c969a9253e97c7e39e38df7a07e5311d *man/StratigrapheR.Rd
 701e3292d3877ca2778ecd378cbfc180 *man/StratigrapheR.examples.Rd
 310a7539e7c63b480abb5a9f3771b4e7 *man/as.lim.Rd
 38053398a6e17c6cded437da1fd6358b *man/bedtext.Rd
@@ -104,7 +105,7 @@ c886062d6cada9f05b15791d59d4c12a *man/changesvg.Rd
 00a42b9f6d6130ea32424515549d99d0 *man/convert.Rd
 418c71db64e1f9ff2d85f6970242359e *man/convertAxis.Rd
 3358b5243e149379ed60f8f853c0e84c *man/dipfix.Rd
-b7c4c6bf1e90ac68f984a7e1a3f7c5c0 *man/divisor.Rd
+e65cad688c0c0306b83cb566284032de *man/divisor.Rd
 cde9900dad7142a7fd4d73262c46c3b3 *man/earinc.Rd
 d822bc5536ff186cbdecbdf23293e486 *man/earnet.Rd
 dbfac6a84c3e3c962aa5611e9a312b9a *man/earplanes.Rd
@@ -128,6 +129,7 @@ a2e4798034f34a5838122d9a02547b49 *man/folder.Rd
 a51c9216408fa508e889f0f693fc9be8 *man/infobar.Rd
 ad84fcfacfb5027a23fe22b5827aaef4 *man/leftlog.Rd
 1f9cc1306722ee4aae3305662151f6ba *man/litholog.Rd
+0a686fbe9c71959f5c820fef2f49523c *man/memento.Rd
 f5d8653eac2524e360a1fcde12866b7e *man/merge_list.Rd
 57414600328b75b8797a9dafa907161b *man/mid.lim.Rd
 63e4d4ff80385234fb83ba7e56e5daa8 *man/minorAxis.Rd
@@ -160,7 +162,7 @@ ded2de699b450e75fd08f65390e7e8e2 *man/strat.repair.Rd
 87e5a0c8de4fb98b4712d843e21b909f *man/tie.lim.Rd
 dbd1289970d66c400b2de1ee77fb6b2f *man/transphere.Rd
 98c60f47c134c21ce2a0125983dc988e *man/weld.Rd
-3dff63fde7ce9d92c1b3f5b0a36e15e4 *man/weldlog.Rd
+2f02807dae04557b5adde6763ae64508 *man/weldlog.Rd
 45ef4192fe91e824ce9d59924227eeb9 *man/whiteSet.Rd
 1ef24d7d740326494daaea8ccafc3a98 *man/ylink.Rd
 ddea2acc2b0ad25704d5e6dea5c774ee *man/zijderveld.Rd

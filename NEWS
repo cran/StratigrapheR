@@ -1,3 +1,10 @@
+Changes in version 1.2.2
+
+   * Addition of the memento() function, which remembers and outputs the result
+   of a slow function. This is to avoid repeating unnecessary processing while
+   tinkering with the code.
+   # Debugging weldlog()
+
 Changes in version 1.2.1
 
    * Debugging in.window()
