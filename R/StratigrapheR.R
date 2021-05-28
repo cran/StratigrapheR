@@ -21,7 +21,7 @@
 #'
 #' Type: R package
 #'
-#' Version: 1.2.2 (Summer 2021)
+#' Version: 1.2.3 (Summer 2021 SECOND VERSION)
 #'
 #' License: GPL-3
 #' @note

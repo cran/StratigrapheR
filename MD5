@@ -1,7 +1,7 @@
-36cee42664b57f425283dc7ad6ef149e *DESCRIPTION
+12a52bb0ccd8fc8f89645dc2b9306269 *DESCRIPTION
 48aa4e0453050302f962526f4505b017 *NAMESPACE
-e78d0c88084a3e6f8d0662bc0798165b *NEWS
-3c154285a79c6fb045fca81f73c7070d *R/StratigrapheR.R
+4ce58b1ac5629970bee92001f60e4480 *NEWS
+cf4b35384460810f55f9115d370ced7c *R/StratigrapheR.R
 9d17b89b31a68089b81062cbd309b8a0 *R/as.lim.R
 26692939f9d04f13efa67a67a2c4bdae *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -36,7 +36,7 @@ f99dcef50e4c68e683a18660038fbccb *R/ignore.R
 d2603aa906b88bbe36ad8b98dde30192 *R/infobar.R
 cd39d44e83bb417e6d0413f15a5a434b *R/leftlog.R
 192d4006a50eaf764b8343a4e3b64dfe *R/litholog.R
-ce75e47dce19bbc35086a39a3dc8011f *R/memento.R
+9ddc854f98920cdcf25c3c3e1ae59613 *R/memento.R
 b7c034b9e593be8e454fa50d08a696a5 *R/merge_list.R
 bee6fea363424825e4f40c3bb4378630 *R/mid.lim.R
 eb44077f091230d460dfed3b36d77138 *R/minorAxis.R
@@ -93,7 +93,7 @@ d8000634ef0894b2a7406210b9640deb *data/noise_emd.rda
 51657538af728b3a218b86dced8a417a *data/proxy.example.rda
 9a701a21fef65937e8b7a63e8a58e22f *data/tie.points.example.rda
 1974126240f867554852e1c10c13c14c *data/zeq_example.rda
-c969a9253e97c7e39e38df7a07e5311d *man/StratigrapheR.Rd
+502adeda6bb255a9b63bb2a901df236f *man/StratigrapheR.Rd
 701e3292d3877ca2778ecd378cbfc180 *man/StratigrapheR.examples.Rd
 310a7539e7c63b480abb5a9f3771b4e7 *man/as.lim.Rd
 38053398a6e17c6cded437da1fd6358b *man/bedtext.Rd
@@ -129,7 +129,7 @@ a2e4798034f34a5838122d9a02547b49 *man/folder.Rd
 a51c9216408fa508e889f0f693fc9be8 *man/infobar.Rd
 ad84fcfacfb5027a23fe22b5827aaef4 *man/leftlog.Rd
 1f9cc1306722ee4aae3305662151f6ba *man/litholog.Rd
-0a686fbe9c71959f5c820fef2f49523c *man/memento.Rd
+a4fd7338df1e06efdd84514e77960d5f *man/memento.Rd
 f5d8653eac2524e360a1fcde12866b7e *man/merge_list.Rd
 57414600328b75b8797a9dafa907161b *man/mid.lim.Rd
 63e4d4ff80385234fb83ba7e56e5daa8 *man/minorAxis.Rd

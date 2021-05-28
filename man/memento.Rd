@@ -4,7 +4,7 @@
 \alias{memento}
 \title{Remembers and outputs the result of a slow function}
 \usage{
-memento(what, args, name, dir, subdir = NULL, check.seed = F, speak = T)
+memento(what, args, name, dir, subdir = "memento", check.seed = F, speak = T)
 }
 \arguments{
 \item{what}{a (slow) function}

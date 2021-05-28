@@ -66,7 +66,7 @@
 #'
 #' @export
 
-memento <- function(what, args, name, dir, subdir = NULL,
+memento <- function(what, args, name, dir, subdir = "memento",
                     check.seed = F, speak = T)
 {
 
@@ -81,14 +81,14 @@ memento <- function(what, args, name, dir, subdir = NULL,
   }
 
   if(!inherits(name, "character")){
-    stop("The 'name' argument should refer to a straing of characters")
+    stop("The 'name' argument should refer to a string of characters")
   }
 
   if(!inherits(dir, "character")){
-    stop("The 'dir' argument should refer to a straing of characters")
+    stop("The 'dir' argument should refer to a string of characters")
   }
 
-  if(!inherits(dir, "character") | !is.null(subdir)){
+  if(!(inherits(subdir, "character") | is.null(subdir))){
     stop("The 'subdir' argument should refer to a string of characters or be NULL")
   }
 
@@ -97,6 +97,11 @@ memento <- function(what, args, name, dir, subdir = NULL,
   folderdir  <- paste(dir, subdir, name, sep="/")
 
   run.function <- function(gloVar.what.save = what, gloVar.args.save = args){
+
+    what.run <- gloVar.what.save
+
+    gloVar.what.save <- list(f = formals(gloVar.what.save),
+                             b = toString(body(gloVar.what.save)))
 
     save(gloVar.args.save, file = paste(folderdir, "gloVar.args.save", sep="/"))
     save(gloVar.what.save, file = paste(folderdir, "gloVar.what.save", sep="/"))
@@ -111,7 +116,7 @@ memento <- function(what, args, name, dir, subdir = NULL,
 
     if(isTRUE(speak)) print("Function running")
 
-    gloVar.out <- do.call(gloVar.what.save, gloVar.args.save)
+    gloVar.out <- do.call(what.run, gloVar.args.save)
 
     save(gloVar.out, file = paste(folderdir, "gloVar.out", sep="/"))
 
@@ -125,15 +130,21 @@ memento <- function(what, args, name, dir, subdir = NULL,
 
     if(isTRUE(check.seed)){
 
-      if(any(!(c("gloVar.args.save", "gloVar.what.save", "gloVar.seed.save", "gloVar.out") %in% lf))){
+      if(any(!(c("gloVar.args.save", "gloVar.what.save",
+                 "gloVar.seed.save", "gloVar.out") %in% lf))){
 
         out.now <- run.function()
 
         return(out.now)
+        # print(out.now)
 
       } else {
 
         what.now <- what
+
+        what.now.compare <- list(f = formals(what.now),
+                                 b = toString(body(what.now)))
+
         args.now <- args
         seed.now <- .Random.seed
 
@@ -141,19 +152,21 @@ memento <- function(what, args, name, dir, subdir = NULL,
         load(paste(folderdir, "gloVar.what.save", sep="/"))
         load(paste(folderdir, "gloVar.seed.save", sep="/"))
 
-        if(!(identical(what.now, gloVar.what.save) &
+        if(!(identical(what.now.compare, gloVar.what.save) &
              identical(args.now, gloVar.args.save) &
              identical(seed.now, gloVar.seed.save))){
 
           out.now <- run.function(what.now, args.now)
 
-          return(out.now)
+          # return(out.now)
+          print(out.now)
 
         } else {
 
           load(paste(folderdir, "gloVar.out", sep="/"))
 
           return(gloVar.out)
+          # print(gloVar.out)
 
         }
 
@@ -167,26 +180,34 @@ memento <- function(what, args, name, dir, subdir = NULL,
         out.now <- run.function()
 
         return(out.now)
+        # print(out.now)
 
       } else {
 
         what.now <- what
+
+        what.now.compare <- list(f = formals(what.now),
+                                 b = toString(body(what.now)))
+
         args.now <- args
 
         load(paste(folderdir, "gloVar.args.save", sep="/"))
         load(paste(folderdir, "gloVar.what.save", sep="/"))
 
-        if(!(identical(what.now, gloVar.what.save) & identical(args.now, gloVar.args.save))){
+        if(!(identical(what.now.compare, gloVar.what.save) &
+             identical(args.now, gloVar.args.save))){
 
           out.now <- run.function(what.now, args.now)
 
-          return(out.now)
+          # return(out.now)
+          print(out.now)
 
         } else {
 
           load(paste(folderdir, "gloVar.out", sep="/"))
 
           return(gloVar.out)
+          # print(gloVar.out)
 
         }
 
@@ -207,6 +228,7 @@ memento <- function(what, args, name, dir, subdir = NULL,
     out.now <- run.function()
 
     return(out.now)
+    # print(out.now)
 
   }
 
