@@ -1,3 +1,8 @@
+Changes in version 1.2.4
+
+   * Clarifying documentation
+   * Debugging seq_mult()
+
 Changes in version 1.2.3
 
    * Debugging memento()

@@ -1,7 +1,7 @@
-12a52bb0ccd8fc8f89645dc2b9306269 *DESCRIPTION
+7631b1e7958757597b8778fc14a835e3 *DESCRIPTION
 48aa4e0453050302f962526f4505b017 *NAMESPACE
-4ce58b1ac5629970bee92001f60e4480 *NEWS
-cf4b35384460810f55f9115d370ced7c *R/StratigrapheR.R
+019b5b79942451454777b68d2f64a6f9 *NEWS
+674b642dfd1e02d011e9a1fce36898fd *R/StratigrapheR.R
 9d17b89b31a68089b81062cbd309b8a0 *R/as.lim.R
 26692939f9d04f13efa67a67a2c4bdae *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -36,7 +36,7 @@ f99dcef50e4c68e683a18660038fbccb *R/ignore.R
 d2603aa906b88bbe36ad8b98dde30192 *R/infobar.R
 cd39d44e83bb417e6d0413f15a5a434b *R/leftlog.R
 192d4006a50eaf764b8343a4e3b64dfe *R/litholog.R
-9ddc854f98920cdcf25c3c3e1ae59613 *R/memento.R
+70d71e2ae5d20968a4273b3d436a2298 *R/memento.R
 b7c034b9e593be8e454fa50d08a696a5 *R/merge_list.R
 bee6fea363424825e4f40c3bb4378630 *R/mid.lim.R
 eb44077f091230d460dfed3b36d77138 *R/minorAxis.R
@@ -59,7 +59,7 @@ cf9cdf147a1a53b2c4c8e8941f338ffe *R/restore.R
 b6b995972724493ba24bdef66c78195f *R/rmatrix.R
 6ac1be30de84f1487643c1495d15ecae *R/rotate.R
 7fb68a9128dcfdd20c07a371a1500f63 *R/seq_log.R
-8df177b7afa9d703f9b7fbd8a11820f1 *R/seq_mult.R
+50e2a97fba54bf790690aea3529e38c1 *R/seq_mult.R
 3d558d7ae52ae1b6741e1f3d7cd1a0fc *R/shift.R
 cca17e871114e75c4bdcc085fea6a1dc *R/simp.lim.R
 2d2908682a1cd239332d7d2647e6b8c8 *R/sinpoint.R
@@ -93,7 +93,7 @@ d8000634ef0894b2a7406210b9640deb *data/noise_emd.rda
 51657538af728b3a218b86dced8a417a *data/proxy.example.rda
 9a701a21fef65937e8b7a63e8a58e22f *data/tie.points.example.rda
 1974126240f867554852e1c10c13c14c *data/zeq_example.rda
-502adeda6bb255a9b63bb2a901df236f *man/StratigrapheR.Rd
+3292f2cd4ae31beaf325a5c319fca65c *man/StratigrapheR.Rd
 701e3292d3877ca2778ecd378cbfc180 *man/StratigrapheR.examples.Rd
 310a7539e7c63b480abb5a9f3771b4e7 *man/as.lim.Rd
 38053398a6e17c6cded437da1fd6358b *man/bedtext.Rd
@@ -129,7 +129,7 @@ a2e4798034f34a5838122d9a02547b49 *man/folder.Rd
 a51c9216408fa508e889f0f693fc9be8 *man/infobar.Rd
 ad84fcfacfb5027a23fe22b5827aaef4 *man/leftlog.Rd
 1f9cc1306722ee4aae3305662151f6ba *man/litholog.Rd
-a4fd7338df1e06efdd84514e77960d5f *man/memento.Rd
+1c14d2e29bf91e8dfa704860d349d25f *man/memento.Rd
 f5d8653eac2524e360a1fcde12866b7e *man/merge_list.Rd
 57414600328b75b8797a9dafa907161b *man/mid.lim.Rd
 63e4d4ff80385234fb83ba7e56e5daa8 *man/minorAxis.Rd

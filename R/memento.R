@@ -7,8 +7,8 @@
 #' trade-off is to assign a folder to store the data.
 #'
 #' @param what a (slow) function
-#' @param args the arguments to give the function. If they differ from saved
-#' values, the function will run again.
+#' @param args a list of the the arguments to give to the function. If they
+#' differ from saved values, the function will run again.
 #' @param name the name of the folder where to store the info. THIS NEEDS TO BE
 #' DIFFERENT FOR EACH IMPLEMENTATION OF THE FUNCTION IN IDENTICAL DIRECTORIES.
 #' @param dir the directory. You can set it as the working directory via

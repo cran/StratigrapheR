@@ -9,8 +9,8 @@ memento(what, args, name, dir, subdir = "memento", check.seed = F, speak = T)
 \arguments{
 \item{what}{a (slow) function}
 
-\item{args}{the arguments to give the function. If they differ from saved
-values, the function will run again.}
+\item{args}{a list of the the arguments to give to the function. If they
+differ from saved values, the function will run again.}
 
 \item{name}{the name of the folder where to store the info. THIS NEEDS TO BE
 DIFFERENT FOR EACH IMPLEMENTATION OF THE FUNCTION IN IDENTICAL DIRECTORIES.}
