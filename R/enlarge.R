@@ -59,7 +59,7 @@ enlarge <- function(x,n)
 
   ni <- as.integer(n)
 
-  if(!(class(n) == "integer" | ni == n)) {
+  if(!(inherits(n, "integer") | ni == n)) {
     stop("n should be an integer or convertible into an integer")
   }
 

@@ -79,7 +79,9 @@ changesvg <- function(object, forget = NULL, front = NULL, back = NULL,
 
     ids <- unique(object$id)
 
-    if(class(ids) != "character") stop("The object ids should be characters")
+    if(!inherits(ids, "character")) {
+      stop("The object ids should be of class 'character'")
+    }
 
     ns  <- length(ids)
 

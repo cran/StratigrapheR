@@ -379,8 +379,8 @@ neatPick <- function(fun, n, args = list(), class.args = list(),
 
     observeEvent(input$neatPick_element, {
 
-      if(class(input$neatPick_element) == "numeric" |
-         class(input$neatPick_element) == "integer"){
+      if(inherits(input$neatPick_element, "numeric") |
+         inherits(input$neatPick_element, "integer")){
         if(input$neatPick_element >= 1 & input$neatPick_element <= n){
 
           current <- lapply(app.args$dataset,"[",
@@ -415,8 +415,8 @@ neatPick <- function(fun, n, args = list(), class.args = list(),
 
       isolate({
 
-        if(class(input$neatPick_element) == "numeric" |
-           class(input$neatPick_element) == "integer"){
+        if(inherits(input$neatPick_element, "numeric") |
+           inherits(input$neatPick_element, "integer")){
           if(input$neatPick_element >= 1 &
              input$neatPick_element <= n){
 

@@ -13,7 +13,7 @@ matter)}
 
 \item{h}{the hardness of each bed}
 
-\item{i}{the id of each bed}
+\item{i}{the id of each bed: it should be different for each bed}
 }
 \value{
 A table of depth (dt) and xy value (i.e. hardness, or simply the x

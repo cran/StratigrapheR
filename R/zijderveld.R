@@ -226,17 +226,17 @@ zijderveld <- function(dec, inc, int, xh = "WE", xv = xh, centre = F,
 
       mult <- min(c((px[2] - px[1]), (py[2] - py[1])))
 
-      if(!is.na(xlim[[1]]) & length(xlim) == 2 & class(xlim) == "numeric"){
+      if(!is.na(xlim[[1]]) & length(xlim) == 2 & inherits(xlim, "numeric")){
         pxn  <- pretty(xlim)
         mult <- min(mult, (pxn[2] - pxn[1]))
       }
 
-      if(!is.na(ylim[[1]]) & length(ylim) == 2 & class(ylim) == "numeric"){
+      if(!is.na(ylim[[1]]) & length(ylim) == 2 & inherits(ylim, "numeric")){
         pyn  <- pretty(ylim)
         mult <- min(mult, (pyn[2] - pyn[1]))
       }
 
-    } else if((class(unit) == "numeric" | class(unit) == "integer") &
+    } else if((inherits(unit, "numeric") | inherits(unit, "integer")) &
               length(unit) == 1 & !is.na(unit) & unit > 0){
 
       mult <- unit

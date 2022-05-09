@@ -54,7 +54,7 @@ that are transformed (rotation, etc...).
 \details{
 This function is quite empirical. There is no guarantee it is bug
 free. If you have .svg files that should work but do not, you can email me:
-\email{sébastien.wouters@doct.uliege.be}
+\email{wouterseb@gmail.com}
 }
 \examples{
 # To show you how to import, we first have to have a svg file to import. The

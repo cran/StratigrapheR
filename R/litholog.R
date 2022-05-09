@@ -7,7 +7,7 @@
 #' stand for left and right boundaries of the interval, their order does not
 #' matter)
 #' @param h the hardness of each bed
-#' @param i the id of each bed
+#' @param i the id of each bed: it should be different for each bed
 #' @return A table of depth (dt) and xy value (i.e. hardness, or simply the x
 #' position if your litholog is vertical) of rectangles for each bed. Each bed
 #' is defined by an id (or name), which is the variable i in the table.

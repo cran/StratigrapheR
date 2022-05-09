@@ -1,0 +1,16 @@
+citHeader("To cite StratigrapheR in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "StratigrapheR: Concepts for Litholog Generation in R",
+  author   = "Sébastien Wouters, Anne-Christine Da Silva, Frédéric Boulvain and Xavier Devleeschouwer",
+  journal  = "R Journal",
+  year     = "2021",
+  volume   = "13",
+  number   = "2",
+  pages    = "153-178",
+  url      = "https://journal.r-project.org/archive/2021/RJ-2021-039/RJ-2021-039.pdf",
+  textVersion = paste(""
+
+  )
+)

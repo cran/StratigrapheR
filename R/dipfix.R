@@ -56,7 +56,7 @@ dipfix <- function(strike, dip, quadrant = NA, inverted = NA)
   li <- length(inverted)
 
   if(!((li == 1 & is.na(inverted[[1]])) |
-       (li == l & class(inverted) == "logical"))){
+       (li == l & inherits(inverted, "logical")))){
     stop(paste("The 'inverted' parameter should be NA or a logical of ",
                "same length than the other parameters", sep = ""))
   }
@@ -135,7 +135,7 @@ dipfix <- function(strike, dip, quadrant = NA, inverted = NA)
   tdip <- fmod(dip,180,-180)
   out  <-  tdip > 90 | tdip <= -90
 
-  if (li == l & class(inverted) == "logical") {
+  if (li == l & inherits(inverted, "logical")) {
 
     inv <- inverted
 

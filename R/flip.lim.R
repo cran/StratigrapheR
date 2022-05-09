@@ -55,7 +55,7 @@ flip.lim <- function(lim = NULL, l = NULL, r = NULL, b = "[]", xlim = NA)
     max <- max(bulk)
 
   } else if(length(xlim) == 2 &
-            (class(xlim) == "numeric" | class(xlim) == "integer")){
+            (inherits(xlim, "numeric") | inherits(xlim, "integer"))){
 
     min <- min(xlim)
     max <- max(xlim)

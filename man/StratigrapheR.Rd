@@ -30,15 +30,16 @@ Package: StratigrapheR
 
 Type: R package
 
-Version: 1.2.4 (September 2021)
+Version: 1.2.5 (Winter 2021)
 
 License: GPL-3
 }
 \note{
 If you want to use this package for publication or research
 purposes, please cite
-Wouters, S., Da Silva, A.-C., Boulvain, F., and Devleeschouwer, X.. In press.
+Wouters, S., Da Silva, A.-C., Boulvain, F., and Devleeschouwer, X.. 2021.
 StratigrapheR: Concepts for Litholog Generation in R. The R Journal.
+\url{https://journal.r-project.org/archive/2021/RJ-2021-039/index.html}.
 }
 \examples{
 # This is an example of litholog generation script, along with some

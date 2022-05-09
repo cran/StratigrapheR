@@ -1,7 +1,8 @@
 Package: StratigrapheR
 Type: Package
 Title: Integrated Stratigraphy
-Version: 1.2.4
+Version: 1.2.5
+Date: 2022-05-09
 Author: Sebastien Wouters [aut, cre], Adam D. Smith [ctb]
 Maintainer: Sebastien Wouters <wouterseb@gmail.com>
 Description: Includes bases for litholog generation: graphical functions
@@ -10,8 +11,8 @@ Description: Includes bases for litholog generation: graphical functions
     and other functions made to deal with large datasets while keeping options
     to get into the details of the data.
     When using for publication please cite 
-    Wouters, S., Da Silva, A.-C., Boulvain, F., and Devleeschouwer, X.. In press.
-    StratigrapheR: Concepts for Litholog Generation in R. The R Journal. 
+    Sebastien Wouters, Anne-Christine Da Silva, Frederic Boulvain and 
+    Xavier Devleeschouwer, 2021. The R Journal 13:2, 153-178.
     The palaeomagnetism functions are based on:
     Tauxe, L., 2010. Essentials of Paleomagnetism. University of California 
     Press. <https://earthref.org/MagIC/books/Tauxe/Essentials/>;
@@ -30,6 +31,6 @@ Imports: graphics, grDevices, XML, stats, utils, dplyr (>= 1.0.0),
         stringr, shiny, diagram, reshape
 Suggests: astrochron, RFOC, tidyverse, plyr
 NeedsCompilation: no
-Packaged: 2021-09-24 11:52:32 UTC; User
+Packaged: 2022-05-09 09:42:25 UTC; User
 Repository: CRAN
-Date/Publication: 2021-09-25 04:30:10 UTC
+Date/Publication: 2022-05-09 11:10:02 UTC

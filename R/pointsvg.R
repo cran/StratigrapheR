@@ -24,7 +24,7 @@
 #' type, either line (L) or polygon (P)
 #' @details This function is quite empirical. There is no guarantee it is bug
 #' free. If you have .svg files that should work but do not, you can email me:
-#' \email{sébastien.wouters@@doct.uliege.be}
+#' \email{wouterseb@gmail.com}
 #' @seealso Plot the drawing: \code{\link{placesvg}},
 #'
 #' Plot the drawing and change the coordinates :\code{\link{centresvg}} and
