@@ -34,7 +34,7 @@ using \code{\link{pointsvg}}).}
 
 \item{xmin, xmax}{the x value for the left and right side of the symbol}
 
-\item{ymin, ymax}{the y value for the low and high side of the symbol7}
+\item{ymin, ymax}{the y value for the low and high side of the symbol}
 
 \item{forget}{the elements that should be discarded, by their id
 or index (i.e. name or number of appearance).}

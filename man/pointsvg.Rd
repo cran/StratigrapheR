@@ -2,6 +2,7 @@
 % Please edit documentation in R/pointsvg.R
 \name{pointsvg}
 \alias{pointsvg}
+\alias{is.pointsvg}
 \title{Converts line, rect, polygon and polyline class SVG objects into
 data frames}
 \usage{
@@ -16,6 +17,8 @@ pointsvg(
   yinverse = TRUE,
   warn = T
 )
+
+is.pointsvg(object)
 }
 \arguments{
 \item{file}{a .svg file}
@@ -39,6 +42,9 @@ y values}
 \item{yinverse}{whether to inverse the plotting for y values (T or F)}
 
 \item{warn}{whether you want to be annoyed}
+
+\item{object}{for is.pointsvg, the R object to be checked if it can be
+considered similarly to a svg outputted by pointsvg}
 }
 \value{
 A data.frame with x and y coordinates, ids for each object, and a
@@ -69,6 +75,8 @@ print(paste("An example .svg file was created at ", svg.file.directory,
 # The pointsvg function allows to import simple svg drawings into R
 
 ammonite.drawing <- pointsvg(file = svg.file.directory) # Provide file
+
+is.pointsvg(ammonite.drawing)
 
 plot(c(-2,2), c(-2,2), type = "n")
 

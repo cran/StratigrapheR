@@ -68,6 +68,11 @@ centresvg <- function(object, x, y, xfac = 1, yfac = 1, xadj = 0, yadj = 0,
                       scol = border, slty = lty, slwd = lwd,
                       plot = TRUE,output = FALSE)
 {
+  if(!is.pointsvg(object)) {
+    stop("Invalid object, should be similar to a pointsvg() output")
+  }
+
+  if(nrow(object) == 0) return()
 
   object <- changesvg(object, front = front, back = back, forget = forget,
                       standard = standard, keep.ratio = keep.ratio)

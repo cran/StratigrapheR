@@ -20,17 +20,23 @@
 #' @param xinverse whether to inverse the plotting for x values (T or F)
 #' @param yinverse whether to inverse the plotting for y values (T or F)
 #' @param warn whether you want to be annoyed
+#' @param object for is.pointsvg, the R object to be checked if it can be
+#' considered similarly to a svg outputted by pointsvg
+#'
 #' @return A data.frame with x and y coordinates, ids for each object, and a
 #' type, either line (L) or polygon (P)
+#'
 #' @details This function is quite empirical. There is no guarantee it is bug
 #' free. If you have .svg files that should work but do not, you can email me:
 #' \email{wouterseb@gmail.com}
+#'
 #' @seealso Plot the drawing: \code{\link{placesvg}},
 #'
 #' Plot the drawing and change the coordinates :\code{\link{centresvg}} and
 #' \code{\link{framesvg}}
 #'
 #' Change the drawing: \code{\link{changesvg}} and \code{\link{clipsvg}}
+#'
 #' @examples
 #' # To show you how to import, we first have to have a svg file to import. The
 #' #following lines of code will create a svg in a temporary files:
@@ -45,6 +51,8 @@
 #'
 #' ammonite.drawing <- pointsvg(file = svg.file.directory) # Provide file
 #'
+#' is.pointsvg(ammonite.drawing)
+#'
 #' plot(c(-2,2), c(-2,2), type = "n")
 #'
 #' placesvg(ammonite.drawing)
@@ -53,7 +61,7 @@
 #'
 #' # pointsvg(file.choose())
 #'
-#' @importFrom stringr str_match str_match_all
+#' @importFrom stringr str_match str_match_all str_extract
 #' @importFrom XML xmlParse saveXML
 #' @importFrom utils read.table
 #' @importFrom dplyr arrange
@@ -155,7 +163,7 @@ pointsvg <- function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
   # Extract objects ----
 
   accu           <- data.frame(matrix(ncol = 4,nrow = 0))
-  colnames(accu) <- c("x","y","i","type")
+  colnames(accu) <- c("x","y","id","type")
 
   # LINE ----
 
@@ -259,11 +267,11 @@ pointsvg <- function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
     p.type.ex <- c(rep("polyline", length(polyline.l)),
                    rep("polygon", length(polygon.l)))
 
-    pat2 <- "points= *\"[[0-9.]+,[0-9.]+ ]*\""
+    pat2 <- "points= *\"(-*[0-9.]+,-*[0-9.]+ +)+\""
 
-    tline <- as.character(str_match(poly.ex, pat2))
+    tline <- as.character(str_extract(poly.ex, pat2))
 
-    check.poly <- grepl("points= *\"[0-9.]+\\,[0-9.]+", poly.ex)
+    check.poly <- grepl(pat2, poly.ex)
 
     if(warn & any(!check.poly)){
 
@@ -438,6 +446,8 @@ pointsvg <- function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
 
   # Correct if necessary ----
 
+  accu <- accu[,1:4]
+
   res <- changesvg(accu, standard = standard, keep.ratio = keep.ratio,
                    round = round, xdigits = xdigits, ydigits = ydigits,
                    xinverse = xinverse, yinverse = yinverse)
@@ -445,3 +455,51 @@ pointsvg <- function(file, standard = TRUE, keep.ratio = FALSE, round = TRUE,
   return(res)
 
 }
+
+#' @rdname pointsvg
+#' @export
+
+is.pointsvg <- function(object)
+{
+
+  ret <- T
+
+  if(!inherits(object, "data.frame")) {
+
+    if(ret) return(F) else print(F)
+
+  }
+
+  if(ncol(object) != 4 ) {
+
+    if(ret) return(F) else print(F)
+
+  }
+
+  if(!identical(names(object), c("x", "y", "id", "type"))){
+
+    if(ret) return(F) else print(F)
+
+  }
+
+  if(nrow(object) == 0){
+
+    if(ret) return(T) else print(T)
+
+  }
+
+  if(!(inherits(object$x, "numeric") | inherits(object$x, "integer")) |
+     !(inherits(object$y, "numeric")| inherits(object$x, "integer")) |
+     !inherits(object$type, "character")){
+
+    if(ret) return(F) else print(F)
+
+  }
+
+  return(T)
+
+}
+
+
+
+

@@ -58,7 +58,7 @@ decimals considered as being meaningful for matching dt to log}
 a "litholog()"-like data frame, with new bed boundaries
 }
 \description{
-Adds personalised segements to bed boundaries of lithologs from
+Adds personalised segments to bed boundaries of lithologs from
 "litholog()"-like data frames
 }
 \examples{

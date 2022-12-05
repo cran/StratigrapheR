@@ -1,3 +1,28 @@
+Changes in version 1.3.0
+
+   * Adding the collection(), is.collection(), is.pointsvg(), plot_collection(),
+   symbols() and (??) functions to allow the incorporation of collections of
+   symbols for punctual and horizontal features.
+   * Adding the weldprofile(), profiler() and outliner() functions to add or
+   extract log profiles (erosion, hardness, grain-size, facies, etc.).
+   * Adding the is.joint(), changejoint() and weldjoint() functions to better
+   handle the non-straight bedding joints.
+   * Adding an experimental symbol collection of geological features: 'oufti99',
+   as a preambule to multiple collections needed for all the geoscience
+   community.
+   * Adding the octapos(), octashift() and is.clockwise() functions to
+   characterise and control the order of points inside polygons.
+   * Adding the trace.lim() and plot_lim() functions to better visualise
+   interval data (i.e., lim data)
+   * Generalising the shift() function.
+   * Debugging minorAxisTicks()
+   * Debugging multigons() [twice: I hope this does it]
+   * Debugging litholog()
+   * Debugging pointsvg (using str_extract)
+   * Debugging weldlog() [but it remains a complicated function]
+   * Adding an argument in memento() to rerun the function if data exterior to
+   the R environment is changed.
+
 Changes in version 1.2.5
 
    * Clarifying documentation, updating to new R guidelines

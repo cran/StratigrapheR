@@ -4,7 +4,7 @@
 \alias{shift}
 \title{Circular shift}
 \usage{
-shift(x, n = 1L, names = T)
+shift(x, n = 1L, p = -n + 1L, i = NA, names = T)
 }
 \arguments{
 \item{x}{a vector (characters, numerics, integers,...), data.frame or list}
@@ -12,20 +12,60 @@ shift(x, n = 1L, names = T)
 \item{n}{a positive integer of length 1, giving the number of
 positions to shift by (positive values generate lag)}
 
+\item{p}{the index position or row that will become the first one
+(overrides n)}
+
+\item{i}{a vector of ids to divide x in various groups; the shift will occur
+on the subgroups defined by identical i ids.}
+
 \item{names}{whether the names of the elements or rows should also shift}
 }
 \value{
 the same object than the input, but with a shifted order
 }
 \description{
-Circular shift
+Circular shift; the order of points will be lagged as if the
+beginning is preceded by the end.
 }
 \examples{
-# Simple use
+# Simple use ----------------------------------------------------------------
 
 shift(x = c(6,8,10,12,2,4), n = 2)
 
-# Applications to litholog generation
+#> [1]  2  4  6  8 10 12
+
+vector        <- rep(1:4, 3)
+names(vector) <- rep(c("P1", "P2", "P3"), each = 4)
+split(vector, f = names(vector))
+
+#> $P1
+#> P1 P1 P1 P1
+#>  1  2  3  4
+#>
+#> $P2
+#> P2 P2 P2 P2
+#>  1  2  3  4
+#>
+#> $P3
+#> P3 P3 P3 P3
+#>  1  2  3  4
+
+sh <- shift(x = vector, i = names(vector), p = c(1,2,3))
+split(sh, f = names(sh))
+
+#> $P1
+#> P1 P1 P1 P1
+#>  1  2  3  4
+#>
+#> $P2
+#> P2 P2 P2 P2
+#>  2  3  4  1
+#>
+#> $P3
+#> P3 P3 P3 P3
+#>  3  4  1  2
+
+# Applications to litholog generation ---------------------------------------
 
 l <- c(1,2,3)
 r <- c(0,1,2)

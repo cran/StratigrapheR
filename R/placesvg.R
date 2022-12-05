@@ -42,6 +42,12 @@ placesvg <- function(object, forget = NULL, front = NULL, back = NULL,
                      lwd = par("lwd"), lty = par("lty"),
                      scol = border, slty = lty, slwd = lwd)
 {
+  if(!is.pointsvg(object)) {
+    stop("Invalid object, should be similar to a pointsvg() output")
+  }
+
+  if(nrow(object) == 0) return()
+
   object <- changesvg(object, front = front, back = back, forget = forget,
                       standard = standard, keep.ratio = keep.ratio)
 

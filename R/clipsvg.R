@@ -51,6 +51,20 @@
 clipsvg <- function(object, xmin =  -Inf, xmax = +Inf, ymin = -Inf, ymax = +Inf,
                     by.entity = TRUE)
 {
+  if(!is.pointsvg(object)) {
+    stop("Invalid object, should be similar to a pointsvg() output")
+  }
+
+  if(nrow(object) == 0) {
+
+    out0 <- as.data.frame(matrix(ncol = 4, nrow = 0))
+
+    names(out0) <- c("x", "y", "id", "type")
+
+    return(out0)
+
+  }
+
   if(!(by.entity == TRUE | by.entity == FALSE)){
     stop("The by.entity parameter should be TRUE or FALSE")
   }

@@ -1,6 +1,6 @@
 #' @title Changes boundaries segments in basic lithologs
 #'
-#' @description Adds personalised segements to bed boundaries of lithologs from
+#' @description Adds personalised segments to bed boundaries of lithologs from
 #' "litholog()"-like data frames
 #'
 #' @param log a "litholog()"-like data frame on which the new segments
@@ -68,17 +68,16 @@ weldlog <- function(log, dt, seg, j = 1:length(dt),
                     tolerance = 8)
 {
 
+  # Checking and shifting the litholog ----
+
+  if(!is.litholog(log)) stop("Invalid 'log' object")
+
+  shlog <- octashift(x = log$xy, y = log$dt, i = log$i,
+                     pos = 6, clockwise = F)
+
+  log <- data.frame(i = shlog$i, dt = shlog$y, xy = shlog$x)
+
   # Security and arguments preprocessing ----
-
-  if(auto.dt != TRUE &
-     auto.dt != FALSE){
-    stop("The parameter 'auto.dt' should be T or F")
-  }
-
-  if(warn != TRUE &
-     warn != FALSE){
-    stop("The parameter 'warn' should be T or F")
-  }
 
   segxy    <- sapply(seg,"[", col.xy)
   segdt    <- sapply(seg,"[", col.dt)
@@ -134,18 +133,14 @@ weldlog <- function(log, dt, seg, j = 1:length(dt),
 
   limits <- arrange(segsimp[retrieve,], i, gloVar.xy)
 
-  inftest <- limits$dt != 0
+  inftest <- round(limits$dt, tolerance) != 0
 
-  if(any(inftest) & all(add.dt == 0) & warn){
+  if(any(inftest) & all(add.dt == 0) & isTRUE(warn)){
 
-    warning(paste("The dt values of the beginning of following segment(s) ",
-                  "are not zero : ",
-                  paste(unique(limits$i[inftest]), collapse = " "),
-                  ". This could bring erroneous ",
-                  "results (check it yourself at the boundaries in question,",
-                  " because in the end you're the boss boss). If you want to ",
-                  "get rid of this pesky warning set the 'warn' parameter",
-                  " to FALSE.",sep = ""))
+    warning(paste("The dt values of the beginning of the segment(s) attributed ",
+                  "to the following boundary(ies) (in dt) are not zero : ",
+                  paste(unique(limits$i[inftest]), collapse = ", "),
+                  ".",sep = ""))
 
   }
 
@@ -161,15 +156,13 @@ weldlog <- function(log, dt, seg, j = 1:length(dt),
 
   suptest <- limsup$dt != 0
 
-  if(any(suptest) & warn){
+  if(any(suptest) & isTRUE(warn)){
 
-    warning(paste("The dt values of the end of these incomplete ",
+    warning(paste("The dt values of the end of the incomplete ",
                   "segments (not reaching the maximum xy of the beds in the",
-                  " log) are not zero: ",
-                  paste(limsup$i[suptest], collapse = " "), ". Extrapolation",
-                  " will be applied, but it's going to be ugly. If you want to",
-                  " get rid of this pesky warning set the 'warn' parameter",
-                  " to FALSE.",  sep = ""))
+                  " log) attributed to the following boundary(ies) (in dt) are not zero: ",
+                  paste(limsup$i[suptest], collapse = ", "), ". Extrapolation",
+                  " will be applied.",  sep = ""))
 
   }
 
@@ -214,7 +207,7 @@ weldlog <- function(log, dt, seg, j = 1:length(dt),
     sxy <- segsimp[segsimp$i == choseg,1]
     sdt <- segsimp[segsimp$i == choseg,2] + offset
 
-    if(auto.dt) sdt <- sdt + boundary
+    if(isTRUE(auto.dt)) sdt <- sdt + boundary
 
     sxylim <- c(min(sxy), max(sxy))
 
@@ -276,7 +269,7 @@ weldlog <- function(log, dt, seg, j = 1:length(dt),
 
           if(!(any(sxy == xylim[2]))){
 
-            new <- approx(s$xy, s$dt, xylim[2], method = "linear")
+            new <- approx(s$xy, s$dt, xylim[2], method = "linear", ties = mean)
 
             dn <- data.frame(new$x, new$y)
             colnames(dn) <- c("xy", "dt")
@@ -307,7 +300,7 @@ weldlog <- function(log, dt, seg, j = 1:length(dt),
 
             if(!(any(sxy == xylim[1]))){
 
-              new <- approx(s$xy, s$dt, xylim[1], method = "linear")
+              new <- approx(s$xy, s$dt, xylim[1], method = "linear", ties = mean)
 
               dn <- data.frame(new$x, new$y)
               colnames(dn) <- c("xy", "dt")

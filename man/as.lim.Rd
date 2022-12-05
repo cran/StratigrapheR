@@ -42,11 +42,11 @@ order.lim(
 \arguments{
 \item{lim}{a list of n left (1st element) and n right (2ndt element)
 interval limits, of n interval IDs, and of n interval boundary rules (e.g.
-"[]")}
+"[]").}
 
-\item{l}{the left interval limits (numerical vector of length n)}
+\item{l}{the left interval limits (numerical vector of length n).}
 
-\item{r}{the right interval limits (numerical vector of length n)}
+\item{r}{the right interval limits (numerical vector of length n).}
 
 \item{id}{the interval IDs (numerical or character vector of length n,
 the default is 1 for each interval). They can be similar for different
@@ -59,13 +59,12 @@ include only the left boundary point, and "]]" (or "(]", "left-open",
 "right-closed") to include only the right boundary point. The notation is
 simplified to "[]", "[[", "]]" and "][" only.}
 
-\item{check.lim}{whether to check if the object is a lim object}
+\item{check.lim}{whether to check if the object is a lim object.}
 
-\item{decreasingly}{whether the order to check for or set for is
-decreasing}
+\item{decreasingly}{whether the order to check for or to set is decreasing.}
 
 \item{dependently}{whether the intervals themselves should be ordered
-relatively to the other}
+relatively to the other.}
 }
 \description{
 Functions to create and check limits of intervals (what
@@ -135,6 +134,9 @@ To discretise intervals: \code{\link{tie.lim}}
 
 To simplify boundary rules into "[]", "[[", "]]" and "][":
  \code{\link{rebound}}
+
+To plot interval data as lines: \code{\link{trace.lim}} and
+\code{\link{plot_lim}}
 
 To plot interval data as rectangles: \code{\link{infobar}}
 }

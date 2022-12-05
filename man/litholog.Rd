@@ -2,9 +2,12 @@
 % Please edit documentation in R/litholog.R
 \name{litholog}
 \alias{litholog}
-\title{Creates a litholog}
+\alias{is.litholog}
+\title{Create/check lithologs}
 \usage{
 litholog(l, r, h, i)
+
+is.litholog(object)
 }
 \arguments{
 \item{l, r}{the height of each delimitation (upper and lower; l and r
@@ -14,15 +17,18 @@ matter)}
 \item{h}{the hardness of each bed}
 
 \item{i}{the id of each bed: it should be different for each bed}
+
+\item{object}{an R object to test whether it is a litholog, as outputted by
+the \code{litholog} function}
 }
 \value{
-A table of depth (dt) and xy value (i.e. hardness, or simply the x
-position if your litholog is vertical) of rectangles for each bed. Each bed
-is defined by an id (or name), which is the variable i in the table.
+A table of ids (i), depth (dt) and xy value (i.e. hardness, or simply
+the x position if your litholog is vertical) of rectangles for each bed. This
+order of column variable (i, dt, xy) is checked by is.litholog
 }
 \description{
-Creates basic coordinates of polygons to draw a simple litholog
-with rectangles
+Creates and checks basic coordinates of polygons to draw a
+simple litholog with rectangles
 }
 \examples{
 l <- c(1,2,3)  # left boundary of the bed interval (upper or lower)
@@ -32,6 +38,8 @@ i   <- c("B1","B2","B3") # Bed name
 
 basic.litholog <- litholog(l,r,h,i) # Generate data frame of the polygons
                                     # making the litholog
+
+is.litholog(basic.litholog)
 
 whiteSet(xlim = c(0,4), ylim = c(0,3), ytick = 1, ny = 10) # Plot background
 multigons(basic.litholog$i, basic.litholog$xy, basic.litholog$dt) # Draw log

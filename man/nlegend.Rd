@@ -11,6 +11,7 @@ nlegend(
   xmin = -1.2,
   ymax = 1.5,
   ymin = -ymax,
+  asp = NA,
   temp = FALSE,
   ...
 )
@@ -21,6 +22,9 @@ nlegend(
 \item{xt}{the x position of the text}
 
 \item{xmin, xmax, ymin, ymax}{the x and y limits for the plotting area}
+
+\item{asp}{numeric, giving the aspect ratio y/x, see ‘Details’ of
+\code{\link{plot.window}}.}
 
 \item{temp}{whether to plot a template for visualisation}
 

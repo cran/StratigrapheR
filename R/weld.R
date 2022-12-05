@@ -69,7 +69,7 @@ weld <- function(log, dt, xy, begin, end,
   } else if (erase == "both") {
     dlim <- begin - 1
     ulim   <- end + 1
-  } else {stop("The parameter erase should be 'none','begin','end' or 'both'")}
+  } else {stop("The 'erase' parameter should be 'none','begin','end' or 'both'")}
 
   if(dlim >= 1 & dlim <= nrow(log)) {
     d <- log[1:dlim,]

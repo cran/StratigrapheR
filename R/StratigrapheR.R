@@ -21,7 +21,7 @@
 #'
 #' Type: R package
 #'
-#' Version: 1.2.5 (Winter 2021)
+#' Version: 1.3.0 (End 2022)
 #'
 #' License: GPL-3
 #' @note
@@ -761,10 +761,14 @@ StratigrapheR <- function(i = 1:3)
 
 utils::globalVariables(c("gloVar.neworder", "gloVar.ni", "gloVar.bs",
                          "gloVar.k", "gloVar.adapt.buttons",
-                         "gloVar.x", "gloVar.i", "gloVar.xy", "gloVar.o",
+                         "gloVar.x", "gloVar.y", "gloVar.i",
+                         "gloVar.polygons",
+                         "gloVar.main", "gloVar.sec",
+                         "gloVar.xy", "gloVar.o",
                          "glovar.wdt", "glovar.order",
                          "gloVar.id", "gloVar.coord", "gloVar.args.save",
-                         "gloVar.what.save", "gloVar.seed.save", "gloVar.out"))
+                         "gloVar.what.save", "gloVar.files.save",
+                         "gloVar.seed.save", "gloVar.out"))
 
 
 

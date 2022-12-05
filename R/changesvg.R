@@ -55,6 +55,20 @@ changesvg <- function(object, forget = NULL, front = NULL, back = NULL,
                       xdigits = 4, ydigits = 4,
                       xinverse = FALSE, yinverse = FALSE)
 {
+  if(!is.pointsvg(object)) {
+    stop("Invalid object, should be similar to a pointsvg() output")
+  }
+
+  if(nrow(object) == 0) {
+
+    out0 <- as.data.frame(matrix(ncol = 4, nrow = 0))
+
+    names(out0) <- c("x", "y", "id", "type")
+
+    return(out0)
+
+  }
+
   if(!(standard == TRUE | standard == FALSE)){
     stop("The 'standard' parameter should be TRUE or FALSE")
   }
@@ -152,6 +166,8 @@ changesvg <- function(object, forget = NULL, front = NULL, back = NULL,
   if(xinverse) object$x <- -object$x
 
   if(yinverse) object$y <- -object$y
+
+  object <- object[,1:4]
 
   return(object)
 

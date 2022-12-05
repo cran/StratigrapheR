@@ -6,7 +6,7 @@
 #' @param object a pointsvg object (svg object imported as data frame
 #' using \code{\link{pointsvg}}).
 #' @param xmin,xmax the x value for the left and right side of the symbol
-#' @param ymin,ymax the y value for the low and high side of the symbol7
+#' @param ymin,ymax the y value for the low and high side of the symbol
 #' @param forget the elements that should be discarded, by their id
 #' or index (i.e. name or number of appearance).
 #' @param front,back the elements to be put in front and back position,
@@ -88,6 +88,12 @@ framesvg <- function(object, xmin, xmax, ymin, ymax,
                      scol = border, slty = lty, slwd = lwd,
                      plot = TRUE, output = FALSE)
 {
+
+  if(!is.pointsvg(object)) {
+    stop("Invalid object, should be similar to a pointsvg() output")
+  }
+
+  if(nrow(object) == 0) return()
 
   object <- changesvg(object, front = front, back = back, forget = forget,
                       standard = standard, keep.ratio = keep.ratio)

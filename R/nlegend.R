@@ -6,6 +6,8 @@
 #' @param t text to provide the legend
 #' @param xt the x position of the text
 #' @param xmin,xmax,ymin,ymax the x and y limits for the plotting area
+#' @param asp numeric, giving the aspect ratio y/x, see ‘Details’ of
+#' \code{\link{plot.window}}.
 #' @param temp whether to plot a template for visualisation
 #' @param ... parameters to be fed to the \code{text} function, such as
 #' \code{cex} for the size of the text
@@ -36,10 +38,10 @@
 nlegend <- function(t = "Text", xt = 1.3,
                     xmax = 5,   xmin = -1.2,
                     ymax = 1.5, ymin = -ymax,
-                    temp = FALSE, ...)
+                    asp = NA, temp = FALSE, ...)
 {
   plot.new()
-  plot.window(xlim = c(xmin, xmax), ylim = c(ymin, ymax))
+  plot.window(xlim = c(xmin, xmax), ylim = c(ymin, ymax), asp = asp)
 
   text(xt, 0, t, adj = c(0,0.5), ...)
 

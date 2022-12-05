@@ -7,9 +7,9 @@
 #'
 #' @param lim a list of n left (1st element) and n right (2ndt element)
 #' interval limits, of n interval IDs, and of n interval boundary rules (e.g.
-#' "[]")
-#' @param l the left interval limits (numerical vector of length n)
-#' @param r the right interval limits (numerical vector of length n)
+#' "[]").
+#' @param l the left interval limits (numerical vector of length n).
+#' @param r the right interval limits (numerical vector of length n).
 #' @param id the interval IDs (numerical or character vector of length n,
 #' the default is 1 for each interval). They can be similar for different
 #' intervals.
@@ -19,11 +19,10 @@
 #' include only the left boundary point, and "]]" (or "(]", "left-open",
 #' "right-closed") to include only the right boundary point. The notation is
 #' simplified to "[]", "[[", "]]" and "][" only.
-#' @param decreasingly whether the order to check for or set for is
-#' decreasing
+#' @param decreasingly whether the order to check for or to set is decreasing.
 #' @param dependently whether the intervals themselves should be ordered
-#' relatively to the other
-#' @param check.lim whether to check if the object is a lim object
+#' relatively to the other.
+#' @param check.lim whether to check if the object is a lim object.
 #'
 #' @details \code{as.lim}: creates a lim object
 #'
@@ -56,6 +55,9 @@
 #'
 #' To simplify boundary rules into "[]", "[[", "]]" and "][":
 #'  \code{\link{rebound}}
+#'
+#' To plot interval data as lines: \code{\link{trace.lim}} and
+#' \code{\link{plot_lim}}
 #'
 #' To plot interval data as rectangles: \code{\link{infobar}}
 #'

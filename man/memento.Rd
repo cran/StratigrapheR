@@ -4,7 +4,18 @@
 \alias{memento}
 \title{Remembers and outputs the result of a slow function}
 \usage{
-memento(what, args, name, dir, subdir = "memento", check.seed = F, speak = T)
+memento(
+  what,
+  args,
+  name,
+  dir = getwd(),
+  subdir = "memento",
+  rerun = F,
+  check.files = list(),
+  files.dir = getwd(),
+  check.seed = F,
+  speak = T
+)
 }
 \arguments{
 \item{what}{a (slow) function}
@@ -21,6 +32,15 @@ DIFFERENT FOR EACH IMPLEMENTATION OF THE FUNCTION IN IDENTICAL DIRECTORIES.}
 \item{subdir}{a name for a subdirectory (useful when the function is used
 several time in a script)}
 
+\item{rerun}{if TRUE, the function is rerun no matter what. This is useful
+to update information that is not present in the R environment, for instance
+if you load data from external files that have been updated.}
+
+\item{check.files}{a list of files to check changes in (see details). If the
+list is of length 0, no file is checked.}
+
+\item{files.dir}{directory for teh files to be checked.}
+
 \item{check.seed}{if TRUE, the value of the random seed in effect will be
 taken into account; if it changes, the function will run again.}
 
@@ -32,12 +52,20 @@ the output of the function
 \description{
 Memento mori; you do not have time to lose on unnecessary
 calculations. This function remembers the output of a slow function, for
-given arguments and, if asked politely, a given random seed. If they match
-the previous arguments and seeds, the output is provided without delay. The
-trade-off is to assign a folder to store the data.
+given arguments and, if asked politely, given files and a given random seed.
+If they match the previous arguments, files and seeds, the output is provided
+without delay, otherwise the function runs, and all the parameters are saved
+for next time. The trade-off is to assign a folder to store the data (see
+also details). The function can also be forced to rerun.
+}
+\details{
+file data is summarized using MD5sum, which can have limitations in
+data size (2^64 bits) and in cryptographic purposes.
 }
 \examples{
 \donttest{tf <- tempdir()
+if(exists("run.number")) run.number <- run.number + 1 else run.number <-  1
+name <- paste("T",run.number)
 
 testfun <- function(a = 1, time = 3){
 
@@ -50,7 +78,7 @@ testfun <- function(a = 1, time = 3){
 # First time running; the function takes some time, memento needs the
 # output to be generated, and will remember for later.
 set.seed(43)
-memento(testfun,  args = list(a = 7), name = "T1", dir = tf)
+memento(testfun,  args = list(a = 7), name = name, dir = tf)
 
 set.seed(43)
 testfun(7, time = 0)
@@ -59,7 +87,7 @@ testfun(7, time = 0)
 # In this case, the seed is ignored, so the result is different from what
 # would be obtained with a different seed
 set.seed(45)
-memento(testfun,  args = list(a = 7), name = "T1", dir = tf)
+memento(testfun,  args = list(a = 7), name = name, dir = tf)
 
 set.seed(45)
 testfun(7, time = 0)
@@ -67,16 +95,15 @@ testfun(7, time = 0)
 # First time running while taking into account the random seed;
 # the function takes some time to generate the result
 set.seed(42)
-memento(testfun,  args = list(a = 7), name = "T1", dir = tf, check.seed = TRUE)
+memento(testfun,  args = list(a = 7), name = name, dir = tf, check.seed = TRUE)
 
 # Second time running with an identical random seed;
 # memento directly outputs the results
 set.seed(42)
-memento(testfun,  args = list(a = 7), name = "T1", dir = tf, check.seed = TRUE)
+memento(testfun,  args = list(a = 7), name = name, dir = tf, check.seed = TRUE)
 
 # The seed is changed: the result is computed anew
 set.seed(47)
-memento(testfun,  args = list(a = 7), name = "T1", dir = tf, check.seed = TRUE)
+memento(testfun,  args = list(a = 7), name = name, dir = tf, check.seed = TRUE)
 }
-
 }

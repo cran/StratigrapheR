@@ -37,8 +37,10 @@ minorAxisTicks <- function(usr, n = NULL, at.maj = NULL, extend = T)
     p1 <- which.min(abs(r1))
     p2 <- which.min(abs(r2))
 
-    if(!(abs(r1[p1]/min(usr)) <  1.5e-8) & r1[p1] < 0) p1 <- p1 + 1
-    if(!(abs(r2[p2]/max(usr)) <  1.5e-8) & r2[p2] > 0) p2 <- p2 - 1
+    if(!(abs(r1[p1]/min(usr)) <  1.5e-8) & r1[p1] < 0 &
+       p1 != length(at.maj)) p1 <- p1 + 1
+    if(!(abs(r2[p2]/max(usr)) <  1.5e-8) & r2[p2] > 0 &
+       p2 != 1) p2 <- p2 - 1
 
     at.maj <- at.maj[p1:p2]
 
@@ -54,8 +56,8 @@ minorAxisTicks <- function(usr, n = NULL, at.maj = NULL, extend = T)
 
     # Work the minor ticks: check regularity ----
 
-    mina <- min(at.maj)
-    maxa <- max(at.maj)
+    mina <- min(at.maj, na.rm = T)
+    maxa <- max(at.maj, na.rm = T)
     difa <- maxa - mina
     na   <- difa / (length(at.maj) - 1)
 

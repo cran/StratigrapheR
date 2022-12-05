@@ -12,7 +12,7 @@ multigons(
   forget = NULL,
   front = NULL,
   back = NULL,
-  density = NA,
+  density = 0,
   angle = 45,
   border = "black",
   col = NA,
@@ -48,9 +48,7 @@ order is the one defined by \code{j}, and if \code{j} is absent by the order
 in \code{i}.}
 
 \item{density}{the density of shading lines, in lines per inch. The
-default value of NA means that no shading lines are drawn. A zero value of
-density means no shading nor filling whereas negative values and NA suppress
-shading.}
+default value of 0 means that no shading lines are drawn.}
 
 \item{angle}{the slope of shading lines, given as an angle in degrees
 (counter-clockwise).}

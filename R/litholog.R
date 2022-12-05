@@ -1,16 +1,20 @@
-#' @title Creates a litholog
+#' @title Create/check lithologs
 #'
-#' @description Creates basic coordinates of polygons to draw a simple litholog
-#' with rectangles
+#' @description Creates and checks basic coordinates of polygons to draw a
+#' simple litholog with rectangles
 #'
 #' @param l,r the height of each delimitation (upper and lower; l and r
 #' stand for left and right boundaries of the interval, their order does not
 #' matter)
 #' @param h the hardness of each bed
 #' @param i the id of each bed: it should be different for each bed
-#' @return A table of depth (dt) and xy value (i.e. hardness, or simply the x
-#' position if your litholog is vertical) of rectangles for each bed. Each bed
-#' is defined by an id (or name), which is the variable i in the table.
+#' @param object an R object to test whether it is a litholog, as outputted by
+#' the \code{litholog} function
+#'
+#' @return A table of ids (i), depth (dt) and xy value (i.e. hardness, or simply
+#' the x position if your litholog is vertical) of rectangles for each bed. This
+#' order of column variable (i, dt, xy) is checked by is.litholog
+#'
 #' @examples
 #' l <- c(1,2,3)  # left boundary of the bed interval (upper or lower)
 #' r <- c(0,1,2)  # right boundary of the bed interval (upper or lower)
@@ -19,6 +23,8 @@
 #'
 #' basic.litholog <- litholog(l,r,h,i) # Generate data frame of the polygons
 #'                                     # making the litholog
+#'
+#' is.litholog(basic.litholog)
 #'
 #' whiteSet(xlim = c(0,4), ylim = c(0,3), ytick = 1, ny = 10) # Plot background
 #' multigons(basic.litholog$i, basic.litholog$xy, basic.litholog$dt) # Draw log
@@ -67,10 +73,10 @@ litholog <- function(l, r, h, i)
   d["xya"] <- rep(0,nrow(d))
 
   d["dtb"] <- d$l
-  d["xyb"] <- h
+  d["xyb"] <- d$h
 
   d["dtc"] <- d$r
-  d["xyc"] <- h
+  d["xyc"] <- d$h
 
   d["dtd"] <- d$r
   d["xyd"] <- rep(0,nrow(d))
@@ -100,4 +106,54 @@ litholog <- function(l, r, h, i)
 
   return(res)
 }
+
+#' @rdname litholog
+#' @export
+
+is.litholog <- function(object)
+{
+
+  ret <- T
+
+  if(!inherits(object, "data.frame")) {
+
+    if(ret) return(F) else print(F)
+
+  }
+
+  if(ncol(object) != 3) {
+
+    if(ret) return(F) else print(F)
+
+  }
+
+  if(!identical(names(object), c("i", "dt", "xy"))){
+
+    if(ret) return(F) else print(F)
+
+  }
+
+  if(nrow(object) == 0){
+
+    if(ret) return(T) else print(T)
+
+  }
+
+  if(!(inherits(object$dt, "numeric") | inherits(object$dt, "integer")) |
+     !(inherits(object$xy, "numeric") | inherits(object$xy, "integer")) |
+     !(inherits(object$i, "numeric") | inherits(object$i, "integer") | inherits(object$i, "character"))){
+
+    if(ret) return(F) else print(F)
+
+  }
+
+  if(ret) return(T) else print(T)
+
+}
+
+
+
+
+
+
 
