@@ -1,3 +1,9 @@
+Changes in version 1.3.1
+
+   * Debugging profiler
+   * Adding the hz argument to plot_lim(), which allows to plot intervals
+   vertically
+
 Changes in version 1.3.0
 
    * Adding the collection(), is.collection(), is.pointsvg(), plot_collection(),

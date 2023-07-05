@@ -33,7 +33,11 @@
 #' @param close the style of the points for closed boundaries.
 #' @param open the style of the points for open boundaries.
 #' @param add whether to add the plot to an existing plot.
-#' @param gen parameters for \code{\link{plot}}
+#' @param hz whether dt stands for the horizontal axis (the x axis, i.e., the
+#' abscissa): in that case it is set a TRUE (this is the default value). Any
+#' other value will associate dt with the vertical axis (y axis, i.e., the
+#' ordinate)
+#' @param gen general parameters for \code{\link{plot}}
 #'
 #' @return \code{trace.lim} returns a list of 'dt' values (dt stands for
 #' depth/time, which corresponds to the boundaries of intervals), 'xy' values
@@ -120,15 +124,22 @@ plot_lim <- function(dt, xy, int, include,
                      style = list(),
                      close = list(pch = 19),
                      open = list(pch = 21, bg = "white"),
-                     add = F, gen = list(xlab = "dt", ylab = "xy"))
+                     add = F, hz = T, gen = list(xlab = "dt", ylab = "xy"))
 {
 
   if(!isTRUE(add)){
 
-    plot.list <- merge_list(list(x = 1, y = 1, type = "n"),
-                            gen,
-                            list(xlim = range(dt), ylim = range(xy)),
-                            list(xlab = "dt", ylab = "xy"))
+    if(isTRUE(hz)){
+      plot.list <- merge_list(list(x = 1, y = 1, type = "n"),
+                              gen,
+                              list(xlim = range(dt), ylim = range(xy)),
+                              list(xlab = "dt", ylab = "xy"))
+    } else {
+      plot.list <- merge_list(list(x = 1, y = 1, type = "n"),
+                              gen,
+                              list(xlim = range(xy), ylim = range(dt)),
+                              list(xlab = "xy", ylab = "dt"))
+    }
 
     do.call(plot, plot.list)
 
@@ -136,18 +147,21 @@ plot_lim <- function(dt, xy, int, include,
 
   if(!isTRUE(link)){
 
-    para.line <- merge_list(list(i = int,
-                                 x = dt,
-                                 y = xy),
-                            style)
+    if(isTRUE(hz)){
+      para.line <- merge_list(list(i = int,x = dt, y = xy), style)
+    } else {
+      para.line <- merge_list(list(i = int,x = xy, y = dt), style)
+    }
 
     do.call(multilines, para.line)
 
   } else {
 
-    para.line <- merge_list(list(x = dt,
-                                 y = xy),
-                            style)
+    if(isTRUE(hz)){
+      para.line <- merge_list(list(x = dt, y = xy), style)
+    } else {
+      para.line <- merge_list(list(x = xy, y = dt), style)
+    }
 
     do.call(lines, para.line)
 
@@ -155,8 +169,13 @@ plot_lim <- function(dt, xy, int, include,
 
   if(isTRUE(point)){
 
-    pos.close <- list(x = dt[include], y = xy[include])
-    pos.open  <- list(x = dt[!include], y = xy[!include])
+    if(isTRUE(hz)){
+      pos.close <- list(x = dt[include], y = xy[include])
+      pos.open  <- list(x = dt[!include], y = xy[!include])
+    } else {
+      pos.close <- list(x = xy[include], y = dt[include])
+      pos.open  <- list(x = xy[!include], y = dt[!include])
+    }
 
     para.close <- merge_list(pos.close, close, list(pch = 19))
     para.open  <- merge_list(pos.open, open, list(pch = 21, bg = "white"))

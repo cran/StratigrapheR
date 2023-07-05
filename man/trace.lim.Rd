@@ -36,6 +36,7 @@ plot_lim(
   close = list(pch = 19),
   open = list(pch = 21, bg = "white"),
   add = F,
+  hz = T,
   gen = list(xlab = "dt", ylab = "xy")
 )
 }
@@ -81,7 +82,7 @@ simplified to "[]", "[[", "]]" and "][" only.}
 
 \item{add}{whether to add the plot to an existing plot.}
 
-\item{gen}{parameters for \code{\link{plot}}}
+\item{gen}{general parameters for \code{\link{plot}}}
 
 \item{dt}{the boundaries of the intervals as provided by \code{trace.lim}.}
 
@@ -89,6 +90,11 @@ simplified to "[]", "[[", "]]" and "][" only.}
 
 \item{include}{whether the boundaries of the intervals are included in them,
 as provided by \code{trace.lim}.}
+
+\item{hz}{whether dt stands for the horizontal axis (the x axis, i.e., the
+abscissa): in that case it is set a TRUE (this is the default value). Any
+other value will associate dt with the vertical axis (y axis, i.e., the
+ordinate)}
 }
 \value{
 \code{trace.lim} returns a list of 'dt' values (dt stands for

@@ -4,7 +4,7 @@
 \alias{profiler}
 \title{Extract the profile of a litholog}
 \usage{
-profiler(log, gap, ext = Inf, down.xy = NA, up.xy = NA)
+profiler(log, gap, ext = Inf, down.xy = NA, up.xy = NA, warn = F)
 }
 \arguments{
 \item{log}{a "litholog()"-like data frame}
@@ -17,6 +17,9 @@ for "left-side" profiles, set to -Inf}
 
 \item{down.xy, up.xy}{the xy values to give the the lower and upper parts of
 the signal.}
+
+\item{warn}{whether to have a detailed explanation of problems with the
+extraction of a profile. This is useful to diagnose strange outputs.}
 }
 \value{
 a data frame of the extracted profile, with its i (bed

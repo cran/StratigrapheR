@@ -10,6 +10,8 @@
 #' for "left-side" profiles, set to -Inf
 #' @param down.xy,up.xy the xy values to give the the lower and upper parts of
 #' the signal.
+#' @param warn whether to have a detailed explanation of problems with the
+#' extraction of a profile. This is useful to diagnose strange outputs.
 #'
 #' @return a data frame of the extracted profile, with its i (bed
 #' identification), dt (depth/time), and xy (intensity).
@@ -53,7 +55,7 @@
 #'
 #' @export
 
-profiler <- function(log, gap, ext = Inf, down.xy = NA, up.xy = NA)
+profiler <- function(log, gap, ext = Inf, down.xy = NA, up.xy = NA, warn = F)
 {
 
   if(!is.litholog(log)) stop("This is not an appropriate 'litholog' object")
@@ -116,12 +118,14 @@ profiler <- function(log, gap, ext = Inf, down.xy = NA, up.xy = NA)
 
   if(is.unsorted(unlist(ref.list2[bed.order]))){
 
-    warning("Beds are overlapping in dt, the profile will be ordered ",
-            "as is in the log")
+    if(isTRUE(warn)){
+      warning("Beds are overlapping in dt, the profile will be ordered ",
+              "as is in the log")
+    }
 
     oi <- unique(log$i)
 
-    exlog.list <- exlog.list[match(names(exlog.list), oi)]
+    exlog.list <- exlog.list[match(oi, names(exlog.list))]
 
   } else {
 
@@ -135,8 +139,10 @@ profiler <- function(log, gap, ext = Inf, down.xy = NA, up.xy = NA)
 
   if(is.generally.unsorted(outlog$dt)){
 
-    warning(paste0("The extracted signal shows back and forth (unsorting) ",
-                   "in the stratigraphic/time (dt) dimension"))
+    if(isTRUE(warn)){
+      warning(paste0("The extracted signal shows back and forth (unsorting) ",
+                     "in the stratigraphic/time (dt) dimension"))
+    }
 
   }
 

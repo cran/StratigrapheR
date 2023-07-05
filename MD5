@@ -1,7 +1,7 @@
-e93d8c035d6030a2eb8482891fae9609 *DESCRIPTION
+0127fbe31a7b5b224edd6b61656d4c80 *DESCRIPTION
 aa17ca5b81d333227b5036096216f21e *NAMESPACE
-353b3f52e154183ccebe331b909fc583 *NEWS
-8d58bd3a6793088a6f825e1567986f6a *R/StratigrapheR.R
+4ab10bd9888e590402fc92807f014ae7 *NEWS
+8e0ac0c6de738a15e30eaf6c4aabe0cb *R/StratigrapheR.R
 810be79e70c8f52c75f4ba5824f19c7c *R/as.lim.R
 26692939f9d04f13efa67a67a2c4bdae *R/bedtext.R
 9708d85402e1f39ff5c872871679376f *R/blackSet.R
@@ -60,7 +60,7 @@ eb953420b00fc0d8b792d00978883011 *R/pkgfind.R
 0ef4ff03ca8dfdc910f8447122340420 *R/placesvg.R
 da2818b99456ea1dfa6091f6c2b9a9e9 *R/planepoints.R
 b080e916aae011c49015763a0791456d *R/pointsvg.R
-cdadb736250a56cce31fc88dd2ca9854 *R/profiler.R
+5cd056cccff7f37bd66efa268d5cb648 *R/profiler.R
 b16d62b22a9c778b7397d9bc3a54d443 *R/rebound.R
 f0a85215b07520ad19f18331cae35408 *R/repitch.R
 7618ba77b5d83404e4dfec88293986dc *R/reposition.R
@@ -78,7 +78,7 @@ dd15fbfeb2fab54ea0b0af7b73a705bc *R/strat.var.R
 c60b68100775cdfab2456c1555ab9f69 *R/supporting.examples.R
 998ed41da31a3fd08a7525bd03fbd3a6 *R/symbology.R
 365345cc186f28c2f681ab4c98b1d38f *R/tie.lim.R
-33874337f82f0b40b8e2109c4e5a45b9 *R/trace.lim.R
+fdd36605f757ad061350be49f93c90f0 *R/trace.lim.R
 e8b275716b82ac42cdd1002fcfc7389a *R/transphere.R
 fdb0b25e44fac5acbf0a920302553f9b *R/weld.R
 7d7708b3807949839ab7935652c0d755 *R/weldjoint.R
@@ -107,8 +107,8 @@ d8000634ef0894b2a7406210b9640deb *data/noise_emd.rda
 51657538af728b3a218b86dced8a417a *data/proxy.example.rda
 9a701a21fef65937e8b7a63e8a58e22f *data/tie.points.example.rda
 1974126240f867554852e1c10c13c14c *data/zeq_example.rda
-efc9ab8d0497d7b89f0a0837a55acec2 *inst/CITATION
-95e2d5f5a7d2438577a7075abf35f270 *man/StratigrapheR.Rd
+6e5d36c50179175f7bccd50968973ae7 *inst/CITATION
+1eff38133b13b17023db91e2282b349d *man/StratigrapheR.Rd
 701e3292d3877ca2778ecd378cbfc180 *man/StratigrapheR.examples.Rd
 c966aa0eee78735f3944f51d1a9adc8b *man/as.lim.Rd
 38053398a6e17c6cded437da1fd6358b *man/bedtext.Rd
@@ -168,7 +168,7 @@ d7874d9aaaf690db84121e40f5c6535c *man/pkgfind.Rd
 2be64608ad89453052dfbaa3acf16fc7 *man/placesvg.Rd
 f62798015f15c9e84ff7e5c2dd5b8ded *man/planepoints.Rd
 dade88964aac9c90d02048735faad018 *man/pointsvg.Rd
-e89d5559865ed124702e4f7dded1e134 *man/profiler.Rd
+b98979068b6b0f89a76c18e7db0fc1cf *man/profiler.Rd
 980a704c87fa83f6be059bf6f8476155 *man/rebound.Rd
 22fddcf124e2ae86d8391b6d5759dda2 *man/repitch.Rd
 27aa4903cf5169cd133bb93e88615d15 *man/reposition.Rd
@@ -185,7 +185,7 @@ ded2de699b450e75fd08f65390e7e8e2 *man/strat.repair.Rd
 90893db0cd62cd10c75e15d60dddae89 *man/strat.var.Rd
 0318096c813069f21fb73c89cc43461c *man/symbology.Rd
 87e5a0c8de4fb98b4712d843e21b909f *man/tie.lim.Rd
-a31004d7e1fa175c8a831cc89ae37180 *man/trace.lim.Rd
+029c4d1c85acd6d9f0e9a3f10f8b12a3 *man/trace.lim.Rd
 dbd1289970d66c400b2de1ee77fb6b2f *man/transphere.Rd
 98c60f47c134c21ce2a0125983dc988e *man/weld.Rd
 0594658a3b9cfe5ceeffc7a98393dfdb *man/weldjoint.Rd
